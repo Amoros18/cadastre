@@ -89,7 +89,7 @@ class DossierController extends Controller
             $Listes['Listes'] = $Listes['Listes']->where('montant_recette','=',null);
             $Listes['Listes'] = $Listes['Listes']->where('status','!=','ancien');
         }
-        return view ('bag.recette.recette-liste',[
+        return view ('bag.recette.recette-liste-intro',[
             'Listes'=>$Listes['Listes'],
             'modifier'=>$modifier,
             'numero_dossier'=>$Listes['numero_dossier'],

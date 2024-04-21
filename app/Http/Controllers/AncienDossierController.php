@@ -37,7 +37,7 @@ class AncienDossierController extends Controller
             $names = "{$new_numero}-{$aleatoire}{$extension}";
             rename(storage_path("app/public/{$filePath}") , storage_path("app/public/point/{$names}"));
             $table->point = $names;
-
+            
         }
 
         $table->status = 'ancien';

@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('liste_geometre');
             $table->timestamps();
 
-            $table->foreign('nouveau_dossier_id')->references('id')->on('nouveau_dossiers')->onUpdate('cascade')->onUpdate('cascade');
+            $table->foreign('nouveau_dossier_id')->references('id')->on('nouveau_dossiers')->onUpdate('cascade')->onDelete('cascade');
 
         });
 

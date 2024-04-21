@@ -68,7 +68,7 @@ return new class extends Migration
             $table->string('titre_foncier')->nullable();
             $table->timestamps();
 
-            $table->foreign('numero_decision')->references('numero_decision')->on('decisions')->onUpdate('cascade');
+            $table->foreign('numero_decision')->references('numero_decision')->on('decisions')->onUpdate('cascade')->onDelete('cascade');
         });
     }
 

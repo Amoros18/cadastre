@@ -3,9 +3,8 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Validation\Rule;
 
-class RecetteRequest extends FormRequest
+class RecceteEditRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -18,7 +17,7 @@ class RecetteRequest extends FormRequest
     /**
      * Get the validation rules that apply to the request.
      *
-     * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array|string>
+     * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
      */
     public function rules(): array
     {
@@ -31,11 +30,9 @@ class RecetteRequest extends FormRequest
             'numero_quittance'=>[
                 'required',
                 'string',
-                Rule::unique('quittances','numero_quittance')
             ],
             'date_quittance'=>'required|date',
             'observation_recette'=>'nullable|string', // a vrifier longtexte
-            //'numero_quittance'=>'required|string|unique:quittances,numero_quittance,NULL,'.$this->input('numero_quittance').',date_quittance,'.$this->input('date_quittance'),
         ];
     }
 }

@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('numero_tirroir')->nullable();
             $table->timestamps();
 
-            $table->foreign('numero_dossier')->references('numero_dossier')->on('nouveau_dossiers')->onUpdate('cascade')->onUpdate('cascade');
+            $table->foreign('numero_dossier')->references('numero_dossier')->on('nouveau_dossiers')->onUpdate('cascade')->onDelete('cascade');
 
         });
     }

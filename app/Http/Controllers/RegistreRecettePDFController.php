@@ -40,7 +40,10 @@ class RegistreRecettePDFController extends Controller
             $arrondissement = null;
         }
         
-        $registre = $this->service->search($nature_dossier, $date_less, $date_more, $arrondissement);
+        $table = $this->service->searchFrom2Table($nature_dossier, $date_less, $date_more, $arrondissement);
+        $registre = $table->join('quittances','nouveau_dossiers.id','=','quittances.nouveau_dossier_id')
+                        ->select('nouveau_dossiers.*','quittances.*')->get();
+
         return view('registres.recette')->with([
             'registre'=>$registre,
             'arrondissement'=>$arrondissement,
@@ -75,8 +78,12 @@ class RegistreRecettePDFController extends Controller
         else {
             $arrondissement = null;
         }
+        $table = $this->service->searchFrom2Table($nature_dossier, $date_less, $date_more, $arrondissement);
+        $registre = $table->join('quittances','nouveau_dossiers.id','=','quittances.nouveau_dossier_id')
+                        ->select('nouveau_dossiers.*','quittances.*')->get();
+
         $pdf = \App::make('dompdf.wrapper');
-        $pdf->loadHTML($this->convert_registre_to_html($this->service->search($nature_dossier, $date_less, $date_more, $arrondissement)));
+        $pdf->loadHTML($this->convert_registre_to_html($registre));
         $pdf->getDomPDF()->set_option("enable_php",true);
         $pdf->setPaper('A4','landscape');
         return $pdf->stream();

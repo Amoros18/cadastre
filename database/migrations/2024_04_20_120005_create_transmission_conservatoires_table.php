@@ -11,14 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('points', function (Blueprint $table) {
+        Schema::create('transmission_conservatoires', function (Blueprint $table) {
             $table->id();
-            $table->string('numero_dossier');
-            $table->string('longitude');
-            $table->string('latitude');
             $table->timestamps();
-
-            $table->foreign('numero_dossier')->references('numero_dossier')->on('nouveau_dossiers')->onUpdate('cascade')->onDelete('cascade');
         });
     }
 
@@ -27,6 +22,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('points');
+        Schema::dropIfExists('transmission_conservatoires');
     }
 };

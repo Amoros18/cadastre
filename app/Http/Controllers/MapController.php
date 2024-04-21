@@ -18,8 +18,10 @@ class MapController extends Controller
 
     function geoJson ($locales) 
     {
-        $original_data = json_decode($locales, true);
+        $original_data = $locales;
+        //$original_data = json_decode($locales, true);
         $features = array();
+        //dd($original_data);
 
         foreach($original_data as $key => $value) {
             $coordinates[] = array((float)$value['latitude'],(float)$value['longitude']);
@@ -38,6 +40,7 @@ class MapController extends Controller
             'coordonates_json'=>$coordinates,
             'coordonates'=>$features
         ];
+        //dd($response);
         return $response;
 
     }
@@ -51,7 +54,6 @@ class MapController extends Controller
         if($points->first()==null){
             return "coordonnees de points non inscrit";
         }
-
         // Conversion des coordonnees
         foreach ($points as $point){
             $latlong = $this->service->utm_to_latlon($point->longitude,$point->latitude,33);
@@ -62,7 +64,7 @@ class MapController extends Controller
         $point_json = $points['coordonates_json'];
         $initialMarkers = $points['coordonates'];
         //dd($initialMarkers);
-        return view('map-teste',[
+        return view('map',[
             'initialMarkers'=>$initialMarkers,
             'points'=>$point_json,
             'dossier'=>$dossier,

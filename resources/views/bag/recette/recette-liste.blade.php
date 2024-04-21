@@ -1,61 +1,40 @@
 @extends('base')
 
-@section('title', 'Recette')
+@section('title', 'Quittances')
 @section('content')
+
 @include('search')
-<h1 class="text-primary text-center">Selectionner le dossier a mettre a jour</h1>
+<h1 class="text-primary text-center">Selectionner la quittance a modifier</h1>
 
 <div class="container">
     <div class="table-responsive">
         <table class="table table-hover table-responsible table-striped">
             <thead>
-                <th>Nom requerant</th>
-                <th>nature dossier</th>
-                <th>telephone</th>
-                <th>zone</th>
-                <th>lieu dit</th>
-                <th>quartier</th>
-                <th>mappe</th>
-                <th>bloc</th>
-                <th>lot</th>
-                <th>numero feuille</th>
-                <th>date ouverture</th>
+                <th>Numero dossier</th>
+                <th>Numero Quittance</th>
+                <th>Date Quittance</th>
+                <th>Superficie</th>
+                <th>Date Cession</th>
 
-                <th>Action</th>
+                <th>Modifier</th>
             </thead>
             <tbody>
                 @foreach ($Listes as $Liste )
                     <tr>
-                        <td>{{$Liste->nom_requerant}}</td>
-                        <td>{{$Liste->nature_dossier}}</td>
-                        <td>{{$Liste->telephone}}</td>
-                        <td>{{$Liste->zone}}</td>
-                        <td>{{$Liste->lieu_dit}}</td>
-                        <td>{{$Liste->quartier}}</td>
-                        <td>{{$Liste->mappe}}</td>
-                        <td>{{$Liste->bloc}}</td>
-                        <td>{{$Liste->lot}}</td>
-                        <td>{{$Liste->numero_feuille}}</td>
-                        <td>{{$Liste->date_ouverture}}</td>
+                        <td>{{$Liste->numero_dossier}}</td>
+                        <td>{{$Liste->numero_quittance}}</td>
+                        <td>{{$Liste->date_quittance}}</td>
+                        <td>{{$Liste->superficie_recette}}</td>
+                        <td>{{$Liste->date_cession}}</td>
 
-                        <td> <a href ="
-                            @if ($modifier ==1)
-                                {{route('edit.recette',['table'=>json_decode(json_encode($Liste->id),true)])}}
-                                ">
-                                <button type="edit">Modifier</button></a></td>
-    
-                            @else
-                                {{route('create.recette',['table'=>json_decode(json_encode($Liste->id),true)])}}
-                                ">
-                                <button type="edit">Effectuer</button></a></td>
-                            @endif
+                        <td><a  href = "{{route('edit.recette',['table'=>$Liste->id])}} ">
+                            <button type="edit">Modifier</button></a></td>
                     </tr>
                 @endforeach
             </tbody>
         </table>
     </div>
 </div>
-@if ($Listes->isEmpty())
-    <h1 class="text text-center">Aucun nouveau dossier a mettre a jour</h1>
-@endif
+{{$Listes->links()}}
+
 @endsection

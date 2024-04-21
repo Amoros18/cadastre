@@ -21,13 +21,33 @@
             <div class="bg-primary">
                 <h5 class="text-center">Information de la recette</h5>
             </div>
+            @if ($nouveau_dossier_id)
+            <div class="row mt-1">
+                <label for="nouveau_dossier_id" class="label col-md-2 control-label">ID du dossier:</label>
+                <div class="col-md-10">
+                    <input type="text" name="nouveau_dossier_id" readonly  class="form-control" value="{{old('nouveau_dossier_id',$nouveau_dossier_id)}}" readonly>
+                </div>
+            </div>
+            @else
+            <div class="row mt-1">
+                <label for="nouveau_dossier_id" class="label col-md-2 control-label">Numero de dossier:</label>
+                <div class="col-md-10">
+                    <input type="text" name="nouveau_dossier_id" readonly class="form-control" value="{{old('nouveau_dossier_id',$quittance->nouveau_dossier_id)}}">
+                    @error("nouveau_dossier_id")
+                        <span class="text-danger" role="alert">
+                            <strong>{{$message}}</strong>
+                        </span>
+                    @enderror
+                </div>
+            </div>
+            @endif
             <div class="row mt-1">
                 <div class="row mt-1">
                     @if ($table->zone == 'zone urbaine')
                     <label for="superficie_recette" class="label col-md-2 control-label">Superficie Recette en m2:</label>
                     <div class="col-md-3">
                         <select name="superficie_recette" id="zone"  class="form-select">
-                            <option selected>{{old('superficie_recette',$table->superficie_recette)}}</option>
+                            <option selected>{{old('superficie_recette',$quittance->superficie_recette)}}</option>
                             <option>Sup <= 5000m2</option>
                             <option>Sup >= 5000m2</option>
                         </select>
@@ -41,7 +61,7 @@
                     <label for="superficie_recette" class="label col-md-2 control-label">Superficie Recette en m2:</label>
                     <div class="col-md-3">
                         <select name="superficie_recette" id="zone"  class="form-select">
-                            <option selected>{{old('superficie_recette',$table->superficie_recette)}}</option>
+                            <option selected>{{old('superficie_recette',$quittance->superficie_recette)}}</option>
                             <option>Sup <= 5000m2</option>
                             <option>5000m2 <= sup <= 5ha</option>
                             <option>5ha <= sup <= 20ha</option>
@@ -57,7 +77,7 @@
                     <label for="superficie_recette" class="label col-md-2 control-label">Superficie Recette en m2:</label>
                     <div class="col-md-3">
                         <select name="superficie_recette" id="zone"  class="form-select">
-                            <option selected>{{old('superficie_recette',$table->superficie_recette)}}</option>
+                            <option selected>{{old('superficie_recette',$quittance->superficie_recette)}}</option>
                             <option>Sup <= 5000m2</option>
                             <option>Sup >= 5000m2</option>
                             <option>5000m2 <= sup <= 5ha</option>
@@ -74,7 +94,7 @@
 
                     <label for="montant_recette" class="label col-md-1 control-label">Montant Recette:</label>
                     <div class="col-md-2">
-                        <input type="text" name="montant_recette" class="form-control" value="{{old('montant_recette',$table->montant_recette)}}">
+                        <input type="text" name="montant_recette" class="form-control" value="{{old('montant_recette',$quittance->montant_recette)}}">
                         @error("montant_recette")
                             <span class="text-danger" role="alert">
                                 <strong>{{$message}}</strong>
@@ -83,7 +103,7 @@
                     </div>
                     <label for="cumule" class="label col-md-1 control-label">Cumule:</label>
                     <div class="col-md-3">
-                        <input type="text" name="cumule" class="form-control" value="{{old('cumule',$table->cumule)}}">
+                        <input type="text" name="cumule" class="form-control" value="{{old('cumule',$quittance->cumule)}}">
                         @error("cumule")
                             <span class="text-danger" role="alert">
                                 <strong>{{$message}}</strong>
@@ -95,7 +115,7 @@
                 <div class="row mt-1">
                     <label for="date_cession" class="label col-md-2 control-label">Date Cession:</label>
                     <div class="col-md-3">
-                        <input type="date" name="date_cession" class="form-control" value="{{old('date_cession',$table->date_cession)}}">
+                        <input type="date" name="date_cession" class="form-control" value="{{old('date_cession',$quittance->date_cession)}}">
                         @error("date_cession")
                             <span class="text-danger" role="alert">
                                 <strong>{{$message}}</strong>
@@ -104,7 +124,7 @@
                     </div>
                     <label for="montant_recette" class="label col-md-1 control-label">Numero Quittance:</label>
                     <div class="col-md-2">
-                        <input type="text" name="numero_quittance" class="form-control" value="{{old('numero_quittance',$table->numero_quittance)}}">
+                        <input type="text" name="numero_quittance" class="form-control" value="{{old('numero_quittance',$quittance->numero_quittance)}}">
                         @error("numero_quittance")
                             <span class="text-danger" role="alert">
                                 <strong>{{$message}}</strong>
@@ -113,7 +133,7 @@
                     </div>
                     <label for="date_quittance" class="label col-md-1 control-label">Date Quittance:</label>
                     <div class="col-md-3">
-                        <input type="date" name="date_quittance" class="form-control" value="{{old('date_quittance',$table->date_quittance)}}">
+                        <input type="date" name="date_quittance" class="form-control" value="{{old('date_quittance',$quittance->date_quittance)}}">
                         @error("date_quittance")
                             <span class="text-danger" role="alert">
                                 <strong>{{$message}}</strong>
@@ -125,7 +145,7 @@
                 <div class="row mt-1">
                     <label for="observation_recette" class="label col-md-2 control-label">Observation Recette:</label>
                     <div class="col-md-10">
-                        <input type="text" name="observation_recette" class="form-control" value="{{old('observation_recette',$table->observation_recette)}}">
+                        <input type="text" name="observation_recette" class="form-control" value="{{old('observation_recette',$quittance->observation_recette)}}">
                         @error("observation_recette")
                             <span class="text-danger" role="alert">
                                 <strong>{{$message}}</strong>

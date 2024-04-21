@@ -40,6 +40,10 @@
             <label for="nom" class="action-label">Consulter un courrier:</label>
             <a  href = "{{route('liste.courrier',['modifier'=>0])}}"> <button class=" action-button" type="edit">Effectuer</button></a>
         </div>
+        <div class="col-mt-1 action  action-div">
+            <label for="nom" class="action-label">Statistique:</label>
+            <a  href = "{{route('statistique')}}"> <button class=" action-button" type="edit">Visiter</button></a>
+        </div>
     </div>
 
 </div>

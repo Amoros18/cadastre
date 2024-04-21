@@ -8,7 +8,9 @@ use App\Http\Controllers\DecisionController;
 use App\Http\Controllers\DossierController;
 use App\Http\Controllers\EmployerController;
 use App\Http\Controllers\MapController;
+use App\Http\Controllers\MigrerRecette;
 use App\Http\Controllers\PointController;
+use App\Http\Controllers\RecceteController;
 use App\Http\Controllers\RegistreArchivagePDFController;
 use App\Http\Controllers\RegistreCCPPDFController;
 use App\Http\Controllers\RegistreControlePDFController;
@@ -26,6 +28,8 @@ use App\Http\Controllers\RegistreVisaPDFController;
 use App\Http\Controllers\RejetController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\SortieGeometreControler;
+use App\Http\Controllers\Statistique;
+use App\Http\Controllers\StatistiqueController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -55,8 +59,10 @@ Route::prefix('liste/')->middleware('auth')->name('liste.')->group(function(){
     Route::post('/dossiers',[DossierController::class,'listDossier']);
     Route::get('ouverture-dossier',[DossierController::class,'listOuvertureDossier'])->name('ouverture-dossier');
     Route::post('ouverture-dossier',[DossierController::class,'listOuvertureDossier'])->name('ouverture-dossier');
-    Route::get('/recette',[DossierController::class,'listeRecette'])->name('recette');
-    Route::post('/recette',[DossierController::class,'listeRecette']);
+    Route::get('/recette-intro',[RecceteController::class,'listeRecetteIntro'])->name('recette-intro');
+    Route::post('/recette-intro',[RecceteController::class,'listeRecetteIntro']);
+    Route::get('/recette',[RecceteController::class, 'listRecette'])->name('recette');
+    Route::post('/recette',[RecceteController::class, 'listRecette']);
     Route::get('/cotation',[DossierController::class,'listCotation'])->name('cotation');
     Route::post('/cotation',[DossierController::class,'listCotation']);
     Route::get('/rattachement',[DossierController::class,'listRattachement'])->name('rattachement');
@@ -110,8 +116,8 @@ Route::prefix('create/')->middleware('auth')->name('create.')->group(function(){
     Route::post('/ancien-dossier',[AncienDossierController::class,'create_AncienDossier']);
     Route::get('ouverture-dossier',[DossierController::class,'createOuvertureDossier'])->name('ouverture-dossier');
     Route::post('ouverture-dossier',[DossierController::class,'create_OuvertureDossier']);
-    Route::get('/recette/{table}',[DossierController::class,'createRecette'])->name('recette');
-    Route::post('/recette/{table}',[DossierController::class,'create_Recette']);
+    Route::get('/recette/{table}',[RecceteController::class,'createRecette'])->name('recette');
+    Route::post('/recette/{table}',[RecceteController::class,'create_Recette']);
     Route::get('/affectation/{table}',[DossierController::class,'createAffectation'])->name('affectation');
     Route::post('/affectation/{table}',[DossierController::class,'create_Affectation']);
     Route::get('/cotation/{table}',[DossierController::class,'createCotation'])->name('cotation');
@@ -166,8 +172,8 @@ Route::prefix('edit/')->middleware('auth')->name('edit.')->group(function(){
     Route::post('/ancien-dossier/{table}',[AncienDossierController::class,'edit_AncienDossier']);
     Route::get('ouverture-dossier/{table}',[DossierController::class,'editOuvertureDossier'])->name('ouverture-dossier');
     Route::post('ouverture-dossier/{table}',[DossierController::class,'edit_OuvertureDossier']);
-    Route::get('/recette/{table}',[DossierController::class,'editRecette'])->name('recette');
-    Route::post('/recette/{table}',[DossierController::class,'edit_Recette']);
+    Route::get('/recette/{table}',[RecceteController::class,'editRecette'])->name('recette');
+    Route::post('/recette/{table}',[RecceteController::class,'edit_Recette']);
     Route::get('/rattachement/{table}',[DossierController::class,'editRattachement'])->name('rattachement');
     Route::post('/rattachement/{table}',[DossierController::class,'edit_Rattachement']);
     Route::get('/cotation/{table}',[DossierController::class,'editCotation'])->name('cotation');
@@ -291,5 +297,10 @@ Route::prefix('delete')->name('delete.')->middleware('auth')->group(function(){
         Route::get('controlleur',[EmployerController::class,'deleteControlleur'])->name('controlleur');
     });
 });
+Route::get('statistique',[StatistiqueController::class,'statistique'])->name('statistique');
+Route::post('statistique',[StatistiqueController::class,'statistique']);
 
 Route::get('lien-map',[PointController::class,'lienGoogleMap'])->name('lien-google-map');
+
+// effectuer le migration en toute securiter.
+Route::get('migrer',[MigrerRecette::class,'migrer']);

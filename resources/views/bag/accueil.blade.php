@@ -14,7 +14,7 @@
         </div>
         <div class="col-mt-1 action action-div">
             <label for="nom" class="label col-md-4 control-label">Registre de recette:</label>
-            <a  href = "{{route('liste.recette')}}"> <button class=" action-button" type="edit">Effectuer</button></a>
+            <a  href = "{{route('liste.recette-intro')}}"> <button class=" action-button" type="edit">Effectuer</button></a>
         </div>
         <div class="col-mt-1 action action-div">
             <label for="nom" class="label col-md-4 control-label">Registre de Rattachement:</label>

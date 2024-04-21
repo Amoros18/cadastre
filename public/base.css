@@ -331,3 +331,15 @@ td {
   text-decoration: none;
   cursor: pointer;
 }
+
+.space-top {
+  margin-top: 20px;
+}
+
+.table-stat thead th {
+  color: #040404;
+}
+
+.table-stat tbody tr td {
+  color: #040404;
+}
