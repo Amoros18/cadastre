@@ -237,6 +237,7 @@ Route::prefix('user/')->name('user.')->group(function(){
     Route::get('bmj',[UserController::class,'bmj'])->middleware('authBmj')->name('bmj');
     Route::get('archivage',[UserController::class,'archivage'])->middleware('authArchivage')->name('archivage');
     Route::get('ancien-dossier',[AncienDossierController::class,'viewAncienDossier'])->name('ancien-dossier');
+    Route::get('ancien-dossier/suite/{table}',[AncienDossierController::class,'viewAncienDossierSuite'])->name('ancien-dossier.suite');
     Route::get('employer',[UserController::class,'employer'])->middleware('authBag')->name('employer');
 });
 

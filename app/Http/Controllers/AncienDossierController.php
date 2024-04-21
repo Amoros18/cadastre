@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\AncienDossierRequest;
 use App\Http\Services\SearchService;
 use App\Models\NouveauDossier;
+use App\Models\Quittances;
 use Illuminate\Http\Request;
 
 class AncienDossierController extends Controller
@@ -24,9 +25,15 @@ class AncienDossierController extends Controller
         $table = new NouveauDossier();
         return view('ancien.ancien-dossier-create',['table'=>$table]);
     }
+    public function viewAncienDossierSuite(NouveauDossier $table){
+        return view('ancien.suite',['table'=>$table]);
+    }
     public function create_AncienDossier(AncienDossierRequest $request){
         $data = $request->file('data');
         $table = NouveauDossier::create($request->validated());
+        $quittance = new Quittances($request->validated());
+        $quittance->nouveau_dossier_id = $table->id;
+        $quittance->save();
         if ($data != null){
             $filePath = $data->store('point','public');
             $name = $_FILES['data']['name'];
@@ -37,12 +44,11 @@ class AncienDossierController extends Controller
             $names = "{$new_numero}-{$aleatoire}{$extension}";
             rename(storage_path("app/public/{$filePath}") , storage_path("app/public/point/{$names}"));
             $table->point = $names;
-            
         }
 
         $table->status = 'ancien';
         $table->save();
-        return redirect()->route('create.ancien-dossier')->with('success',"Enregistrement effectuer avec succes");
+        return redirect()->route('user.ancien-dossier.suite',['table'=>$table->id])->with('success',"Enregistrement effectuer avec succes");
     }
     public function editAncienDossier(NouveauDossier $table){
         return view('ancien.ancien-dossier-edit',[

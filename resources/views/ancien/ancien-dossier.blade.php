@@ -157,7 +157,7 @@
 
         <div class="row mt-3">
             <div class="bg-primary">
-                <h5 class="text-center">Information de la recette</h5>
+                <h5 class="text-center">Information de la quittance</h5>
             </div>
             <div class="row mt-1">
                 <div class="row mt-1">
