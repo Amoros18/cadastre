@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('quittances', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('nouveau_dossier_id');
-            $table->string('numero_quittance');
+            $table->string('numero_quittance')->unique();
             $table->integer('montant_recette')->nullable();
             $table->string('cumule')->nullable();
             $table->string('superficie_recette')->nullable();
@@ -23,7 +23,6 @@ return new class extends Migration
             $table->string('observation_recette')->nullable();
             $table->timestamps();
 
-            $table->unique(['numero_quittance','date_quittance']);
             $table->foreign('nouveau_dossier_id')->references('id')->on('nouveau_dossiers')->onDelete('cascade')->onUpdate('cascade');
         });
     }

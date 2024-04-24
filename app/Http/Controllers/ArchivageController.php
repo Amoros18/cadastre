@@ -17,10 +17,9 @@ class ArchivageController extends Controller
         $this->service = $service;
     }
     public function listArchivageIntro(Request $request){
-        $Listes = $this->service->searchRejet($request);
+        $table = NouveauDossier::query();        
+        $Listes = $this->service->searchInfoOuverture($request, $table);
         $Listes['Listes'] = $Listes['Listes']->where('numero_visa','!=',null);
-        $Listes['Listes'] = $Listes['Listes']->join('points','nouveau_dossiers.numero_dossier','=','points.numero_dossier')
-        ->select('nouveau_dossiers.*')->groupBy('nouveau_dossiers.id')->get();
         $archives = Archivage::all();
         foreach ($archives as $archive){
             $Listes['Listes'] = $Listes['Listes']->where('numero_dossier','!=',$archive->numero_dossier);
@@ -36,10 +35,25 @@ class ArchivageController extends Controller
             'nature_dossier'=>$Listes['nature_dossier'],
         ]);
     }
-    public function listArchivage(){
-        $Listes=Archivage::paginate(2);
+    public function listArchivage(Request $request){
+        $table = Archivage::join('nouveau_dossiers','nouveau_dossiers.numero_dossier','=','archivages.numero_dossier')->select('archivages.*',
+        'nouveau_dossiers.numero_visa',
+        'nouveau_dossiers.nature_dossier',
+        'nouveau_dossiers.date_ouverture',
+        'nouveau_dossiers.arrondissement',
+        'nouveau_dossiers.nom_requerant',);
+
+        $Listes = $this->service->searchInfoOuverture($request, $table);
+
+        //$Listes=Archivage::paginate(2);
         return view('archivage.archivage-liste',[
-            'Listes'=>$Listes,
+            'Listes'=>$Listes['Listes'],
+            'numero_dossier'=>$Listes['numero_dossier'],
+            'nom_requerant'=>$Listes['nom_requerant'],
+            'date_less'=>$Listes['date_less'],
+            'date_more'=>$Listes['date_more'],
+            'arrondissement'=>$Listes['arrondissement'],
+            'nature_dossier'=>$Listes['nature_dossier'],
         ]);
     }
     public function createArchivage(Request $request){

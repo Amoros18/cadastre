@@ -56,7 +56,7 @@ class NouveauDossierSeeder extends Seeder
             'password'=>Hash::make('archivage'),
         ]);
 
-        DB::table('ancien_data')->delete();
+        //DB::table('ancien_data')->delete();
         AncienData::create([
             'name'=>'numero_visa',
             'last_value'=>'0000/23',

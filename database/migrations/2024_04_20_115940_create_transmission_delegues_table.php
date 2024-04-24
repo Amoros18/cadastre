@@ -13,6 +13,12 @@ return new class extends Migration
     {
         Schema::create('transmission_delegues', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('nouveau_dossier_id');
+            $table->date('date_transmission');
+            $table->date('date_reception')->nullable();
+            $table->string('motif');
+            $table->enum('statut',['ENVOYER','RECUPERER','INCONNU']);
+            $table->foreign('nouveau_dossier_id')->references('id')->on('nouveau_dossiers')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }

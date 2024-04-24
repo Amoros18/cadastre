@@ -8,4 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class TransmissionDelegue extends Model
 {
     use HasFactory;
+
+    protected $fillable =[
+        'nouveau_dossier_id',
+        'date_transmission',
+        'motif',
+        'statut',
+        'date_reception',
+    ];
 }

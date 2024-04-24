@@ -30,6 +30,7 @@ use App\Http\Controllers\SearchController;
 use App\Http\Controllers\SortieGeometreControler;
 use App\Http\Controllers\Statistique;
 use App\Http\Controllers\StatistiqueController;
+use App\Http\Controllers\TransmissionController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -87,6 +88,7 @@ Route::prefix('liste/')->middleware('auth')->name('liste.')->group(function(){
     Route::get('/archivage-intro',[ArchivageController::class,'listArchivageIntro'])->name('archivage-intro');
     Route::post('/archivage-intro',[ArchivageController::class,'listArchivageIntro']);
     Route::get('/archivage',[ArchivageController::class,'listArchivage'])->name('archivage');
+    Route::post('/archivage',[ArchivageController::class,'listArchivage']);
     Route::get('/ancien-dossier',[AncienDossierController::class,'listAncienDossier'])->name('ancien-dossier');
     Route::post('/ancien-dossier',[AncienDossierController::class,'listAncienDossier']);
     Route::get('/controle-intro-rejet',[RejetController::class,'listIntroRejetControle'])->name('controle-intro-rejet');
@@ -302,6 +304,34 @@ Route::get('statistique',[StatistiqueController::class,'statistique'])->name('st
 Route::post('statistique',[StatistiqueController::class,'statistique']);
 
 Route::get('lien-map',[PointController::class,'lienGoogleMap'])->name('lien-google-map');
+
+
+Route::prefix('transmission/')->middleware('auth')->name('transmission.')->group(function(){
+    Route::get('',[TransmissionController::class,'accueilTransmission'])->name('accueil');
+    Route::get('reception',[TransmissionController::class,'accueilReception'])->name('reception');
+    Route::prefix('delegue/')->middleware('auth')->name('delegue.')->group(function(){
+        Route::get('liste-intro',[TransmissionController::class,'listTransmissionDelegueIntro'])->name('liste-intro');
+        Route::post('liste-intro',[TransmissionController::class,'listTransmissionDelegueIntro']);
+        Route::get('liste',[TransmissionController::class,'listTransmissionDelegue'])->name('liste');
+        Route::post('liste',[TransmissionController::class,'listTransmissionDelegue']);
+        Route::get('send/{table}',[TransmissionController::class,'createTransmissionDelegue'])->name('create');
+        Route::post('send/{table}',[TransmissionController::class,'create_TransmissionDelegue']);
+        Route::get('edit/{table}',[TransmissionController::class,'editTransmissionDelegue'])->name('edit');
+        Route::get('edit/{table}',[TransmissionController::class,'edit_TransmissionDelegue']);
+    });
+});
+
+Route::prefix('reception/')->middleware('auth')->name('reception.')->group(function(){
+    Route::get('',[TransmissionController::class,'accueilReception'])->name('accueil');
+    Route::prefix('delegue/')->middleware('auth')->name('delegue.')->group(function(){
+        Route::get('liste',[TransmissionController::class,'listreceptionDelegue'])->name('liste');
+        Route::post('liste',[TransmissionController::class,'listreceptionDelegue']);
+        Route::get('send/{table}',[TransmissionController::class,'createTransmissionDelegue'])->name('create');
+        Route::post('send/{table}',[TransmissionController::class,'create_TransmissionDelegue']);
+        Route::get('edit/{table}',[TransmissionController::class,'editTransmissionDelegue'])->name('edit');
+        Route::get('edit/{table}',[TransmissionController::class,'edit_TransmissionDelegue']);
+    });
+});
 
 // effectuer le migration en toute securiter.
 Route::get('migrer',[MigrerRecette::class,'migrer']);

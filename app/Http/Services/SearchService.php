@@ -431,4 +431,72 @@ class SearchService
 
 
     }
+
+    public function searchInfoOuverture(Request $request, $table){
+        if ($request->input('nature_dossier')){
+            $nature_dossier =$request->input('nature_dossier');
+        }
+        else{
+            $nature_dossier = null;
+        }
+        if($request->input('date_less')){
+            $date_less = $request->input('date_less');
+        }
+        else{
+            $date_less = null;
+        }
+        if($request->input('date_more')){
+            $date_more = $request->input('date_more');
+        }
+        else{
+            $date_more = null;
+        }
+        if ($request->input('arrondissement')){
+            $arrondissement = $request->input('arrondissement');
+        }
+        else {
+            $arrondissement = null;
+        }
+        if($request->input('numero_dossier')){
+            $numero_dossier = $request->input('numero_dossier');
+        }
+        else{
+            $numero_dossier = null;
+        }
+        if($request->input('nom_requerant')){
+            $nom_requerant = $request->input('nom_requerant');
+        }
+        else{
+            $nom_requerant = null;
+        }
+        if ($nature_dossier != null){
+            $table = $table->where('nature_dossier', 'like','%'.$nature_dossier.'%');
+        }
+        if ($date_less !=null){
+            $table = $table->where('date_ouverture','<=',$date_less);
+        }
+        if ($date_more != null){
+            $table = $table->where('date_ouverture','>=',$date_more);
+        }
+        if ($arrondissement != null){
+            $table = $table->where('arrondissement',$arrondissement);
+        }
+        if ($nom_requerant != null){
+            $table = $table->where('nom_requerant', 'like','%'.$nom_requerant.'%');
+        }
+        if ($numero_dossier != null){
+            $table = $table->where('numero_dossier', 'like',$numero_dossier);
+        }
+        $table = $table->get();
+        $response = [
+            'Listes'=>$table,
+            'numero_dossier'=>$numero_dossier,
+            'nature_dossier'=>$nature_dossier,
+            'date_less'=>$date_less,
+            'date_more'=>$date_more,
+            'arrondissement'=>$arrondissement,
+            'nom_requerant'=>$nom_requerant,
+        ];
+        return $response;        
+    }
 }

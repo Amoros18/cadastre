@@ -2,6 +2,7 @@
 
 @section('title', 'Archivage')
 @section('content')
+@include('search')
 
 <h1 class="text-primary text-center">Selectionner le dossier a rattacher</h1>
 
@@ -32,6 +33,5 @@
         </table>
     </div>
 </div>
-{{$Listes->links()}}
 
 @endsection
