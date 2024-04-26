@@ -31,9 +31,11 @@ class AncienDossierController extends Controller
     public function create_AncienDossier(AncienDossierRequest $request){
         $data = $request->file('data');
         $table = NouveauDossier::create($request->validated());
-        $quittance = new Quittances($request->validated());
-        $quittance->nouveau_dossier_id = $table->id;
-        $quittance->save();
+        if($request->input('numero_quittance')){
+            $quittance = new Quittances($request->validated());
+            $quittance->nouveau_dossier_id = $table->id;
+            $quittance->save();
+        }
         if ($data != null){
             $filePath = $data->store('point','public');
             $name = $_FILES['data']['name'];

@@ -64,7 +64,7 @@ class MapController extends Controller
         $point_json = $points['coordonates_json'];
         $initialMarkers = $points['coordonates'];
         //dd($initialMarkers);
-        return view('map',[
+        return view('map-teste',[
             'initialMarkers'=>$initialMarkers,
             'points'=>$point_json,
             'dossier'=>$dossier,

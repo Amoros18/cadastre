@@ -96,14 +96,17 @@ class TransmissionController extends Controller
         return redirect()->route('transmission.delegue.create',['table'=>$table->nouveau_dossier_id])->with('success',"Enregistrement effectuer avec succes");
     }
     public function editTransmissionDelegue(TransmissionDelegue $table){
-        
-        return view('archivage.archivage-edit',[
-            'table' => $table,
+        $nouveau_dossier_id = $table->nouveau_dossier_id;
+        $dossier = NouveauDossier::where('id',$nouveau_dossier_id)->first();
+        return view('bag.transmission.transmission-create',[
+            'table'=>$dossier,
+            'transmission'=>$table,
+            'nouveau_dossier_id'=>$nouveau_dossier_id,
         ]);
     }
-    public function edit_Archivage(TransmissionDelegue $table, TransmissionRequest $request){
+    public function edit_TransmissionDelegue(TransmissionDelegue $table, TransmissionRequest $request){
         $table->update($request->validated());
-        return redirect()->route('edit.archivage',[
+        return redirect()->route('transmission.delegue.edit',[
             'table'=>$table->id,
         ])->with('success',"Enregistrement effectuer avec succes");
     }

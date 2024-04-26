@@ -317,7 +317,7 @@ Route::prefix('transmission/')->middleware('auth')->name('transmission.')->group
         Route::get('send/{table}',[TransmissionController::class,'createTransmissionDelegue'])->name('create');
         Route::post('send/{table}',[TransmissionController::class,'create_TransmissionDelegue']);
         Route::get('edit/{table}',[TransmissionController::class,'editTransmissionDelegue'])->name('edit');
-        Route::get('edit/{table}',[TransmissionController::class,'edit_TransmissionDelegue']);
+        Route::post('edit/{table}',[TransmissionController::class,'edit_TransmissionDelegue']);
     });
 });
 
