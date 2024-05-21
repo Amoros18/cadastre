@@ -1,0 +1,16 @@
+#logout{
+    background-color: #2590bb;
+}
+
+body{
+    font-family: 'Times New Roman', Times, serif;
+}
+
+#brand{
+    margin-left: 50px;
+    width: 165px;
+}
+
+header nav{
+    height: 75px;
+}
