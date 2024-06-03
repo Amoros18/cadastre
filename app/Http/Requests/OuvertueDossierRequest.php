@@ -36,10 +36,11 @@ class OuvertueDossierRequest extends FormRequest
             'numero_feuille' => 'nullable|string',
             'zone' => 'required|string',
             'date_ouverture'=>'required',
-            'numero_decision'=>[
-                'nullable',
-                Rule::exists('decisions','numero_decision')
-            ],
+            'numero_decision'=>'required|string',
+            // 'numero_decision'=>[
+            //     'nullable',
+            //     Rule::exists('decisions','numero_decision')
+            // ],
         ];
     }
 

@@ -40,6 +40,10 @@
             <label for="nom" class="label col-md-4 control-label">Signaler la reception du dossier:</label>
             <a  href = "{{route('reception.accueil')}}"> <button class=" action-button" type="edit">Effectuer</button></a>
         </div>
+        <div class="col-mt-1 action  action-div">
+            <label for="nom" class="action-label">Rechercher un dossier:</label>
+            <a  href = "{{route('liste.recherche')}}"> <button class=" action-button" type="edit">Effectuer</button></a>
+        </div>
 
     </div>
 

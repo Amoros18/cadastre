@@ -60,5 +60,6 @@ class NouveauDossier extends Model
         'avis_mj',
         'numero_visa',
         'date_visa',
+        'numero_decision',
     ];
 }

@@ -39,11 +39,15 @@ class DossierController extends Controller
     // ouverture de dossier
     public function createOuvertureDossier(){
         $table = new NouveauDossier();
-        return view('bag.ouverture.ouverture-dossier-create',['table'=>$table]);
+        $decision = Decisions::all('id', 'numero_decision');
+        return view('bag.ouverture.ouverture-dossier-create',[
+            'table'=>$table, 
+            'decisions' => $decision
+        ]);
     }
     public function create_OuvertureDossier(OuvertueDossierRequest $request){
         $table = NouveauDossier::create($request->validated());
-        $decision = Decisions::get();
+        // $decision = Decisions::get();
         $table->status = 'nouveau';
         $table->save();        
         return redirect()->route('create.ouverture-dossier',['table'=>$table])->with('success',"Enregistrement effectuer avec succes");
@@ -768,5 +772,15 @@ class DossierController extends Controller
 
     public function position(){
         
+    }
+
+    //Recherche dossier
+    public function rechercherDossier(Request $request){
+        if($request->recherche){
+            $dossier = NouveauDossier::where('nom_requerant', 'like', '%'.$request->nom_requerant.'%')->get();
+            return view('recherche', ['dossiers' => $dossier]);
+        } else {
+            return view('recherche');
+        }
     }
 }

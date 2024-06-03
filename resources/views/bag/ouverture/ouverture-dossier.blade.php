@@ -32,12 +32,12 @@
         <div class="row mt-1">
             <label for="prenom" class="label col-md-2 control-label">Numero_decision:</label>
             <div class="col-md-10">
-                <input type="text" name="numero_decision" class="form-control" value="{{old('numero_decision',$table->numero_decision)}}">
-                @error("numero_decision")
-                    <span class="text-danger" role="alert">
-                        <strong>{{$message}}</strong>
-                    </span>
-                @enderror
+                <select name="numero_decision" class="form-select" required>
+                    <option></option>
+                    @foreach ($decisions as $decision)
+                        <option value="{{ $decision->numero_decision }}">{{ $decision->numero_decision }}</option>
+                    @endforeach
+                </select>
             </div>
         </div>
         <div class="row mt-1">

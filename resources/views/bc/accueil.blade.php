@@ -24,6 +24,10 @@
             <label for="nom" class="action-label">Rejet Dossie Au Controle 2:</label>
             <a  href = "{{route('liste.controle-intro-rejet',['controle'=>'2'])}}"> <button class=" action-button" type="edit">Effectuer</button></a>
         </div>
+        <div class="col-mt-1 action  action-div">
+            <label for="nom" class="action-label">Rechercher un dossier:</label>
+            <a  href = "{{route('liste.recherche')}}"> <button class=" action-button" type="edit">Effectuer</button></a>
+        </div>
     </div>
 
 </div>
