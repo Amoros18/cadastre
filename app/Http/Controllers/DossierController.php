@@ -17,6 +17,7 @@ use App\Models\AncienData;
 use App\Models\Archivage;
 use App\Models\Decisions;
 use App\Models\NouveauDossier;
+use App\Models\Natures;
 use App\Models\Points;
 use App\Models\RejetControlle;
 use App\Models\RejetMj;
@@ -40,11 +41,14 @@ class DossierController extends Controller
     public function createOuvertureDossier(){
         $table = new NouveauDossier();
         $decision = Decisions::all('id', 'numero_decision');
+        $nature = Natures::all();
         return view('bag.ouverture.ouverture-dossier-create',[
             'table'=>$table, 
-            'decisions' => $decision
+            'decisions' => $decision,
+            'natures' => $nature,
         ]);
     }
+
     public function create_OuvertureDossier(OuvertueDossierRequest $request){
         $table = NouveauDossier::create($request->validated());
         // $decision = Decisions::get();
@@ -52,16 +56,18 @@ class DossierController extends Controller
         $table->save();        
         return redirect()->route('create.ouverture-dossier',['table'=>$table])->with('success',"Enregistrement effectuer avec succes");
     }
+
     public function editOuvertureDossier(NouveauDossier $table){
         return view('bag.ouverture.ouverture-dossier-edit',[
             'table' => $table
         ]);
     }
+
     public function edit_OuvertureDossier(NouveauDossier $table, OuvertueDossierRequest $request){
-      
         $table->update($request->validated());
         return redirect()->route('edit.ouverture-dossier',['table'=>$table->id])->with('success',"Enregistrement effectuer avec succes");
     }
+
     public function listOuvertureDossier(Request $request){
         $modifier = $request->input('modifier');
         if($modifier==1){

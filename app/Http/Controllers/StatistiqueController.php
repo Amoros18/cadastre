@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Models\NouveauDossier;
 
 class StatistiqueController extends Controller
 {
@@ -94,6 +95,9 @@ class StatistiqueController extends Controller
         $Listes = $this->searchCount($request);
         $nombre_craete =$Listes['Listes']->count(); 
         $nombre_update =$Listes['Listes2']->count(); 
+        $nature = NouveauDossier::select('nature_dossier')->get();
+        $nature_count = $nature->groupBy('nature_dossier')->map->count();
+
         return view('chef.statistique.statistique',[
             'Listes'=>$Listes['Listes'],   // create
             'Listes2'=>$Listes['Listes2'],  // update
@@ -105,6 +109,7 @@ class StatistiqueController extends Controller
             'arrondissement'=>$Listes['arrondissement'],
             'nombre_create'=>$nombre_craete,
             'nombre_update'=>$nombre_update,
+            'natures' => $nature_count,
         ]);
     }
 }

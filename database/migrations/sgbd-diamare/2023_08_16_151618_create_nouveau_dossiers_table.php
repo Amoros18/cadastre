@@ -69,6 +69,7 @@ return new class extends Migration
             $table->timestamps();
 
             $table->foreign('numero_decision')->references('numero_decision')->on('decisions')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('nature_dosser')->references('nature')->on('natures')->onUpdate('cascade')->onDelete('cascade');
         });
     }
 

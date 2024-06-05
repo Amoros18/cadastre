@@ -32,6 +32,7 @@ use App\Http\Controllers\Statistique;
 use App\Http\Controllers\StatistiqueController;
 use App\Http\Controllers\TransmissionController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\NatureController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -110,6 +111,7 @@ Route::prefix('liste/')->middleware('auth')->name('liste.')->group(function(){
     Route::post('/decision',[DecisionController::class,'listDecision']);
     Route::get('/recherche',[DossierController::class,'rechercherDossier'])->name('recherche');
     Route::post('/recherche',[DossierController::class,'rechercherDossier']);
+    Route::get('/nature',[NatureController::class,'listNature'])->name('nature');
 
 });
 
@@ -154,6 +156,8 @@ Route::prefix('create/')->middleware('auth')->name('create.')->group(function(){
     Route::post('/courrier',[CourrierController::class,'create_Courrier']);
     Route::get('/decision',[DecisionController::class,'createDecision'])->name('decision');
     Route::post('/decision',[DecisionController::class,'create_Decision']);
+    Route::get('/nature',[NatureController::class,'createNature'])->name('nature');
+    Route::post('/nature',[NatureController::class,'create_Nature'])->name('nature');
 
 
 
@@ -210,7 +214,8 @@ Route::prefix('edit/')->middleware('auth')->name('edit.')->group(function(){
     Route::post('/courrier/{table}',[CourrierController::class,'edit_Courrier']);
     Route::get('/decision/{table}',[DecisionController::class,'editDecision'])->name('decision');
     Route::post('/decision/{table}',[DecisionController::class,'edit_Decision']);
-
+    Route::get('/nature/{table}',[NatureController::class,'editNature'])->name('nature');
+    Route::post('/nature/{table}',[NatureController::class,'edit_Nature']);
 
     Route::prefix('employer/')->name('employer.')->group(function(){
         Route::get('geometre/{table}',[EmployerController::class,'editGeometre'])->name('geometre');

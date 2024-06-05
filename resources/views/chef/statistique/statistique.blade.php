@@ -12,6 +12,24 @@
         <div class="row text-black">
             <div class="row" style="margin-left: 20px;">Nombre de Dossier Ajoutes: {{$nombre_create}}</div>
             <div class="row" style="margin-left: 20px;">Nombre de Dossier Modifier: {{$nombre_update}}</div>
+            <div class="">
+                <table class="table bg-dark">
+                    <thead>
+                        <tr>
+                            <td>Nature de dossier</td>
+                            <td>Nombre de dossiers</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach($natures as $nature => $count)
+                            <tr>
+                                <td>{{ $nature }}</td>
+                                <td>{{ $count }}</td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
     <div class="space-top"></div>
@@ -100,5 +118,7 @@
             </table>
         </div>
     </div>
+
+    
     
 @endsection

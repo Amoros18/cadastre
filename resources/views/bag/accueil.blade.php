@@ -33,6 +33,10 @@
             <a  href = "{{route('create.decision')}}"> <button class=" action-button" type="edit">Effectuer</button></a>
         </div>
         <div class="col-mt-1 action action-div">
+            <label for="nom" class="label col-md-4 control-label">Inserer une nature:</label>
+            <a  href = "{{route('create.nature')}}"> <button class=" action-button" type="edit">Effectuer</button></a>
+        </div>
+        <div class="col-mt-1 action action-div">
             <label for="nom" class="label col-md-4 control-label">Transmission Dossier:</label>
             <a  href = "{{route('transmission.accueil')}}"> <button class=" action-button" type="edit">Effectuer</button></a>
         </div>

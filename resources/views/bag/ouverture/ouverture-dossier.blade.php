@@ -33,11 +33,16 @@
             <label for="prenom" class="label col-md-2 control-label">Numero_decision:</label>
             <div class="col-md-10">
                 <select name="numero_decision" class="form-select" required>
-                    <option></option>
+                <option selected>{{old('numero_decision',$table->numero_decision)}}</option>
                     @foreach ($decisions as $decision)
                         <option value="{{ $decision->numero_decision }}">{{ $decision->numero_decision }}</option>
                     @endforeach
                 </select>
+                @error("numero_decision")
+                    <span class="text-danger" role="alert">
+                        <strong>{{$message}}</strong>
+                    </span>
+                @enderror
             </div>
         </div>
         <div class="row mt-1">
@@ -55,7 +60,12 @@
         <div class="row mt-1">
             <label for="email" class="label col-md-2 control-label">Nature du dossier:</label>
             <div class="col-md-10">
-                <input type="text" name="nature_dossier" class="form-control" value="{{old('nature_dossier',$table->nature_dossier)}}">
+                <select name="nature_dossier" class="form-select" required>
+                <option selected>{{old('nature_dossier',$table->nature_dossier)}}</option>
+                    @foreach ($natures as $nature)
+                        <option value="{{ $nature->nature }}">{{ $nature->nature }}</option>
+                    @endforeach
+                </select>
                 @error("nature_dossier")
                     <span class="text-danger" role="alert">
                         <strong>{{$message}}</strong>

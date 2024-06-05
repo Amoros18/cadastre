@@ -31,6 +31,10 @@
             <a  href = "{{route('liste.affectation',['modifier'=>1])}}"> <button class=" action-button" type="edit">Effectuer</button></a>
         </div>
         <div class="col-mt-1 action action-div">
+            <label for="nom" class="action-label">Modifier Nature de Dossier:</label>
+            <a  href = "{{route('liste.nature',['modifier'=>1])}}"> <button class=" action-button" type="edit">Effectuer</button></a>
+        </div>
+        <div class="col-mt-1 action action-div">
             <label for="nom" class="action-label">Modifier CCP:</label>
             <a  href = "{{route('liste.ccp',['modifier'=>1])}}"> <button class=" action-button" type="edit">Effectuer</button></a>
         </div>
