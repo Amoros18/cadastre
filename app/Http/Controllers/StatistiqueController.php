@@ -93,14 +93,15 @@ class StatistiqueController extends Controller
 
     public function statistique(Request $request){
         $Listes = $this->searchCount($request);
-        $nombre_craete =$Listes['Listes']->count(); 
-        $nombre_update =$Listes['Listes2']->count(); 
+        $nombre_craete =$Listes['Listes']->count();
+
         $nature = NouveauDossier::select('nature_dossier')->get();
         $nature_count = $nature->groupBy('nature_dossier')->map->count();
+        
+        $geometre = NouveauDossier::select('geometre')->get();
+        $geometre_count = $geometre->groupBy('geometre')->map->count();
 
         return view('chef.statistique.statistique',[
-            'Listes'=>$Listes['Listes'],   // create
-            'Listes2'=>$Listes['Listes2'],  // update
             'nom_requerant'=>$Listes['nom_requerant'],
             'date_less'=>$Listes['date_less'],
             'date_more'=>$Listes['date_more'],
@@ -108,8 +109,8 @@ class StatistiqueController extends Controller
             'nature_dossier'=>$Listes['nature_dossier'],
             'arrondissement'=>$Listes['arrondissement'],
             'nombre_create'=>$nombre_craete,
-            'nombre_update'=>$nombre_update,
             'natures' => $nature_count,
+            'geometres' => $geometre_count,
         ]);
     }
 }
