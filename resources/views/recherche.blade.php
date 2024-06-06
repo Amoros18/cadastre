@@ -38,30 +38,30 @@
                 <!-- Verification position dossier -->
                 <td>
                     @if($dossier->geometre == null AND $dossier->statut != 'ancien')
-                        Bureau du chef
+                        Bureau du chef - Cotation
                     @else
                         @if($dossier->montant_rattachement == null AND $dossier->status != 'ancien')
-                            BAG
+                            BAG - Rattachement
                         @else
                             @if($dossier->mise_en_valeur == null AND $dossier->geometre != null AND $dossier->status != 'ancien')
-                                Geometre
+                                Geometre - Main Courante
                             @else
                                 @if($dossier->numero_controle == null AND $dossier->geometre != null AND $dossier->status != 'ancien')
-                                    Controle 1
+                                    Bureau du Controle - Controle 1
                                 @else
                                     @if($dossier->numero_mj == null AND $dossier->numero_controle != null AND $dossier->status != 'ancien')
                                         BMJ
                                     @else
                                         @if($dossier->echelle == null AND $dossier->numero_dossier != null AND $dossier->status != 'ancien')
-                                            Geometre
+                                            Geometre - CCP
                                         @else
                                             @if($dossier->controlleur_2 == null AND $dossier->point != null AND $dossier->status != 'ancien')
-                                                Controle 2
+                                                Bureau du Controle - Controle 2
                                             @else
                                                 @if($dossier->numero_visa == null AND $dossier->numero_mj != null AND $dossier->numero_ccp != null AND $dossier->point != null AND $dossier->numero_controle != null AND $dossier->status != 'ancien')
-                                                    Bureau du chef
+                                                    Bureau du chef - Visa
                                                 @else
-                                                    Archivage
+                                                    En attente d'archivage
                                                 @endif
                                             @endif
                                         @endif
