@@ -200,6 +200,7 @@
 
 
 body{
+  /* background-image: url("Artboard.png"); */
   background-image: url("base.png");
   background-size: cover;
      margin: 2px;

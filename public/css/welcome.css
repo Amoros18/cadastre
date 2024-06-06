@@ -1,37 +1,174 @@
 #contain{
-    background-image: url('../img/bg.png');
+  background-image: url("../img/Artboard.png");
     background-size: 100%;
     background-repeat: no-repeat;
-    background-color: #2590bb;
     height: 500px;
 }
 
 .rectangle2 {
     left: 0px;
     top: 0px;
-    width: 250px;
+    width: 200px;
     height: 150px;
     border-radius: 4px;
     border: 1px solid #2590bb;
     background: #ffffff;
-    /* background-blend-mode: normal; */
     text-decoration: none;
     display: block;
 }
 
-.container :hover{
+#chef{
+    .bureau{
+        color: #2590bb;
+    }
+}
+
+#chef:hover{
     background: linear-gradient(135deg, #4bc5f6 29%, #077cab 100%);
 
     > .icons8_off{
         background: none;
     }
+
     > .bureau{
         background: none;
         color: white;
     }
     > .icons8_off > img{
         background: none;
-        filter: brightness(500%);
+        filter: brightness(0) invert(1);
+    }
+}
+
+#bag .bureau{
+    color: #D92BC8;
+}
+
+#bag:hover{
+    background: #7F00FF;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #E100FF, #7F00FF);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #E100FF, #7F00FF); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+
+    > .icons8_off{
+        background: none;
+    }
+
+    > .bureau{
+        background: none;
+        color: white;
+    }
+    > .icons8_off > img{
+        background: none;
+        filter: brightness(0) invert(1);
+    }
+}
+
+#bmj{
+    .bureau{
+        color: #4DBF00;
+    }
+}
+
+#bmj:hover{
+    background: #02AAB0;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #00CDAC, #02AAB0);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #00CDAC, #02AAB0); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    
+
+    > .icons8_off{
+        background: none;
+    }
+
+    > .bureau{
+        background: none;
+        color: white;
+    }
+    > .icons8_off > img{
+        background: none;
+        filter: brightness(0) invert(1);
+    }
+}
+
+#bc {
+    .bureau{
+        color: #e43a15;
+    }
+}
+
+#bc:hover{
+    background: #e52d27;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to top, #b31217, #e52d27);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to top, #b31217, #e52d27); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+
+    > .icons8_off{
+        background: none;
+    }
+
+    > .bureau{
+        background: none;
+        color: white;
+    }
+    > .icons8_off > img{
+        background: none;
+        filter: brightness(0) invert(1);
+    }
+}
+
+#geometre {
+    .bureau{
+        color: #AB8D27;
+    }
+}
+
+#geometre:hover{
+    background: #e65c00;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #F9D423, #e65c00);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #F9D423, #e65c00); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+
+    > .icons8_off{
+        background: none;
+    }
+
+    > .bureau{
+        background: none;
+        color: white;
+    }
+    > .icons8_off > img{
+        background: none;
+        filter: brightness(0) invert(1);
+    }
+}
+
+#archive {
+    .bureau{
+        color: black;
+    }
+    .icons8_off > img {
+        background: none;
+        filter: brightness(0.1);
+    }
+}
+
+#archive:hover{
+    background: #000428;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #004e92, #000428);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #004e92, #000428); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+
+    > .icons8_off{
+        background: none;
+    }
+
+    > .bureau{
+        background: none;
+        color: white;
+    }
+    > .icons8_off > img{
+        background: none;
+        filter: brightness(2000%);
     }
 }
 
@@ -55,8 +192,8 @@
 }
 
 #first-row{
-    padding-top: 7rem;
+    padding-top: 10rem;
 }
 #second-row{
-    margin-top: 3rem;
+    margin-top: 2rem;
 }
