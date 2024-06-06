@@ -58,8 +58,13 @@ class DossierController extends Controller
     }
 
     public function editOuvertureDossier(NouveauDossier $table){
+        $decision = Decisions::get();
+        $nature = Natures::all();
+
         return view('bag.ouverture.ouverture-dossier-edit',[
-            'table' => $table
+            'table' => $table,
+            'decisions' => $decision,
+            'natures' => $nature
         ]);
     }
 
