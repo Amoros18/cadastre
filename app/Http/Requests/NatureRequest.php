@@ -22,7 +22,7 @@ class NatureRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'nature'=>'required',
+            'nature'=>'required|string',
         ];
     }
 }

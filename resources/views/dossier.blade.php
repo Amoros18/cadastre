@@ -75,11 +75,12 @@
                 <label for="nom" class="label col-md-3 control-label">Nom Requerant:</label>
                 <div class="col-md-9">
                     <input readonly type="text" name="nom_requerant" class="form-control @error('nom_requerant') is-invalid @enderror" value="{{old('nom_requerant',$table->nom_requerant)}}">
-                    @error('nom_requerant')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{$message}}</strong>
-                        </span>
-                    @enderror
+                </div>
+            </div>
+            <div class="row mt-1">
+                <label for="nom" class="label col-md-3 control-label">Sexe du Requerant:</label>
+                <div class="col-md-9">
+                    <input readonly type="text" name="sexe_requerant" class="form-control @error('sexe_requerant') is-invalid @enderror" value="{{old('sexe_requerant',$table->sexe_requerant)}}">
                 </div>
             </div>
             <div class="row mt-1">
@@ -162,11 +163,6 @@
                 <label for="zone" class="label col-md-3 control-label">Zone:</label>
                 <div class="col-md-9">
                     <input readonly type="text" class="form-control" value="{{old('zone',$table->zone)}}"/>
-                    <!-- <select name="zone" id="zone"  class="form-select">
-                        <option selected>{{old('zone',$table->zone)}}</option>
-                        <option>zone urbaine</option>
-                        <option>zone rurale</option>
-                    </select> -->
                 </div>
             </div>
     

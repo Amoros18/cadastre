@@ -10,8 +10,9 @@
         <table class="table table-hover table-responsible table-striped">
             <thead>
                 <th>Nom requerant</th>
-                <th>nature dossier</th>
-                <th>telephone</th>
+                <th>Sexe requerant</th>
+                <th>Nature dossier</th>
+                <th>Telephone</th>
                 <th>zone</th>
                 <th>lieu dit</th>
                 <th>quartier</th>
@@ -21,12 +22,17 @@
                 <th>numero feuille</th>
                 <th>date ouverture</th>
 
-                <th>Modifier</th>
+                <th>Consulter</th>
             </thead>
             <tbody>
                 @foreach ($Listes as $Liste )
                     <tr>
                         <td>{{$Liste->nom_requerant}}</td>
+                        @if(empty($Liste->sexe_requerant))
+                            <td>Non defini</td>
+                        @else
+                            <td>{{$Liste->sexe_requerant}}</td>
+                        @endif
                         <td>{{$Liste->nature_dossier}}</td>
                         <td>{{$Liste->telephone}}</td>
                         <td>{{$Liste->zone}}</td>

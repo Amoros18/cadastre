@@ -21,7 +21,7 @@
         <div class="row mt-1">
             <label for="prenom" class="label col-md-2 control-label">Nom Requerant:</label>
             <div class="col-md-10">
-                <input type="text" name="nom_requerant" class="form-control" value="{{old('nom_requerant',$table->nom_requerant)}}">
+                <input required type="text" name="nom_requerant" class="form-control" value="{{old('nom_requerant',$table->nom_requerant)}}">
                 @error("nom_requerant")
                     <span class="text-danger" role="alert">
                         <strong>{{$message}}</strong>
@@ -29,6 +29,25 @@
                 @enderror
             </div>
         </div>
+
+        <div class="row mt-1">
+            <label for="sexe_requerant" class="label col-md-2 control-label">Sexe requerant:</label>
+            <div class="col-md-10">
+                <select name="sexe_requerant" id="sexe_requerant" class="form-select" required>
+                    <option >{{old('sexe_requerant',$table->sexe_requerant)}}</option>
+                    <option value="Homme">Homme</option>
+                    <option value="Femme">Femme</option>
+                    <option value="Mixte">Mixte</option>
+                    <option value="">Non defini</option>
+                </select>
+                @error("sexe_requerant")
+                    <span class="text-danger" role="alert">
+                        <strong>{{$message}}</strong>
+                    </span>
+                @enderror
+            </div>
+        </div>
+
         <div class="row mt-1">
             <label for="prenom" class="label col-md-2 control-label">Numero_decision:</label>
             <div class="col-md-10">
@@ -45,6 +64,7 @@
                 @enderror
             </div>
         </div>
+
         <div class="row mt-1">
             <label for="age" class="label col-md-2 control-label">Telephone:</label>
             <div class="col-md-10">
@@ -129,9 +149,10 @@
                 <span class="text-danger" role="alert">
                     <strong>{{$message}}</strong>
                 </span>
-            @enderror
+                @enderror
+            </div>
         </div>
-        </div>
+
         <div class="row mt-1">
             <label for="pays" class="label col-md-2 control-label">Blog:</label>
             <div class="col-md-10">
@@ -143,6 +164,7 @@
                 @enderror
             </div>
         </div>
+
         <div class="row mt-1">
             <label for="pays" class="label col-md-2 control-label">Lot:</label>
             <div class="col-md-10">
@@ -154,6 +176,7 @@
                 @enderror
             </div>
         </div>
+
         <div class="row mt-1">
             <label for="pays" class="label col-md-2 control-label">Numero De Feuille:</label>
             <div class="col-md-10">
@@ -181,6 +204,7 @@
                 @enderror
             </div>
         </div>
+
         <div class="row mt-1">
             <label for="date_ouverture" class="label col-md-2 control-label">Date Ouverture:</label>
             <div class="col-md-10">

@@ -16,6 +16,7 @@ return new class extends Migration
             //$table->string('numero_ouverture')->unique();
             $table->string('numero_dossier')->nullable()->unique();
             $table->string('nom_requerant');
+            $table->string('sexe_requerant')->nullable();
             $table->integer('telephone')->nullable();
             $table->string('nature_dossier')->nullable();
             $table->string('arrondissement')->nullable();
