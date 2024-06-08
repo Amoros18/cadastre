@@ -35,6 +35,31 @@
             </table>
         </div>
 
+        <!-- Par sexe -->
+        <div class="container-fluid mt-3">
+            <h3>Statistique par sexe</h3>
+            <table class="table bg-dark">
+                <thead>
+                    <tr>
+                        <td>Sexe du requerant</td>
+                        <td>Nombre de dossiers</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach($sexes as $sexe => $count)
+                        <tr>
+                            @if(empty($sexe))
+                                <td>Non defini</td>
+                            @else
+                                <td>{{ $sexe }}</td>
+                            @endif
+                            <td>{{ $count }}</td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
+
         <!-- Par arrondissement -->
         <div class="container-fluid mt-3">
             <h3>Statistique par arrondissement</h3>

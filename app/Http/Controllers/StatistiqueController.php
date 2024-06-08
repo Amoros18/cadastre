@@ -91,11 +91,12 @@ class StatistiqueController extends Controller
         return $response;
     }
 
-    //Statistiques generales
+    //Liste des statistiques
     public function statistique(Request $request){
         return view('chef.statistique.statistique');
     }
 
+    //Statistiques generales
     public function general(Request $request){
         $Listes = $this->searchCount($request);
         $nombre_craete =$Listes['Listes']->count();
@@ -105,6 +106,9 @@ class StatistiqueController extends Controller
 
         $arrondissement = NouveauDossier::select('arrondissement')->get();
         $arrondissement_count = $arrondissement->groupBy('arrondissement')->map->count();
+
+        $sexe = NouveauDossier::select('sexe_requerant')->get();
+        $sexe_count = $sexe->groupBy('sexe_requerant')->map->count();
 
         return view('chef.statistique.general',[
             'nom_requerant'=>$Listes['nom_requerant'],
@@ -116,6 +120,7 @@ class StatistiqueController extends Controller
             'nombre_create'=>$nombre_craete,
             'natures' => $nature_count,
             'arrondissements' => $arrondissement_count,
+            'sexes' => $sexe_count,
         ]);
     }
 
