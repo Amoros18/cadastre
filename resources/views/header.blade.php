@@ -9,22 +9,28 @@
     <link rel="stylesheet" href="{{asset('css/bootstrap.css')}}" crossorigin="anonymous">
     <link rel="stylesheet" href="{{asset('css/header.css')}}">
     <script defer src="{{asset('welcome.js')}}"></script>
+    <script defer src="{{asset('js/bootstrap.js')}}"></script>
 </head>
 
 <header>
-<nav class="navbar bg-dark navbar-expand-sm">
-  <div class="container-fluid row d-flex p=0 m-0">
-    <a class="navbar-brand col-3 border-end border-grey border-2 text-decoration-none" href="/" id="brand">Edje'el</a>
+<nav class="navbar navbar-dark bg-dark navbar-expand-sm">
+  <div class="container-fluid">
+    <a class="navbar-brand text-center pe-5 border-end border-grey border-2 text-decoration-none" href="/" id="brand">Edje'l</a>
     @auth
-    <div class="container-fluid col-7 d-flex justify-content-start">
-        <span class="ms-0 text-white">Bienvenue, {{Auth::user()->name}}</span>
-    </div>
-    <div class="container-fluid col-2">
-        <form class="d-flex justify-content-end" action="{{route('auth.logout')}}" method="POST">
-            @method("delete")
-            @csrf
-            <button class="btn text-white" id="logout">Se deconnecter</button>
-        </form>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="mynavbar">
+      <ul class="navbar-nav me-auto">
+        <li class="nav-item">
+          <span class="text-white">Bienvenue, {{Auth::user()->name}}</span>
+        </li>
+      </ul>
+      <form class="d-flex" action="{{route('auth.logout')}}" method="POST">
+        @method("delete")
+        @csrf
+        <button class="btn btn-primary" type="button">Se deconnecter</button>
+      </form>
     </div>
     @endauth
   </div>
