@@ -307,8 +307,14 @@ Route::prefix('delete')->name('delete.')->middleware('auth')->group(function(){
         Route::get('controlleur',[EmployerController::class,'deleteControlleur'])->name('controlleur');
     });
 });
-Route::get('statistique',[StatistiqueController::class,'statistique'])->name('statistique');
+
+Route::get('statistique', [StatistiqueController::class, 'statistique'])->name('statistique');
 Route::post('statistique',[StatistiqueController::class,'statistique']);
+
+Route::prefix('stats/')->middleware('auth')->name('stats.')->group(function(){
+    Route::get('general',[StatistiqueController::class,'general'])->name('general');
+    Route::get('cotation', [StatistiqueController::class, 'cotation'])->name('cotation');
+});
 
 Route::get('lien-map',[PointController::class,'lienGoogleMap'])->name('lien-google-map');
 

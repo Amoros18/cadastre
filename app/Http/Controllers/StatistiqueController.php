@@ -91,17 +91,22 @@ class StatistiqueController extends Controller
         return $response;
     }
 
+    //Statistiques generales
     public function statistique(Request $request){
+        return view('chef.statistique.statistique');
+    }
+
+    public function general(Request $request){
         $Listes = $this->searchCount($request);
         $nombre_craete =$Listes['Listes']->count();
 
         $nature = NouveauDossier::select('nature_dossier')->get();
         $nature_count = $nature->groupBy('nature_dossier')->map->count();
-        
-        $geometre = NouveauDossier::select('geometre')->get();
-        $geometre_count = $geometre->groupBy('geometre')->map->count();
 
-        return view('chef.statistique.statistique',[
+        $arrondissement = NouveauDossier::select('arrondissement')->get();
+        $arrondissement_count = $arrondissement->groupBy('arrondissement')->map->count();
+
+        return view('chef.statistique.general',[
             'nom_requerant'=>$Listes['nom_requerant'],
             'date_less'=>$Listes['date_less'],
             'date_more'=>$Listes['date_more'],
@@ -110,6 +115,19 @@ class StatistiqueController extends Controller
             'arrondissement'=>$Listes['arrondissement'],
             'nombre_create'=>$nombre_craete,
             'natures' => $nature_count,
+            'arrondissements' => $arrondissement_count,
+        ]);
+    }
+
+    //Cotation par geometre
+    public function cotation(){
+        $geometre = NouveauDossier::select('geometre')->get();
+        $geometre_count = $geometre->groupBy('geometre')->map->count();
+
+        $nombre_create = NouveauDossier::all()->count();
+
+        return view('chef.statistique.cotation',[
+            'nombre_create'=>$nombre_create,
             'geometres' => $geometre_count,
         ]);
     }

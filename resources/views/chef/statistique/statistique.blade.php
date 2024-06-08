@@ -1,61 +1,19 @@
 @extends('base')
 
-@section('title', 'Statistique')
+@section('title', 'Statistiques')
 
 @section('content')
-    <div class="card">
-        @include('chef.statistique.searchCount')
-    </div>
+<div class="container-fluid">
 
-    <div class="container-fluid">
-        <h4 class="text-center">Nombre de total de dossiers: {{$nombre_create}}</h4>
-
-        <div class="container-fluid mt-3">
-            <h3>Statistique par nature de dossier</h3>
-            <table class="table bg-dark">
-                <thead>
-                    <tr>
-                        <td>Nature de dossier</td>
-                        <td>Nombre de dossiers</td>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach($natures as $nature => $count)
-                        <tr>
-                            @if(empty($nature))
-                                <td>Non defini</td>
-                            @else
-                                <td>{{ $nature }}</td>
-                            @endif
-                            <td>{{ $count }}</td>
-                        </tr>
-                    @endforeach
-                </tbody>
-            </table>
+    <div class="row">
+        <div class="col-mt-1 action action-div">
+            <label for="nom" class="action-label">Statistiques Generales:</label>
+            <a  href = "{{route('stats.general')}}"> <button class=" action-button" type="edit">Effectuer</button></a>
         </div>
-
-        <div class="container-fluid mt-3">
-            <h3>Cotation par geometre</h3>
-            <table class="table bg-dark">
-                <thead>
-                    <tr>
-                        <td>Geometre</td>
-                        <td>Cotation</td>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach($geometres as $geometre => $count)
-                        <tr>
-                            @if(empty($geometre))
-                                <td>Dossiers non cotés</td>
-                            @else
-                                <td>{{ $geometre }}</td>
-                            @endif
-                            <td>{{ $count }}</td>
-                        </tr>
-                    @endforeach
-                </tbody>
-            </table>
+        <div class="col-mt-1 action action-div">
+            <label for="nom" class="action-label">Cotation par geometre:</label>
+            <a  href = "{{route('stats.cotation')}}"> <button class=" action-button" type="edit">Effectuer</button></a>
         </div>
     </div>
+</div>
 @endsection
