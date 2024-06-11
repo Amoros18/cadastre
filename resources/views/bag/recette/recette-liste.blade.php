@@ -1,15 +1,15 @@
-@extends('base')
+@extends('chef/accueil')
 
 @section('title', 'Quittances')
 @section('content')
 
-@include('search')
-<h1 class="text-primary text-center">Selectionner la quittance a modifier</h1>
+<!-- @include('search') -->
+<h1 class="text-primary text-center">Séléctionner la quittance à modifier</h1>
 
-<div class="container">
+<div class="container card shadow">
     <div class="table-responsive">
         <table class="table table-hover table-responsible table-striped">
-            <thead>
+            <thead style="color: black">
                 <th>Numero dossier</th>
                 <th>Numero Quittance</th>
                 <th>Date Quittance</th>
@@ -28,7 +28,7 @@
                         <td>{{$Liste->date_cession}}</td>
 
                         <td><a  href = "{{route('edit.recette',['table'=>$Liste->id])}} ">
-                            <button type="edit">Modifier</button></a></td>
+                            Modifier</a></td>
                     </tr>
                 @endforeach
             </tbody>

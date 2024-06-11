@@ -57,7 +57,7 @@
                     </div>
                 </div>
             @else
-                <label for="data" class="label col-md-4 control-label">Insere la decision:</label>
+                <label for="data" class="label col-md-4 control-label">Inserer la decision:</label>
                 <div class="col-md-8">
                     <input type="file" name="data" class="form-control" required value="{{old('data')}}">
                     @error("data")
@@ -69,13 +69,13 @@
             @endif
   
     
-        <center class="mt-1"><button class="btn btn-primary me-2" type="submit" >
+        <center class="mt-1"><button class="btn btn-success mt-3 w-100" type="submit" >
             @if($table->id)
-                Modifier
+                Valider
             @else
                 Enregistrer
             @endif
-            </button > <input type="reset" class="btn btn-primary" value="Effacer"><br><br></center>
-        <small class="text-left">creat by Amoros </small>
+            <!-- </button > <input type="reset" class="btn btn-primary" value="Effacer"><br><br></center>
+        <small class="text-left">creat by Amoros </small> -->
     </form>
 </div>

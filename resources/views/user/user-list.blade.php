@@ -1,15 +1,15 @@
-@extends('base')
+@extends('chef/accueil')
 
 @section('title', 'Liste des anciens dossier')
 @section('content')
 
 <h1 class="text-primary text-center">Liste des utilisateurs</h1>
 
-<div class="container">
+<div class="container card shadow">
     <div class="table-responsive">
         <table class="table table-hover table-responsible table-striped">
-            <thead>
-                <th>Bureau</th>
+            <thead style="color: black">
+                <th >Bureau</th>
                 <th>Email</th>
                 <th>Mot de passe</th>
                 <th>Derniere connexion</th>
@@ -24,14 +24,14 @@
                         <td>{{$Liste->password}}</td>
                         <td>{{$Liste->email_verified_at}}</td>
                         
-                        <td><a  href = "{{route('edit.user',['table'=>$Liste])}} ">
-                            <button type="edit">Modifier</button></a></td>
+                        <td><a  style="color: blue" href = "{{route('edit.user',['table'=>$Liste])}} ">
+                        <!-- <button class="btn btn-success mt-3 w-100" type="edit">Modifier</button> -->
+                            Modifier</a></td>
                     </tr>
                 @endforeach
             </tbody>
         </table>
     </div>
-</div>
-{{$Listes->links()}}
+</div><br><br>
 
 @endsection

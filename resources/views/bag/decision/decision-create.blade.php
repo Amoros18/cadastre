@@ -1,4 +1,4 @@
-@extends('base')
+@extends('chef/accueil')
 
 @section('title', 'Decision')
 

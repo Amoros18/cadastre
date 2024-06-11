@@ -20,7 +20,7 @@ class UserController extends Controller
         return redirect()->route('create.user')->with('success',"Enregistrement effectuer avec succes");
     }
     public function listUser(){
-        $Listes =User::paginate(2);
+        $Listes =User::all();
         return view ('user.user-list',['Listes'=>$Listes]);
     }
 

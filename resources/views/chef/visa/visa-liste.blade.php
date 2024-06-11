@@ -1,27 +1,24 @@
-@extends('base')
+@extends('chef/accueil')
 
-@section('title', 'Visa')
 @section('content')
-@include('search')
+<!-- @include('search') -->
+<h1 class="text-primary text-center">Sélectionner le dossier à enregistrer</h1>
+<div class="container card shadow">
 
-<h1 class="text-primary text-center">Selectionner le dossier a ennegistre</h1>
-
-<div class="container">
     <div class="table-responsive">
         <table class="table table-hover table-responsible table-striped">
-            <thead>
+            <thead style="color: black">
                 <th>Nom requerant</th>
                 <th>nature dossier</th>
-                <th>telephone</th>
+                <th>téléphone</th>
                 <th>zone</th>
                 <th>lieu dit</th>
                 <th>quartier</th>
-                <th>mappe</th>
+                <th>map</th>
                 <th>bloc</th>
                 <th>lot</th>
-                <th>numero feuille</th>
+                <th>N° feuille</th>
                 <th>date ouverture</th>
-
                 <th>Modifier</th>
             </thead>
             <tbody>
@@ -43,12 +40,12 @@
                             @if ($modifier ==1)
                                 {{route('edit.visa',['table'=>json_decode(json_encode($Liste->id),true)])}}
                                 ">
-                                <button type="edit">Modifier</button></a></td>
+                                Modifier</a></td>
     
                             @else
                                 {{route('create.visa',['table'=>json_decode(json_encode($Liste->id),true)])}}
                                 ">
-                                <button type="edit">Effectuer</button></a></td>
+                                Effectuer</a></td>
                             @endif
                     </tr>
                 @endforeach

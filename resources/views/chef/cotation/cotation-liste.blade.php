@@ -1,14 +1,14 @@
-@extends('base')
+@extends('chef/accueil')
 
 @section('title', 'Cotation')
 @section('content')
-@include('search')
-<h1 class="text-primary text-center">Selectionner le dossier a rattacher a un geometre</h1>
+<!-- @include('search') -->
+<h1 class="text-primary text-center">Sélectionner le dossier à rattacher à un géometre</h1>
 
-<div class="container">
+<div class="container card shadow">
     <div class="table-responsive">
         <table class="table table-hover table-responsible table-striped">
-            <thead>
+            <thead style="color: black">
                 <th>Nom requerant</th>
                 <th>nature dossier</th>
                 <th>telephone</th>
@@ -18,7 +18,7 @@
                 <th>mappe</th>
                 <th>bloc</th>
                 <th>lot</th>
-                <th>numero feuille</th>
+                <th>N° feuille</th>
                 <th>date ouverture</th>
 
                 <th>Modifier</th>
@@ -42,7 +42,7 @@
                             @if ($modifier ==1)
                                 {{route('edit.cotation',['table'=>json_decode(json_encode($Liste->id),true)])}}
                                 ">
-                                <button type="edit">Modifier</button></a></td>    
+                                <button type="edit">Valider</button></a></td>    
                             @else
                                 {{route('create.cotation',['table'=>json_decode(json_encode($Liste->id),true)])}}
                                 ">

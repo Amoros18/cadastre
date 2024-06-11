@@ -1,6 +1,4 @@
-@extends('base')
-
-@section('title', 'Utilisateur')
+@extends('chef/accueil')
 
 @section('content')
     @include('user.user')

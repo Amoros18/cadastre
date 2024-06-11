@@ -7,7 +7,7 @@
     @endif
 </h1>
 
-<div class="container-fluid">
+<div class="container-fluid card shadow">
     <form id="formulaire" method="POST">
         @csrf
 
@@ -186,11 +186,11 @@
     
         <center class="mt-1"><button class="btn btn-primary me-2" type="submit" >
             @if($table->id)
-                Modifier
+                Valider
             @else
                 Enregistrer
             @endif
-            </button > <input type="reset" class="btn btn-primary" value="Effacer"><br><br></center>
+            </button > <input type="reset" class="btn btn-success mt-3 w-100" value="Effacer"><br><br></center>
         <small class="text-left">creat by Amoros </small>
     </form>
 </div>

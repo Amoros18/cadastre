@@ -1,15 +1,15 @@
-@extends('base')
+@extends('chef/accueil')
 
 @section('title', 'MISE A JOUR')
 @section('content')
-@include('search')
+<!-- @include('search') -->
 
-<h1 class="text-primary text-center">Selectionner le dossier a modifier</h1>
+<h1 class="text-primary text-center">Sélectionner le dossier à modifier</h1>
 
-<div class="container">
+<div class="container card shadow">
     <div class="table-responsive">
         <table class="table table-hover table-responsible table-striped">
-            <thead>
+            <thead style="color: black">
                 <th>Numero Dossier</th>
                 <th>Nom requerant</th>
                 <th>Nature dossier</th>

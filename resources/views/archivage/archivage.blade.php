@@ -6,7 +6,7 @@
     @endif
 </h1>
 
-<div class="container-fluid">
+<div class="container-fluid card shadow">
     <form id="formulaire_ancien_dossier" enctype="multipart/form-data" method="POST">
         @csrf
         
@@ -81,14 +81,14 @@
         </div>
 
 
-        <center class="mt-1"><button class="btn btn-primary me-2" type="submit" >
+        <center class="mt-1"><button class="btn btn-success mt-3 w-100" type="submit" >
             @if($table->observation)
-                Modifier
+                Valider
             @else
                 Enregistrer
             @endif
-            </button > <input type="reset" class="btn btn-primary" value="Annuler"><br><br></center>
-        <small class="text-left">creat by Amoros </small>
+            <!-- </button > <input type="reset" class="btn btn-primary" value="Annuler"><br><br></center>
+        <small class="text-left">creat by Amoros </small> -->
 
     </form>
 </div>

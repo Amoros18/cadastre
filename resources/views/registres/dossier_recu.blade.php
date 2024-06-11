@@ -1,15 +1,12 @@
-@extends('base')
+@extends('chef/accueil')
 
 @section('title', 'Registre Dossier Recu')
 @section('content')
-@include('registres.search')
-<div class="container">
-    <h3 >Generer le registre dossier recu</h3>
-    <div class="row">
-        <div class="col-md-7">
-            <h4>Registre de dossier recu</h4>
-        </div>
-        <div class="col-md-5">
+<!-- @include('registres.search') -->
+<h1 class="text-primary text-center">Registre de dossier recu</h1>
+<div class="container card shadow">
+   
+        <div class="col-md-5" style="margin: 15px">
             <a href="{{route('registre.dossier_recu_pdf',[
                 'nature_dossier'=>$nature_dossier,
                 'arrondissement'=>$arrondissement,
@@ -17,10 +14,10 @@
                 'date_more'=>$date_more,
                 ])}}" class="btn btn-primary">Convertir en pdf</a>
         </div>
-    </div>
+
     <div class="table-responsive">
         <table class="table table-striped table-bordered">
-            <thead>
+            <thead style="color: black">
                 <tr>
                     <th >Nom Requerant</th>
                     <th >Nature Dossier</th>

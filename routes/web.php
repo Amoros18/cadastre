@@ -168,7 +168,7 @@ Route::prefix('create/')->middleware('auth')->name('create.')->group(function(){
 });
 
 Route::prefix('edit/')->middleware('auth')->name('edit.')->group(function(){
-    Route::get('/user/{table}',[UserController::class, 'editUser'])->name('user')->middleware('authchef');
+    Route::get('/user/{table}',[UserController::class, 'editUser'])->name('user')->middleware('authChef');
     Route::post('/user/{table}',[UserController::class, 'edit_User']);
     Route::get('/ancien-dossier/{table}',[AncienDossierController::class,'editAncienDossier'])->name('ancien-dossier');
     Route::post('/ancien-dossier/{table}',[AncienDossierController::class,'edit_AncienDossier']);

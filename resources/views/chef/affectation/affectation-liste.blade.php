@@ -1,14 +1,14 @@
-@extends('base')
+@extends('chef/accueil')
 
 @section('title', 'Affectation Numero Dossier')
 @section('content')
-@include('search')
-<h1 class="text-primary text-center">Selectionner le dossier a ennegistre</h1>
+<!-- @include('search') -->
+<h1 class="text-primary text-center">Sélectionner le dossier à enregistrer</h1>
 
-<div class="container">
+<div class="container card shadow">
     <div class="table-responsive">
         <table class="table table-hover table-responsible table-striped">
-            <thead>
+            <thead style="color: black">
                 <th>Nom requerant</th>
                 <th>nature dossier</th>
                 <th>telephone</th>
@@ -18,7 +18,7 @@
                 <th>mappe</th>
                 <th>bloc</th>
                 <th>lot</th>
-                <th>numero feuille</th>
+                <th>N° feuille</th>
                 <th>date ouverture</th>
 
                 <th>Modifier</th>

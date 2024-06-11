@@ -1,15 +1,15 @@
-@extends('base')
+@extends('chef/accueil')
 
 @section('title', 'Archivage')
 @section('content')
-@include('search')
+<!-- @include('search') -->
 
-<h1 class="text-primary text-center">Selectionner le dossier a rattacher</h1>
+<h1 class="text-primary text-center">Séléctionner le dossier à rattacher</h1>
 
-<div class="container">
+<div class="container card shadow">
     <div class="table-responsive">
         <table class="table table-hover table-responsible table-striped">
-            <thead>
+            <thead style="color: black">
                 <th>Numero Dossier</th>
                 <th>Date Reception</th>
                 <th>Numero Tirroir</th>
@@ -26,7 +26,7 @@
                         <td>{{$Liste->observation}}</td>
 
                         <td><a  href = "{{route('edit.archivage',['table'=>$Liste])}} ">
-                            <button type="edit">Modifier</button></a></td>
+                            Modifier</a></td>
                     </tr>
                 @endforeach
             </tbody>

@@ -1,14 +1,14 @@
-@extends('base')
+@extends('chef/accueil')
 
 @section('title', 'Decision')
 @section('content')
-@include('bag.decision.search')
-<h1 class="text-primary text-center">Selectionner la decision a Modifier</h1>
+<!-- @include('bag.decision.search') -->
+<h1 class="text-primary text-center">Séléctionner la decision à Modifier</h1>
 
-<div class="container">
+<div class="container card shadow">
     <div class="table-responsive">
         <table class="table table-hover table-responsible table-striped">
-            <thead>
+            <thead style="color: black">
                 <th>Numero Decision</th>
                 <th>Date decision</th>
 

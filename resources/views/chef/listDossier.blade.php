@@ -1,14 +1,14 @@
-@extends('base')
+@extends('chef/accueil')
 
 @section('title', 'Liste Dossier')
 @section('content')
-@include('search')
-<h1 class="text-primary text-center">Selectionner le dossier a consulter</h1>
+<!-- @include('search') -->
+<h1 class="text-primary text-center">Liste des dossiers</h1>
 
-<div class="container">
+<div class="container shadow card" >
     <div class="table-responsive">
         <table class="table table-hover table-responsible table-striped">
-            <thead>
+            <thead style="color: black">
                 <th>Nom requerant</th>
                 <th>nature dossier</th>
                 <th>telephone</th>
@@ -18,10 +18,10 @@
                 <th>mappe</th>
                 <th>bloc</th>
                 <th>lot</th>
-                <th>numero feuille</th>
+                <th>N° de feuille</th>
                 <th>date ouverture</th>
 
-                <th>Modifier</th>
+                <th>Consulter</th>
             </thead>
             <tbody>
                 @foreach ($Listes as $Liste )
@@ -39,7 +39,7 @@
                         <td>{{$Liste->date_ouverture}}</td>
 
                         <td><a  href = "{{route('visualiser.dossier',['table'=>json_decode(json_encode($Liste->id),true)])}}">
-                                <button type="edit">Consulter</button></a></td>    
+                                Consulter</a></td>    
                     </tr>
                 @endforeach
             </tbody>

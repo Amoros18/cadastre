@@ -1,21 +1,20 @@
-@extends('base')
+@extends('chef/accueil')
 
 @section('title', 'COURRIER')
 @section('content')
-@include('courrier.search')
-<h1 class="text-primary text-center">Selectionner le courrier a modifier</h1>
+<!-- @include('courrier.search') -->
+<h1 class="text-primary text-center">Liste des couriers</h1>
 
-<div class="container">
+<div class="container card shadow">
     <div class="table-responsive">
         <table class="table table-hover table-responsible table-striped">
-            <thead>
-                <th>Date D'arrive</th>
+            <thead style="color: black">
+                <th>Date arrivée</th>
                 <th>Date Correspondance</th>
                 <th>Numero Correspondance</th>
                 <th>Expediteur</th>
                 <th>Objet</th>
                 <th>Numero De Reponse</th>
-
                 <th>Action</th>
             </thead>
             <tbody>
@@ -32,12 +31,12 @@
                             @if ($modifier ==1)
                                 {{route('edit.courrier',['table'=>json_decode(json_encode($Liste->id),true)])}}
                                 ">
-                                <button type="edit">Modifier</button></a></td>
+                                Modifier</a></td>
     
                             @else
                                 {{route('visualiser.courrier',['table'=>json_decode(json_encode($Liste->id),true)])}}
                                 ">
-                                <button type="edit">Visualiser</button></a></td>
+                                Visualiser</a></td>
                             @endif
                     </tr>
                 @endforeach

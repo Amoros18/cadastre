@@ -1,14 +1,14 @@
-@extends('base')
+@extends('chef/accueil')
 
 @section('title', 'Ouverture de dossier')
 @section('content')
-@include('search')
-<h1 class="text-primary text-center">Selectionner le dossier a Modifier</h1>
+<!-- @include('search') -->
+<h1 class="text-primary text-center">Séléctionner le dossier à modifier</h1>
 
-<div class="container">
+<div class="container card shadow">
     <div class="table-responsive">
         <table class="table table-hover table-responsible table-striped">
-            <thead>
+            <thead style="color: black">
                 <th>Nom requerant</th>
                 <th>nature dossier</th>
                 <th>telephone</th>
@@ -41,7 +41,7 @@
                         <td>{{$Liste->geometre}}</td>
 
                         <td><a  href = "{{route('edit.ouverture-dossier',['table'=>json_decode(json_encode($Liste->id),true)])}} ">
-                            <button type="edit">Enregistrer</button></a></td>
+                            <button class="btn-success mt-3 w-100" type="edit">Enregistrer</button></a></td>
                     </tr>
                 @endforeach
             </tbody>

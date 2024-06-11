@@ -1,14 +1,14 @@
-@extends('base')
+@extends('chef/accueil')
 
 @section('title', 'Archivage')
 @section('content')
-@include('search')
-<h1 class="text-primary text-center">Selectionner le dossier a Archiver</h1>
+<!-- @include('search') -->
+<h1 class="text-primary text-center">Séléctionner le dossier à archiver</h1>
 
-<div class="container">
+<div class="container card shadow">
     <div class="table-responsive">
         <table class="table table-hover table-responsible table-striped">
-            <thead>
+            <thead style="color: black">
                 <th>Numero Dossier</th>
                 <th>Nom requerant</th>
                 <th>nature dossier</th>

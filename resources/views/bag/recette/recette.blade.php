@@ -7,7 +7,7 @@
     @endif
 </h1>
 
-<div class="container-fluid">
+<div class="container-fluid card shadow">
     <form id="formulaire_ancien_dossier" enctype="multipart/form-data" method="POST">
         @csrf
 
@@ -159,7 +159,7 @@
         
         <center class="mt-1"><button class="btn btn-primary me-2" type="submit" >
             @if($table->montant_recette)
-                Modifier
+                Valider
             @else
                 Enregistrer
             @endif

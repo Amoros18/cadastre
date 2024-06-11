@@ -1,27 +1,30 @@
-@extends('base')
+@extends('chef/accueil')
 
 @section('title', 'Registre MJ')
 
 @section('content')
-@include('registres.search')
-<div class="container">
-    <h3 >Generer le registre de MJ</h3>
-    <div class="row">
-        <div class="col-md-7">
+<!-- @include('registres.search') -->
+
+<h1 class="text-primary text-center">Registre de mise à jour</h1>
+<div class="container card shadow">
+    
+    <div class="row" style="margin: 15px">
+        <!-- <div class="col-md-7">
             <h4>Registre de MJ</h4>
-        </div>
+        </div> -->
         <div class="col-md-5">
             <a href="{{route('registre.mj_pdf',[
                 'nature_dossier'=>$nature_dossier,
                 'arrondissement'=>$arrondissement,
                 'date_less'=>$date_less,
                 'date_more'=>$date_more,
-                ])}}" class="btn btn-primary">Convertir en pdf</a>
+                ])}}" class="btn btn-primary shadow">Convertir en pdf</a>
         </div>
-    </div>
+        
+    </div><br>
     <div class="table-responsive">
         <table class="table table-striped table-bordered">
-            <thead>
+            <thead style="color: black">
                 <tr>
                     <th >Nom Requerant</th>
                     <th >Nature Dossier</th>
