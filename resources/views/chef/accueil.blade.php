@@ -41,6 +41,18 @@
             <!-- Divider -->
             <hr class="sidebar-divider my-0">
 
+            <li class="nav-item">
+                <a class="nav-link" href = "{{route('home')}}">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Acceuil</span></a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href = "{{route('statistique')}}">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Statistiques</span></a>
+            </li>
+
             <!-- Nav Item - Dashboard -->
             <li class="nav-item">
                 <a class="nav-link" href = "{{route('liste.visa')}}">
@@ -266,10 +278,7 @@
       <form class="d-flex" action="{{route('auth.logout')}}" method="POST" style="float: right; margin: 15px">
         @method("delete")
         @csrf
-        <ul>
-    <a href="{{route('home')}}">Accueil</a>
-    <a href="{{route('user.chef')}}" style="margin: 60px"> Statistiques </a>
-   </ul> 
+        
         <button class="btn btn-primary" type="submit">Se deconnecter</button>
       </form>
  

@@ -10,7 +10,7 @@
             <div class="col-md"></div>
             <!-- Bureau du chef -->
             <div class="col">
-                <a class="container rectangle2" id="chef" href="{{route('user.chef')}}">
+                <a class="container rectangle2" id="chef" href="{{route('statistique')}}">
                     <div class="container-fluid justify-content-center d-flex flex-wrap align-content-center icons8_off">
                         <img src="{{asset('img/OfficeChairIcon.png')}}">
                     </div>
