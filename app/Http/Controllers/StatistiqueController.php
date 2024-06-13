@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
+use App\Models\NouveauDossier;
+
 class StatistiqueController extends Controller
 {
     public function searchCount(Request $request){
@@ -90,7 +92,7 @@ class StatistiqueController extends Controller
         return $response;
     }
 
-    public function statistique(Request $request){
+    public function general(Request $request){
         $Listes = $this->searchCount($request);
         $nombre_craete =$Listes['Listes']->count(); 
         $nombre_update =$Listes['Listes2']->count(); 
@@ -105,6 +107,64 @@ class StatistiqueController extends Controller
             'arrondissement'=>$Listes['arrondissement'],
             'nombre_create'=>$nombre_craete,
             'nombre_update'=>$nombre_update,
+        ]);
+    }
+
+    public function statistique(Request $request){
+        $date_debut = "";
+        $date_fin = "";
+
+        if($request->recherche){
+            //Nb dossier
+            $dossier = NouveauDossier::whereBetween('date_ouverture', [$request->date_debut, $request->date_fin])->get();
+            $nombre_create = $dossier->count();
+
+            //Nature
+            $nature = NouveauDossier::select('nature_dossier')->whereBetween('date_ouverture', [$request->date_debut, $request->date_fin])->get();
+            $nature_count = $nature->groupBy('nature_dossier')->map->count();
+
+            //Arrondissement
+            $arrondissement = NouveauDossier::select('arrondissement')->whereBetween('date_ouverture', [$request->date_debut, $request->date_fin])->get();
+            $arrondissement_count = $arrondissement->groupBy('arrondissement')->map->count();
+
+            //Sexe
+            $sexe = NouveauDossier::select('sexe_requerant')->whereBetween('date_ouverture', [$request->date_debut, $request->date_fin])->get();
+            $sexe_count = $sexe->groupBy('sexe_requerant')->map->count();
+            
+            //Dates
+            $date_debut = $request->date_debut;
+            $date_fin = $request->date_fin;
+        } else {
+            //Nb dossier
+            $Listes = $this->searchCount($request);
+            $nombre_create =$Listes['Listes']->count();
+
+            //Nature
+            $nature = NouveauDossier::select('nature_dossier')->where('nature_dossier', '!=', null)->get();
+            $nature_count = $nature->groupBy('nature_dossier')->map->count();
+
+            //Arrondissement
+            $arrondissement = NouveauDossier::select('arrondissement')->where('arrondissement', '!=', null)->get();
+            $arrondissement_count = $arrondissement->groupBy('arrondissement')->map->count();
+
+            //Sexe
+            $sexe = NouveauDossier::select('sexe_requerant')->where('sexe_requerant', '!=', null)->get();
+            $sexe_count = $sexe->groupBy('sexe_requerant')->map->count();
+
+            //Zone
+            $zone = NouveauDossier::select('zone')->where('zone', '!=', null)->get();
+            $zone_count = $zone->groupBy('zone')->map->count();
+        }
+
+        //Return view
+        return view('chef.statistique.statistique',[
+            'nombre_create' => $nombre_create,
+            'natures' => $nature_count,
+            'arrondissements' => $arrondissement_count,
+            'sexes' => $sexe_count,
+            'zones' => $zone_count,
+            'date_debut' => $date_debut,
+            'date_fin' => $date_fin
         ]);
     }
 }
