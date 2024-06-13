@@ -313,6 +313,7 @@ Route::post('statistique',[StatistiqueController::class,'statistique']);
 
 Route::prefix('stats/')->middleware('auth')->name('stats.')->group(function(){
     Route::get('general',[StatistiqueController::class,'general'])->name('general');
+    Route::post('general',[StatistiqueController::class,'general']);
     Route::get('cotation', [StatistiqueController::class, 'cotation'])->name('cotation');
 });
 

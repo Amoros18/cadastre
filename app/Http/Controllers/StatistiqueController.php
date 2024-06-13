@@ -98,29 +98,55 @@ class StatistiqueController extends Controller
 
     //Statistiques generales
     public function general(Request $request){
-        $Listes = $this->searchCount($request);
-        $nombre_craete =$Listes['Listes']->count();
+        $date_debut = "";
+        $date_fin = "";
 
-        $nature = NouveauDossier::select('nature_dossier')->get();
-        $nature_count = $nature->groupBy('nature_dossier')->map->count();
+        if($request->recherche){
+            //Nb dossier
+            $dossier = NouveauDossier::whereBetween('date_ouverture', [$request->date_debut, $request->date_fin])->get();
+            $nombre_create = $dossier->count();
 
-        $arrondissement = NouveauDossier::select('arrondissement')->get();
-        $arrondissement_count = $arrondissement->groupBy('arrondissement')->map->count();
+            //Nature
+            $nature = NouveauDossier::select('nature_dossier')->whereBetween('date_ouverture', [$request->date_debut, $request->date_fin])->get();
+            $nature_count = $nature->groupBy('nature_dossier')->map->count();
 
-        $sexe = NouveauDossier::select('sexe_requerant')->get();
-        $sexe_count = $sexe->groupBy('sexe_requerant')->map->count();
+            //Arrondissement
+            $arrondissement = NouveauDossier::select('arrondissement')->whereBetween('date_ouverture', [$request->date_debut, $request->date_fin])->get();
+            $arrondissement_count = $arrondissement->groupBy('arrondissement')->map->count();
 
+            //Sexe
+            $sexe = NouveauDossier::select('sexe_requerant')->whereBetween('date_ouverture', [$request->date_debut, $request->date_fin])->get();
+            $sexe_count = $sexe->groupBy('sexe_requerant')->map->count();
+            
+            //Dates
+            $date_debut = $request->date_debut;
+            $date_fin = $request->date_fin;
+        } else {
+            //Nb dossier
+            $Listes = $this->searchCount($request);
+            $nombre_create =$Listes['Listes']->count();
+
+            //Nature
+            $nature = NouveauDossier::select('nature_dossier')->get();
+            $nature_count = $nature->groupBy('nature_dossier')->map->count();
+
+            //Arrondissement
+            $arrondissement = NouveauDossier::select('arrondissement')->get();
+            $arrondissement_count = $arrondissement->groupBy('arrondissement')->map->count();
+
+            //Sexe
+            $sexe = NouveauDossier::select('sexe_requerant')->get();
+            $sexe_count = $sexe->groupBy('sexe_requerant')->map->count();
+        }
+
+        //Return view
         return view('chef.statistique.general',[
-            'nom_requerant'=>$Listes['nom_requerant'],
-            'date_less'=>$Listes['date_less'],
-            'date_more'=>$Listes['date_more'],
-            'date_exact'=>$Listes['date_exact'],
-            'nature_dossier'=>$Listes['nature_dossier'],
-            'arrondissement'=>$Listes['arrondissement'],
-            'nombre_create'=>$nombre_craete,
+            'nombre_create' => $nombre_create,
             'natures' => $nature_count,
             'arrondissements' => $arrondissement_count,
             'sexes' => $sexe_count,
+            'date_debut' => $date_debut,
+            'date_fin' => $date_fin
         ]);
     }
 
