@@ -37,9 +37,8 @@
                     <option >{{old('sexe_requerant',$table->sexe_requerant)}}</option>
                     <option value="Homme">Homme</option>
                     <option value="Femme">Femme</option>
-                    <option value="Mixte">Mixte</option>
+                    <option value="Mixte">Collectif</option>
                     <option value="Personne Morale">Personne Morale</option>
-                    <option value="">Non defini</option>
                 </select>
                 @error("sexe_requerant")
                     <span class="text-danger" role="alert">
