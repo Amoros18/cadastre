@@ -300,7 +300,7 @@ Route::prefix('delete')->name('delete.')->middleware('auth')->group(function(){
         Route::get('controlleur',[EmployerController::class,'deleteControlleur'])->name('controlleur');
     });
 });
-Route::get('statistique',[StatistiqueController::class,'statistique'])->name('statistique');
+Route::get('statistique',[StatistiqueController::class,'statistique'])->middleware('auth')->name('statistique');
 Route::post('statistique',[StatistiqueController::class,'statistique']);
 
 Route::get('lien-map',[PointController::class,'lienGoogleMap'])->name('lien-google-map');

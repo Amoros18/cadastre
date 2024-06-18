@@ -3,11 +3,39 @@
 @section('title', 'Statistique')
 
 @section('content')
-    <div class="container-fluid d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">Statistiques</h1>
-    </div>
-    <div class="row container-fluid">
+<script src="{{asset('javascript\chart.js')}}"></script>
+<script src="{{asset('javascript\chart.js')}}"></script>
+    <div class="container-fluid d-sm-flex row align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800 col-xl-4 col-md-6">Statistiques</h1>
+        <form method="POST" action="">
+            @csrf
+            <div class="container-fluid col d-flex text-center">
+                <div class="input-group w-100">
+                    <span class="input-group-text">Du</span>
+                    <input type="date" class="form-control" name="date_debut" value="{{$date_debut}}">
+                </div>
+                
+                <div class="input-group">
+                    <span class="input-group-text">Au</span>
+                    <input type="date" class="form-control" name="date_fin" value="{{$date_fin}}">
+                </div>
+            </div>
 
+            <div class="container-fluid d-flex">
+                <div class="input-group">
+                    <input type="submit" class="btn btn-primary form-control" name="filtrer" value="Filtrer">
+                </div>
+                @if($date_debut != '')
+                <div class="input-group">
+                    <button class="btn btn-danger form-control" href="{{route('statistique')}}">Reinitialiser</button>
+                </div>
+                @endif
+            </div>
+        </form>
+    </div>
+
+    <!-- First row -->
+    <div class="row container-fluid">
         <!-- Dossiers ouverts -->
         <div class="col-xl-3 col-md-6 mb-4">
             <div class="card border-left-primary shadow h-100 py-2">
@@ -34,7 +62,7 @@
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                 Dossiers visés</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">Nombre</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $nb_visa }}</div>
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-pen-fancy fa-2x text-gray-300"></i>
@@ -52,7 +80,7 @@
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                 Dossiers archivés</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">Nombre</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $nb_arch }}</div>
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-archive fa-2x text-gray-300"></i>
@@ -70,7 +98,7 @@
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                 Courriers reçus</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">Nombre</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $nb_courrier }}</div>
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-envelope-open fa-2x text-gray-300"></i>
@@ -84,6 +112,7 @@
 
     <!-- Second Row -->
 
+    <!-- Sexe -->
     <div class="row container-fluid">
         <!-- Tableau sexe -->
         <div class="col-xl-8 col-lg-7">
@@ -134,8 +163,8 @@
                 <!-- Card Body -->
                 <div class="collapse show sexeCard">
                     <div class="card-body">
-                        <div class="chart-pie pt-4 pb-2">
-                            <canvas id="myPieChart"></canvas>
+                        <div class="">
+                            <canvas id="sexe_circle" class="text-center" style="width:100%"></canvas>
                         </div>
                     </div>
                 </div>
@@ -143,9 +172,10 @@
         </div>
     </div>
         
+    <!-- Nature -->
     <div class="row container-fluid">
         <!-- Tableau nature de dossier -->
-        <div class="col-xl-8 col-lg-7">
+        <div class="col-xl-4 col-lg-5">
             <div class="card shadow mb-4">
                 <!-- Card Header-->
                 <a href=".natureCard" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="natureCard">
@@ -184,7 +214,7 @@
         </div>
 
         <!-- Graphe Nature de dossier -->
-        <div class="col-xl-4 col-lg-5">
+        <div class="col-xl-8 col-lg-7">
             <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
                 <a href=".natureCard" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="natureCard">
@@ -193,8 +223,8 @@
                 <!-- Card Body -->
                 <div class="collapse show natureCard">
                     <div class="card-body">
-                        <div class="chart-pie pt-4 pb-2">
-                            <canvas id="myPieChart"></canvas>
+                        <div class="">
+                            <canvas id="nature_circle" class="text-center hx-auto" style="width:100%"></canvas>
                         </div>
                     </div>
                 </div>
@@ -217,7 +247,7 @@
                             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                 <thead>
                                     <tr>
-                                        <th>Arrondissement/th>
+                                        <th>Arrondissement</th>
                                         <th>Nombre</th>
                                     </tr>
                                 </thead>
@@ -252,8 +282,8 @@
                 <!-- Card Body -->
                 <div class="collapse show arrondCard">
                     <div class="card-body">
-                        <div class="chart-pie pt-4 pb-2">
-                            <canvas id="myPieChart"></canvas>
+                        <div class="">
+                            <canvas id="arrond_circle" class="text-center" style="width:100%,"></canvas>
                         </div>
                     </div>
                 </div>
@@ -281,10 +311,18 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>Mahamat</td>
-                                    <td>3</td>
-                                </tr>
+                                @if($geometres->count() != 0)
+                                    @foreach($geometres as $geometre => $count)
+                                        <tr>
+                                            <td>{{ $geometre }}</td>
+                                            <td>{{ $count }}</td>
+                                        </tr>
+                                    @endforeach
+                                @else
+                                    <tr>
+                                        <td colspan="2" class="text-center">Aucune donnée trouvée</td>
+                                    </tr>
+                                @endif
                             </tbody>
                         </table>
                     </div>
@@ -311,17 +349,17 @@
                             </thead>
                             <tbody>
                                 @if($zones->count() != 0)
-                                        @foreach($zones as $zone => $count)
-                                            <tr>
-                                                <td>{{ $zone }}</td>
-                                                <td>{{ $count }}</td>
-                                            </tr>
-                                        @endforeach
-                                    @else
+                                    @foreach($zones as $zone => $count)
                                         <tr>
-                                            <td colspan="2" class="text-center">Aucune donnée trouvée</td>
+                                            <td>{{ $zone }}</td>
+                                            <td>{{ $count }}</td>
                                         </tr>
-                                    @endif
+                                    @endforeach
+                                @else
+                                    <tr>
+                                        <td colspan="2" class="text-center">Aucune donnée trouvée</td>
+                                    </tr>
+                                @endif
                             </tbody>
                         </table>
                     </div>
@@ -329,4 +367,60 @@
             </div>
         </div>
     </div>
+
+
+    <script>
+            function chart(datas, canva_id, title, bar_type) {
+                var data = datas;
+                var labels = Object.keys(data);
+                var values = Object.values(data);
+            
+                var ctx = document.getElementById(canva_id).getContext('2d');
+                var myChart = new Chart(ctx, {
+                    type: bar_type,
+                    data: {
+                        labels: labels,
+                        datasets: [{
+                            label: 'Dossiers',
+                            data: values,
+                            backgroundColor: [
+                                'rgb(14, 64, 123)', 
+                                '#009999', 
+                                '#ffff66', 
+                                '#66ccff', 
+                                '#ff9933', 
+                                '#ffcc00', 
+                                '#00ffff', 
+                                '#ff7f50', 
+                                '#d2691E', 
+                                '#ffd700',
+                                '#00ff00', 
+                                '#663399',
+                                '#fffafa' 
+                            ]
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            y: {beginAtZero: true}
+                        },
+                        legend: {display: true},
+                        title: {
+                            display: true,
+                            text: title
+                        }
+                    }
+                });
+            }
+
+            var data_nature = <?php echo $natures ?>;
+            var data_sexe = <?php echo $sexes ?>;
+            var data_arrondissement = <?php echo $arrondissements ?>;
+
+            chart(data_nature, 'nature_circle', 'Nature de dossier','bar');
+            chart(data_sexe, 'sexe_circle', 'Sexe', 'pie');
+            chart(data_arrondissement, 'arrond_circle', 'Arrondissement', 'doughnut');
+            
+            
+        </script>
 @endsection

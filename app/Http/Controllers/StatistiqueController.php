@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 use App\Models\NouveauDossier;
+use App\Models\Courrier;
+use App\Models\Archivage;
 
 class StatistiqueController extends Controller
 {
@@ -111,60 +113,83 @@ class StatistiqueController extends Controller
     }
 
     public function statistique(Request $request){
-        $date_debut = "";
-        $date_fin = "";
+        $date_debut = '';
+        $date_fin = '';
 
-        if($request->recherche){
-            //Nb dossier
-            $dossier = NouveauDossier::whereBetween('date_ouverture', [$request->date_debut, $request->date_fin])->get();
-            $nombre_create = $dossier->count();
-
-            //Nature
-            $nature = NouveauDossier::select('nature_dossier')->whereBetween('date_ouverture', [$request->date_debut, $request->date_fin])->get();
-            $nature_count = $nature->groupBy('nature_dossier')->map->count();
-
-            //Arrondissement
-            $arrondissement = NouveauDossier::select('arrondissement')->whereBetween('date_ouverture', [$request->date_debut, $request->date_fin])->get();
-            $arrondissement_count = $arrondissement->groupBy('arrondissement')->map->count();
-
-            //Sexe
-            $sexe = NouveauDossier::select('sexe_requerant')->whereBetween('date_ouverture', [$request->date_debut, $request->date_fin])->get();
-            $sexe_count = $sexe->groupBy('sexe_requerant')->map->count();
-            
-            //Dates
+        if($request->filtrer){
             $date_debut = $request->date_debut;
             $date_fin = $request->date_fin;
-        } else {
-            //Nb dossier
-            $Listes = $this->searchCount($request);
-            $nombre_create =$Listes['Listes']->count();
+            $dossiers = NouveauDossier::whereBetween('date_ouverture', [$date_debut, $date_fin])->get();
+
+            //Nb dossier        
+            $nombre_create = $dossiers->count();
+
+            //Dossier vises
+            $nb_visa = $dossiers->where('date_visa', '!=', null)->count();
+
+            //Archivage
+            $nb_arch = Archivage::all()->count();
+
+            //Courrier
+            $nb_courrier = Courrier::all()->count();
 
             //Nature
-            $nature = NouveauDossier::select('nature_dossier')->where('nature_dossier', '!=', null)->get();
-            $nature_count = $nature->groupBy('nature_dossier')->map->count();
+            $nature_count = $dossiers->where('nature_dossier', '!=', null)->groupBy('nature_dossier')->map->count();
 
             //Arrondissement
-            $arrondissement = NouveauDossier::select('arrondissement')->where('arrondissement', '!=', null)->get();
-            $arrondissement_count = $arrondissement->groupBy('arrondissement')->map->count();
+            $arrondissement_count = $dossiers->where('arrondissement', '!=', null)->groupBy('arrondissement')->map->count();
 
             //Sexe
-            $sexe = NouveauDossier::select('sexe_requerant')->where('sexe_requerant', '!=', null)->get();
-            $sexe_count = $sexe->groupBy('sexe_requerant')->map->count();
+            $sexe_count = $dossiers->where('sexe_requerant', '!=', null)->groupBy('sexe_requerant')->map->count();
 
             //Zone
-            $zone = NouveauDossier::select('zone')->where('zone', '!=', null)->get();
-            $zone_count = $zone->groupBy('zone')->map->count();
-        }
+            $zone_count = $dossiers->where('zone', '!=', null)->groupBy('zone')->map->count();
 
+            //Geometre
+            $geometre_count = $dossiers->where('geometre', '!=', null)->groupBy('geometre')->map->count();
+        } else {
+            $dossiers = NouveauDossier::all();
+
+            //Nb dossier        
+            $nombre_create = $dossiers->count();
+
+            //Dossier vises
+            $nb_visa = $dossiers->where('date_visa', '!=', null)->count();
+
+            //Archivage
+            $nb_arch = Archivage::all()->count();
+
+            //Courrier
+            $nb_courrier = Courrier::all()->count();
+
+            //Nature
+            $nature_count = $dossiers->where('nature_dossier', '!=', null)->groupBy('nature_dossier')->map->count();
+
+            //Arrondissement
+            $arrondissement_count = $dossiers->where('arrondissement', '!=', null)->groupBy('arrondissement')->map->count();
+
+            //Sexe
+            $sexe_count = $dossiers->where('sexe_requerant', '!=', null)->groupBy('sexe_requerant')->map->count();
+
+            //Zone
+            $zone_count = $dossiers->where('zone', '!=', null)->groupBy('zone')->map->count();
+
+            //Geometre
+            $geometre_count = $dossiers->where('geometre', '!=', null)->groupBy('geometre')->map->count();
+        }
         //Return view
         return view('chef.statistique.statistique',[
+            'date_debut' => $date_debut,
+            'date_fin' => $date_fin,
             'nombre_create' => $nombre_create,
+            'nb_visa' => $nb_visa,
+            'nb_arch' => $nb_arch,
+            'nb_courrier' => $nb_courrier,
             'natures' => $nature_count,
             'arrondissements' => $arrondissement_count,
             'sexes' => $sexe_count,
+            'geometres' => $geometre_count,
             'zones' => $zone_count,
-            'date_debut' => $date_debut,
-            'date_fin' => $date_fin
         ]);
     }
 }
