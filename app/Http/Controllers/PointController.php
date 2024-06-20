@@ -154,9 +154,11 @@ class PointController extends Controller
             $table->latitude = $latlong->getLatitude();
             $table->save(); 
         }
-        return redirect()->route('create.points',[
-            'numero_dossier'=>$table->numero_dossier
-            ])->with('success',"Enregistrement effectuer avec succes");
+        // return redirect()->route('create.points',[
+        //     'numero_dossier'=>$table->numero_dossier
+        //     ])->with('success',"Enregistrement effectuer avec succes");
+
+        return redirect()->route('liste.points-intro')->with('success',"Enregistrement effectuer avec succes");
 
     }
 
