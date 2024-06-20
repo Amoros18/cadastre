@@ -7,7 +7,7 @@
 
             <div class="form-group">
                 <label for="name" class="control-label">Nom:</label>
-                <input type="text" name="name" class="form-control " value="{{old('name',$table->name)}}">
+                <input type="text" name="name" class="form-control" required minlength="3" value="{{old('name',$table->name)}}">
                 @error('name')
                     <span class="text-danger" role="alert">
                         <strong>{{$message}}</strong>
@@ -16,9 +16,9 @@
             </div>
 
             <div class="form-group">
-                <label for="bureau">Bureau occuper:</label>
+                <label for="bureau">Bureau occupé:</label>
                     <select name="bureau" id="bureau"  class="form-select">
-                        <option selected>{{old('name',$table->name)}}</option>
+                        <option selected>{{old('bureau',$table->bureau)}}</option>
                         <option>Bureau des affaires generale</option>
                         <option>Bureau de controle</option>
                         <option>Bureau de mise a jour</option>
@@ -34,7 +34,7 @@
 
             <div class="form-group">
                 <label for="email" class="control-label">Email:</label>
-                <input type="email" name="email" class="form-control ">
+                <input type="email" name="email" class="form-control" minlength="7">
                 @error('email')
                     <span class="text-danger" role="alert">
                         <strong>{{$message}}</strong>
@@ -44,7 +44,7 @@
 
             <div class="form-group">
                 <label for="password" class="control-label">Mot de passe:</label>
-                <input type="password" name="password" class="form-control ">
+                <input type="text" name="password" class="form-control" minlength="5">
                 @error('password')
                     <span class="text-danger" role="alert">
                         <span class="text-danger" role="alert">

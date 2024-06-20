@@ -68,7 +68,7 @@
         <div class="row mt-1">
             <label for="age" class="label col-md-2 control-label">Telephone:</label>
             <div class="col-md-10">
-                <input type="text" name="telephone" class="form-control" value="{{old('telephone',$table->telephone)}}">
+                <input type="number" name="telephone" class="form-control" value="{{old('telephone',$table->telephone)}}">
                 @error("telephone")
                     <span class="text-danger" role="alert">
                         <strong>{{$message}}</strong>

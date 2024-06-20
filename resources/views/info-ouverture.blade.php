@@ -19,7 +19,7 @@
             </div>
             <label for="numero_dossier" class="label col-md-2 control-label">Numero Dossier:</label>
             <div class="col-md-3">
-                <input type="text" name="numero_dossier" class="form-control" readonly value="{{old('numero_dossier',$table->numero_dossier)}}">
+                <input type="text" name="numero_dossier" class="form-control" readonly value="{{old('',$table->numero_dossier)}}">
             </div>
         </div>
 

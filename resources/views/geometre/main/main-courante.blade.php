@@ -27,7 +27,7 @@
                 </div>
                 <label for="avis_main_courante" class="label col-md-1 control-label">Avis:</label>
                 <div class="col-md-2">
-                    <input type="text" name="avis_main_courante" class="form-control" value="{{old('avis_main_courante',$table->avis_main_courante)}}">
+                    <input type="text" name="avis_main_courante" required class="form-control" value="{{old('avis_main_courante',$table->avis_main_courante)}}">
                     @error("avis_main_courante")
                         <span class="text-danger" role="alert">
                             <strong>{{$message}}</strong>
@@ -36,7 +36,7 @@
                 </div>
                 <label for="mise_en_valeur" class="label col-md-1 control-label">Mise en valeur:</label>
                 <div class="col-md-3">
-                    <input type="text" name="mise_en_valeur" class="form-control" value="{{old('mise_en_valeur',$table->mise_en_valeur)}}">
+                    <input type="text" name="mise_en_valeur" required class="form-control" value="{{old('mise_en_valeur',$table->mise_en_valeur)}}">
                     @error("mise_en_valeur")
                         <span class="text-danger" role="alert">
                             <strong>{{$message}}</strong>
@@ -57,7 +57,7 @@
                 </div>
                 <label for="date_bornage" class="label col-md-1 control-label">Date Bornage:</label>
                 <div class="col-md-2">
-                    <input type="date" name="date_bornage" class="form-control" value="{{old('date_bornage',$table->date_bornage)}}">
+                    <input type="date" name="date_bornage" required class="form-control" value="{{old('date_bornage',$table->date_bornage)}}">
                     @error("date_bornage")
                         <span class="text-danger" role="alert">
                             <strong>{{$message}}</strong>

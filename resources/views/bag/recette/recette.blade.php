@@ -41,12 +41,13 @@
                 </div>
             </div>
             @endif
+
             <div class="row mt-1">
                 <div class="row mt-1">
                     @if ($table->zone == 'zone urbaine')
                     <label for="superficie_recette" class="label col-md-2 control-label">Superficie Recette en m2:</label>
                     <div class="col-md-3">
-                        <select name="superficie_recette" id="zone"  class="form-select">
+                        <select name="superficie_recette" id="zone" required class="form-select">
                             <option selected>{{old('superficie_recette',$quittance->superficie_recette)}}</option>
                             <option>Sup <= 5000m2</option>
                             <option>Sup >= 5000m2</option>
@@ -60,7 +61,7 @@
                     @elseif ($table->zone == 'zone urbaine')
                     <label for="superficie_recette" class="label col-md-2 control-label">Superficie Recette en m2:</label>
                     <div class="col-md-3">
-                        <select name="superficie_recette" id="zone"  class="form-select">
+                        <select name="superficie_recette" required id="zone"  class="form-select">
                             <option selected>{{old('superficie_recette',$quittance->superficie_recette)}}</option>
                             <option>Sup <= 5000m2</option>
                             <option>5000m2 <= sup <= 5ha</option>
@@ -76,7 +77,7 @@
                     @else
                     <label for="superficie_recette" class="label col-md-2 control-label">Superficie Recette en m2:</label>
                     <div class="col-md-3">
-                        <select name="superficie_recette" id="zone"  class="form-select">
+                        <select name="superficie_recette" required id="zone"  class="form-select">
                             <option selected>{{old('superficie_recette',$quittance->superficie_recette)}}</option>
                             <option>Sup <= 5000m2</option>
                             <option>Sup >= 5000m2</option>
@@ -94,7 +95,7 @@
 
                     <label for="montant_recette" class="label col-md-1 control-label">Montant Recette:</label>
                     <div class="col-md-2">
-                        <input type="text" name="montant_recette" class="form-control" value="{{old('montant_recette',$quittance->montant_recette)}}">
+                        <input type="text" required name="montant_recette" class="form-control" value="{{old('montant_recette',$quittance->montant_recette)}}">
                         @error("montant_recette")
                             <span class="text-danger" role="alert">
                                 <strong>{{$message}}</strong>
@@ -124,7 +125,7 @@
                     </div>
                     <label for="montant_recette" class="label col-md-1 control-label">Numero Quittance:</label>
                     <div class="col-md-2">
-                        <input type="text" name="numero_quittance" class="form-control" value="{{old('numero_quittance',$quittance->numero_quittance)}}">
+                        <input type="text" name="numero_quittance" required class="form-control" value="{{old('numero_quittance',$quittance->numero_quittance)}}">
                         @error("numero_quittance")
                             <span class="text-danger" role="alert">
                                 <strong>{{$message}}</strong>
@@ -133,7 +134,7 @@
                     </div>
                     <label for="date_quittance" class="label col-md-1 control-label">Date Quittance:</label>
                     <div class="col-md-3">
-                        <input type="date" name="date_quittance" class="form-control" value="{{old('date_quittance',$quittance->date_quittance)}}">
+                        <input type="date" name="date_quittance" required class="form-control" value="{{old('date_quittance',$quittance->date_quittance)}}">
                         @error("date_quittance")
                             <span class="text-danger" role="alert">
                                 <strong>{{$message}}</strong>

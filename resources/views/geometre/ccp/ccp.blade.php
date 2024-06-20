@@ -17,7 +17,7 @@
             <div class="row mt-1">
                 <label for="numero_ccp" class="label col-md-2 control-label">Numero CCP:</label>
                 <div class="col-md-10">
-                    <input type="text" name="numero_ccp" class="form-control" value="{{old('numero_ccp',$table->numero_ccp)}}">
+                    <input type="text" name="numero_ccp" required class="form-control" value="{{old('numero_ccp',$table->numero_ccp)}}">
                     @error("numero_ccp")
                         <span class="text-danger" role="alert">
                             <strong>{{$message}}</strong>
@@ -29,7 +29,7 @@
             <div class="row mt-1">
                 <label for="dao" class="label col-md-2 control-label">Nom DAO:</label>
                 <div class="col-md-5">
-                    <input type="text" name="dao" class="form-control" value="{{old('dao',$table->dao)}}">
+                    <input type="text" name="dao" required class="form-control" value="{{old('dao',$table->dao)}}">
                     @error("dao")
                         <span class="text-danger" role="alert">
                             <strong>{{$message}}</strong>
@@ -38,7 +38,7 @@
                 </div>
                 <label for="numero_dossier" class="label col-md-2 control-label">Echelle:</label>
                 <div class="col-md-3">
-                    <input type="text" name="echelle" class="form-control" value="{{old('echelle',$table->echelle)}}">
+                    <input type="text" name="echelle" required class="form-control" value="{{old('echelle',$table->echelle)}}">
                     @error("echelle")
                         <span class="text-danger" role="alert">
                             <strong>{{$message}}</strong>
@@ -50,7 +50,7 @@
             <div class="row mt-1">
                 <label for="superficie" class="label col-md-2 control-label">Superficie:</label>
                 <div class="col-md-5">
-                    <input type="text" name="superficie" class="form-control" value="{{old('superficie',$table->superficie)}}">
+                    <input type="text" name="superficie" required class="form-control" value="{{old('superficie',$table->superficie)}}">
                     @error("superficie")
                         <span class="text-danger" role="alert">
                             <strong>{{$message}}</strong>

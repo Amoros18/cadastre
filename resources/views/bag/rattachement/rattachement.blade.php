@@ -41,7 +41,7 @@
                 </div>
                 <label for="montant_rattachement" class="label col-md-1 control-label">Montant Rattachemet:</label>
                 <div class="col-md-2">
-                    <input type="text" name="montant_rattachement" class="form-control" value="{{old('montant_rattachement',$table->montant_rattachement)}}">
+                    <input type="text" name="montant_rattachement" required class="form-control" value="{{old('montant_rattachement',$table->montant_rattachement)}}">
                     @error("montant_rattachement")
                         <span class="text-danger" role="alert">
                             <strong>{{$message}}</strong>
@@ -52,7 +52,7 @@
             <div class="row mt-1">
                 <label for="observation_rattachement" class="label col-md-2 control-label">Observation Rattachement:</label>
                 <div class="col-md-10">
-                    <input type="text" name="observation_rattachement" class="form-control" value="{{old('observation_rattachement',$table->observation_rattachement)}}">
+                    <input type="text" name="observation_rattachement" required class="form-control" value="{{old('observation_rattachement',$table->observation_rattachement)}}">
                     @error("observation_rattachement")
                         <span class="text-danger" role="alert">
                             <strong>{{$message}}</strong>

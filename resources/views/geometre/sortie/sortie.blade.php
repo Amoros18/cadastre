@@ -37,7 +37,7 @@
             <div class="row mt-1">
                 <label for="message_porter" class="label col-md-2 control-label">date de travaux:</label>
                 <div class="col-md-3">
-                    <input type="date" name="date_travaux" class="form-control" value="{{old('date_travaux',$sortie->date_travaux)}}">
+                    <input type="date" name="date_travaux" class="form-control" required value="{{old('date_travaux',$sortie->date_travaux)}}">
                     @error("date_travaux")
                         <span class="text-danger" role="alert">
                             <strong>{{$message}}</strong>
@@ -46,7 +46,7 @@
                 </div>
                 <label for="avis_main_courante" class="label col-md-1 control-label">liste de materiaux:</label>
                 <div class="col-md-2">
-                    <input type="text" name="liste_materiaux" class="form-control" value="{{old('liste_materiaux',$sortie->liste_materiaux)}}">
+                    <input type="text" name="liste_materiaux" class="form-control" required value="{{old('liste_materiaux',$sortie->liste_materiaux)}}">
                     @error("liste_materiaux")
                         <span class="text-danger" role="alert">
                             <strong>{{$message}}</strong>
@@ -55,7 +55,7 @@
                 </div>
                 <label for="mise_en_valeur" class="label col-md-1 control-label">Observation:</label>
                 <div class="col-md-3">
-                    <input type="text" name="observation" class="form-control" value="{{old('observation',$sortie->observation)}}">
+                    <input type="text" name="observation" class="form-control" required value="{{old('observation',$sortie->observation)}}">
                     @error("observation")
                         <span class="text-danger" role="alert">
                             <strong>{{$message}}</strong>
@@ -67,7 +67,7 @@
             <div class="row mt-1">
                 <label for="observation_main_courante" class="label col-md-2 control-label">Liste Geometre:</label>
                 <div class="col-md-10">
-                    <input type="text" name="liste_geometre" class="form-control" value="{{old('liste_geometre',$sortie->liste_geometre)}}">
+                    <input type="text" name="liste_geometre" class="form-control" required value="{{old('liste_geometre',$sortie->liste_geometre)}}">
                     @error("liste_geometre")
                         <span class="text-danger" role="alert">
                             <strong>{{$message}}</strong>

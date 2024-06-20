@@ -21,7 +21,7 @@
         <div class="row mt-1">
             <label for="prenom" class="label col-md-2 control-label">Numero decision:</label>
             <div class="col-md-10">
-                <input type="text" name="numero_decision" class="form-control" value="{{old('numero_decision',$table->numero_decision)}}">
+                <input type="text" required name="numero_decision" class="form-control" value="{{old('numero_decision',$table->numero_decision)}}">
                 @error("numero_decision")
                     <span class="text-danger" role="alert">
                         <strong>{{$message}}</strong>
@@ -33,7 +33,7 @@
         <div class="row mt-1">
             <label for="age" class="label col-md-2 control-label">Date decision:</label>
             <div class="col-md-10">
-                <input type="date" name="date_decision" class="form-control" value="{{old('date_decision',$table->date_decision)}}">
+                <input type="date" required name="date_decision" class="form-control" value="{{old('date_decision',$table->date_decision)}}">
                 @error("date_decision")
                     <span class="text-danger" role="alert">
                         <strong>{{$message}}</strong>
