@@ -232,7 +232,7 @@ class DossierController extends Controller
     }
     public function create_Affectation(NouveauDossier $table,Request $request ){
         $validated = $request->validate([
-            'numero_dossier'=>'string|required',
+            'numero_dossier'=>'string|required|unique:nouveau_dossiers',
         ]);
         $numero_dossier = $validated['numero_dossier'];
         $table->update([

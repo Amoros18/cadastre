@@ -17,10 +17,11 @@ class UserController extends Controller
         $password = $request->input('password');
         $table->password = Hash::make($password);
         $table->save();
-        return redirect()->route('create.user')->with('success',"Enregistrement effectuer avec succes");
+        // return redirect()->route('create.user')->with('success',"Enregistrement effectuer avec succes");
+        return redirect()->route('visualiser.liste-user')->with('success',"Utilisateur enregistré avec succès.");
     }
     public function listUser(){
-        $Listes =User::paginate(2);
+        $Listes =User::paginate(25);
         return view ('user.user-list',['Listes'=>$Listes]);
     }
 

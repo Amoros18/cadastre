@@ -25,7 +25,7 @@ class OuvertueDossierRequest extends FormRequest
         return [
             //'numero_ouverture' => 'required|string',
             'nom_requerant' => 'required|string',
-            'sexe_requerant' => 'nullable|string',
+            'sexe_requerant' => 'required',
             'telephone' => 'nullable|integer',
             'nature_dossier' => 'required|string',
             'arrondissement' => 'required|string',
