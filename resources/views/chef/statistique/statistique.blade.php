@@ -115,7 +115,7 @@
     <!-- Sexe -->
     <div class="row container-fluid">
         <!-- Tableau sexe -->
-        <div class="col-xl-8 col-lg-7">
+        <div class="col-xl-4 col-lg-5">
             <div class="card shadow mb-4">
                 <!-- Card Header-->
                 <a href=".sexeCard" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="sexeCard">
@@ -154,7 +154,7 @@
         </div>
 
         <!-- Graphe Sexe -->
-        <div class="col-xl-4 col-lg-5">
+        <div class="col-xl-8 col-lg-7">
             <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
                 <a href=".sexeCard" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="sexeCard">
@@ -234,7 +234,7 @@
 
     <div class="row container-fluid">
         <!-- Tableau arrondissement -->
-        <div class="col-xl-8 col-lg-7">
+        <div class="col-xl-4 col-lg-5">
             <div class="card shadow mb-4">
                 <!-- Card Header-->
                 <a href=".arrondCard" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="arrondCard">
@@ -273,7 +273,7 @@
         </div>
 
         <!-- Graphe Arrondissement -->
-        <div class="col-xl-4 col-lg-5">
+        <div class="col-xl-8 col-lg-7">
             <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
                 <a href=".arrondCard" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="arrondCard">
@@ -383,21 +383,8 @@
                         datasets: [{
                             label: 'Dossiers',
                             data: values,
-                            backgroundColor: [
-                                'rgb(14, 64, 123)', 
-                                '#009999', 
-                                '#ffff66', 
-                                '#66ccff', 
-                                '#ff9933', 
-                                '#ffcc00', 
-                                '#00ffff', 
-                                '#ff7f50', 
-                                '#d2691E', 
-                                '#ffd700',
-                                '#00ff00', 
-                                '#663399',
-                                '#fffafa' 
-                            ]
+                            backgroundColor:
+                                'rgb(14, 64, 123)'
                         }]
                     },
                     options: {
@@ -418,8 +405,8 @@
             var data_arrondissement = <?php echo $arrondissements ?>;
 
             chart(data_nature, 'nature_circle', 'Nature de dossier','bar');
-            chart(data_sexe, 'sexe_circle', 'Sexe', 'pie');
-            chart(data_arrondissement, 'arrond_circle', 'Arrondissement', 'doughnut');
+            chart(data_sexe, 'sexe_circle', 'Sexe', 'bar');
+            chart(data_arrondissement, 'arrond_circle', 'Arrondissement', 'bar');
             
             
         </script>

@@ -1,17 +1,23 @@
-#contain{
-  /* background-image: url("../img/batiment.png"); */
-    /* background-size: contain; */
+#content{
+  background-image: url("../img/back.png");
+    background-size: cover;
     /* background-repeat: no-repeat; */
     /* height: 500px; */
-    height: 70vh;
-    background: linear-gradient(#4bc5f6 29%, #077cab 100%);
+    height: 100vh;
+    /* background: linear-gradient(#4bc5f6 29%, #077cab 100%); */
  }
 
-#banner{
+ #contain{
+    padding-top: 30vh;
+    padding-bottom: 20vh;
+ }
+
+ body{
+    height: 100%;
+ }
+
+.banner{
     height: 30vh;
-    > img{
-        height: 100%;
-    }
 }
 
 .rectangle2 {

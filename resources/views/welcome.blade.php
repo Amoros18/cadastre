@@ -1,10 +1,8 @@
 @include('header')
 <link rel="stylesheet" href="{{asset('css/welcome.css')}}">
-<div class="container-fluid d-block m-0 p-0 h-100">
-    <div class="container-fluid p-0 m-0" id="banner">
-        <img src="{{ asset('img/banner.png') }}" width="100%">
-    </div>
-    <div class="container-fluid w-100 p-0 m-0" id="contain">
+<div class="container-fluid d-block m-0 p-0 h-100" id='content'>
+    
+    <div class="container-fluid w-100  m-0" id="contain">
         <!-- First Row -->
         <div class="container-fluid d-flex justify-content-center row m-0 " id="first-row">
             <div class="col-md"></div>
