@@ -1,19 +1,11 @@
-<h1 class="text-primary text-center">
-    @if ($table->verificateur)
-        Modifier Les Informations Du Dossier
-    @else
-        Enter Les Informations Relatives Au Dossier
-    @endif
-</h1>
+<br><div class="container-fluid card">
+    <div id= "rattach" class=" container-fluid card-header shadow">
+    <h1 class="text-center" style="color: white">Informations de mise à jour</h1>
+    </div>
 
-<div class="container-fluid card shadow">
+<div class="container-fluid card-body shadow">
     <form id="formulaire_ancien_dossier" enctype="multipart/form-data" method="POST">
         @csrf
-
-        <div class="row mt-3">
-            <div class="bg-primary">
-                <h5 class="text-center">Informations de la Mise A Jour</h5>
-            </div>
 
             <div class="row mt-1">
                 <label for="verificateur" class="label col-md-2 control-label">Verificateur:</label>
@@ -48,16 +40,16 @@
                 </div>
             </div>
 
-        </div>
+       
 
-        <center class="mt-1"><button class="btn btn-success mt-3 w-100" type="submit" >
+<button class="btn btn-success mt-3 w-100" type="submit" >
             @if($table->verificateur)
                 Valider
             @else
                 Enregistrer
             @endif
-            <!-- </button > <input type="reset" class="btn btn-primary" value="Annuler"><br><br></center>
-        <small class="text-left">creat by Amoros </small> -->
+           </button > 
+
 
     </form>
-</div>
+</div> </div>

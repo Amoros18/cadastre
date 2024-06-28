@@ -1,25 +1,12 @@
-<h1 class="text-primary text-center">
-    @if ($table->montant_rattachement)
-        Modifier Les Informations Du Dossier
-    @else
-        Enter Les Informations Relatives Au Dossier
-    @endif
-</h1>
+<br><div class="container-fluid card">
+    <div id= "Rattach" class=" container-fluid card-header shadow">
+    <h1 class="text-center" style="color: white">Informations de Rattachement</h1>
+    </div>
 
-<div class="container-fluid">
+<div class="container-fluid card-body shadow">
     <form id="formulaire_ancien_dossier" enctype="multipart/form-data" method="POST">
         @csrf
-        
-        <div class="row">
-            <div class="col">
-                <h5 class="text-center">Entrer les informations du dossier</h5>
-            </div>
-        </div>
 
-        <div class="row mt-3">
-            <div class="bg-primary">
-                <h5 class="text-center">Information De Rattachement</h5>
-            </div>
             <div class="row mt-1">
                 <label for="geometre" class="label col-md-2 control-label">Nom du geometre:</label>
                 <div class="col-md-3">
@@ -59,18 +46,18 @@
                         </span>
                     @enderror
                 </div>
-            </div>
-        </div>
-
-
-        <center class="mt-1"><button class="btn btn-success mt-3 w-100" type="submit" >
+            
+                <button class="btn btn-success mt-3 w-100" type="submit" >
             @if($table->montant_rattachement)
                 Valider
             @else
                 Enregistrer
             @endif
-            <!-- </button > <input type="reset" class="btn btn-primary" value="Annuler"><br><br></center>
-        <small class="text-left">creat by Amoros </small> -->
+            </button>
+            </div>
+        </div>
+
+
 
     </form>
 </div>
