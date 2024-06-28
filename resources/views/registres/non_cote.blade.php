@@ -4,25 +4,33 @@
 
 @section('content')
 <!-- @include('registres.search') -->
-<h1 class="text-primary text-center">Registre de dossier non cote</h1>
+<h2  class="container-fluid">DOSSIERS NON COTES</h2>
+
+<div class="container-fluid">
+    <nav aria-label="breadcrumb " class="first  d-md-flex" >
+         <ol class="breadcrumb indigo lighten-6 first-1 shadow-lg mb-5  ">
+            <li ><a class="black-text active-2" href="{{route('home')}}"><i class="fas fa-fw fa-solid fa-home mr-md-2 mr-1 mb-1"></i><span>Accueil</span></a><i class="fas fa-solid fa-chevron-right ml-md-3 ml-1"></i> </li>
+            <li><a class="black-text active-2" href="{{route('statistique')}}"><span >Chef</span></a><i class="fas fa-solid fa-chevron-right ml-md-3 ml-1"></i></li>
+            <li ><a class="black-text active-2  " href="#">
+                <span >REGISTRES PROPRES\Dossiers non cotés</span></a><i class="fas fa-solid fa-chevron-right ml-md-3 ml-1"></i> </li>
+            <!-- <li class="breadcrumb-item  mr-0 pr-0"><a class="black-text active-1 active-2" href="#"><span >Bread shape</span></a> </li> -->
+        </ol>
+    </nav>
+</div>
+
 <div class="container card shadow">
-    <!-- <h3 >Generer le registre de dossier non cote</h3>
-    <div class="row"> -->
-        <!-- <div class="col-md-7">
-            
-        </div> -->
-        <div class="col-md-5" style="margin: 15px">
+        <div class="container-fluid m-3 d-flex me-0 justify-content-end">
             <a href="{{route('registre.non_cote_pdf',[
                 'nature_dossier'=>$nature_dossier,
                 'arrondissement'=>$arrondissement,
                 'date_less'=>$date_less,
                 'date_more'=>$date_more,
-                ])}}" class="btn btn-primary">Convertir en pdf</a>
+                ])}}" class="btn btn-primary" style="background: linear-gradient(to right, #4bc5f6, #077cab)">Convertir en pdf</a>
         </div>
 
     <div class="table-responsive">
         <table class="table table-striped table-bordered">
-            <thead style="margin: 15px">
+            <thead style="margin: 15px; color: black">
                 <tr>
                     <th >Nom Requerant</th>
                     <th >Nature Dossier</th>
