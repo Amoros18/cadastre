@@ -170,6 +170,17 @@ class DossierController extends Controller
             $Listes = $this->service->searchListe($request);
             $Listes['Listes'] = $Listes['Listes']->where('montant_rattachement','!=',null);
             $Listes['Listes'] = $Listes['Listes']->where('numero_visa','=',null);
+
+            return view ('bag.rattachement.rattachement-liste',[
+                'Listes'=>$Listes['Listes'],
+                'numero_dossier'=>$Listes['numero_dossier'],
+                'nom_requerant'=>$Listes['nom_requerant'],
+                'date_less'=>$Listes['date_less'],
+                'date_more'=>$Listes['date_more'],
+                'arrondissement'=>$Listes['arrondissement'],
+                'nature_dossier'=>$Listes['nature_dossier'],
+                'modifier'=>$modifier,
+            ]);
         }
         else{
             $Listes = $this->service->searchListe($request);
@@ -177,17 +188,19 @@ class DossierController extends Controller
             $Listes['Listes'] = $Listes['Listes']->where('status','!=','ancien');
             //$Listes['Listes'] = $Listes['Listes']->where('numero_dossier','!=',null);
 
+            return view ('bag.rattachement.rattachement-liste-intro',[
+                'Listes'=>$Listes['Listes'],
+                'numero_dossier'=>$Listes['numero_dossier'],
+                'nom_requerant'=>$Listes['nom_requerant'],
+                'date_less'=>$Listes['date_less'],
+                'date_more'=>$Listes['date_more'],
+                'arrondissement'=>$Listes['arrondissement'],
+                'nature_dossier'=>$Listes['nature_dossier'],
+                'modifier'=>$modifier,
+            ]);
+
         }
-        return view ('bag.rattachement.rattachement-liste',[
-            'Listes'=>$Listes['Listes'],
-            'numero_dossier'=>$Listes['numero_dossier'],
-            'nom_requerant'=>$Listes['nom_requerant'],
-            'date_less'=>$Listes['date_less'],
-            'date_more'=>$Listes['date_more'],
-            'arrondissement'=>$Listes['arrondissement'],
-            'nature_dossier'=>$Listes['nature_dossier'],
-            'modifier'=>$modifier,
-        ]);
+       
     }
     public function createRattachement(NouveauDossier $table){
         return view('bag.rattachement.rattachement-create',[
@@ -270,23 +283,36 @@ class DossierController extends Controller
             $Listes = $this->service->searchListe($request);
             $Listes['Listes'] = $Listes['Listes']->where('echelle','!=',null);
             $Listes['Listes'] = $Listes['Listes']->where('numero_visa','=',null);
+
+            return view ('geometre.ccp.ccp-liste',[
+                'Listes'=>$Listes['Listes'],
+                'modifier'=>$modifier,
+                'numero_dossier'=>$Listes['numero_dossier'],
+                'nom_requerant'=>$Listes['nom_requerant'],
+                'date_less'=>$Listes['date_less'],
+                'date_more'=>$Listes['date_more'],
+                'arrondissement'=>$Listes['arrondissement'],
+                'nature_dossier'=>$Listes['nature_dossier'],
+            ]);
         }
         else{
             $Listes = $this->service->searchListe($request);
             $Listes['Listes'] = $Listes['Listes']->where('echelle','=',null);
             $Listes['Listes'] = $Listes['Listes']->where('numero_dossier','!=',null);
             $Listes['Listes'] = $Listes['Listes']->where('status','!=','ancien');
+
+            return view ('geometre.ccp.ccp-liste-intro',[
+                'Listes'=>$Listes['Listes'],
+                'modifier'=>$modifier,
+                'numero_dossier'=>$Listes['numero_dossier'],
+                'nom_requerant'=>$Listes['nom_requerant'],
+                'date_less'=>$Listes['date_less'],
+                'date_more'=>$Listes['date_more'],
+                'arrondissement'=>$Listes['arrondissement'],
+                'nature_dossier'=>$Listes['nature_dossier'],
+            ]);
         }
-        return view ('geometre.ccp.ccp-liste',[
-            'Listes'=>$Listes['Listes'],
-            'modifier'=>$modifier,
-            'numero_dossier'=>$Listes['numero_dossier'],
-            'nom_requerant'=>$Listes['nom_requerant'],
-            'date_less'=>$Listes['date_less'],
-            'date_more'=>$Listes['date_more'],
-            'arrondissement'=>$Listes['arrondissement'],
-            'nature_dossier'=>$Listes['nature_dossier'],
-        ]);
+        
     }
     public function createCcp(NouveauDossier $table){
         return view('geometre.ccp.ccp-create',[
@@ -346,23 +372,36 @@ class DossierController extends Controller
             $Listes = $this->service->searchListe($request);
             $Listes['Listes'] = $Listes['Listes']->where('numero_ccp','!=',null);
             $Listes['Listes'] = $Listes['Listes']->where('numero_visa','=',null);
+
+            return view ('geometre.main.main-courante-liste',[
+                'Listes'=>$Listes['Listes'],
+                'modifier'=>$modifier,
+                'numero_dossier'=>$Listes['numero_dossier'],
+                'nom_requerant'=>$Listes['nom_requerant'],
+                'date_less'=>$Listes['date_less'],
+                'date_more'=>$Listes['date_more'],
+                'arrondissement'=>$Listes['arrondissement'],
+                'nature_dossier'=>$Listes['nature_dossier'],
+            ]);
         }
         else{
             $Listes = $this->service->searchListe($request);
             $Listes['Listes'] = $Listes['Listes']->where('mise_en_valeur','=',null);
             $Listes['Listes'] = $Listes['Listes']->where('status','!=','ancien');
             $Listes['Listes'] = $Listes['Listes']->where('geometre','!=',null);
+
+            return view ('geometre.main.main-courante-liste-intro',[
+                'Listes'=>$Listes['Listes'],
+                'modifier'=>$modifier,
+                'numero_dossier'=>$Listes['numero_dossier'],
+                'nom_requerant'=>$Listes['nom_requerant'],
+                'date_less'=>$Listes['date_less'],
+                'date_more'=>$Listes['date_more'],
+                'arrondissement'=>$Listes['arrondissement'],
+                'nature_dossier'=>$Listes['nature_dossier'],
+            ]);
         }
-        return view ('geometre.main.main-courante-liste',[
-            'Listes'=>$Listes['Listes'],
-            'modifier'=>$modifier,
-            'numero_dossier'=>$Listes['numero_dossier'],
-            'nom_requerant'=>$Listes['nom_requerant'],
-            'date_less'=>$Listes['date_less'],
-            'date_more'=>$Listes['date_more'],
-            'arrondissement'=>$Listes['arrondissement'],
-            'nature_dossier'=>$Listes['nature_dossier'],
-        ]);
+        
     }
     public function createMainCourante(NouveauDossier $table){
         return view('geometre.main.main-courante-create',[
@@ -390,23 +429,36 @@ class DossierController extends Controller
             $Listes = $this->service->searchListe($request);
             $Listes['Listes'] = $Listes['Listes']->where('numero_controle','!=',null);
             $Listes['Listes'] = $Listes['Listes']->where('numero_visa','=',null);
+
+            return view ('bc.controle1.controle1-liste',[
+                'Listes'=>$Listes['Listes'],
+                'modifier'=>$modifier,
+                'numero_dossier'=>$Listes['numero_dossier'],
+                'nom_requerant'=>$Listes['nom_requerant'],
+                'date_less'=>$Listes['date_less'],
+                'date_more'=>$Listes['date_more'],
+                'arrondissement'=>$Listes['arrondissement'],
+                'nature_dossier'=>$Listes['nature_dossier'],
+            ]);
         }
         else{
             $Listes = $this->service->searchListe($request);
             $Listes['Listes'] = $Listes['Listes']->where('numero_controle','=',null);
             $Listes['Listes'] = $Listes['Listes']->where('status','!=','ancien');
             $Listes['Listes'] = $Listes['Listes']->where('geometre','!=',null);
+
+            return view ('bc.controle1.controle1-liste-intro',[
+                'Listes'=>$Listes['Listes'],
+                'modifier'=>$modifier,
+                'numero_dossier'=>$Listes['numero_dossier'],
+                'nom_requerant'=>$Listes['nom_requerant'],
+                'date_less'=>$Listes['date_less'],
+                'date_more'=>$Listes['date_more'],
+                'arrondissement'=>$Listes['arrondissement'],
+                'nature_dossier'=>$Listes['nature_dossier'],
+            ]);
         }
-        return view ('bc.controle1.controle1-liste',[
-            'Listes'=>$Listes['Listes'],
-            'modifier'=>$modifier,
-            'numero_dossier'=>$Listes['numero_dossier'],
-            'nom_requerant'=>$Listes['nom_requerant'],
-            'date_less'=>$Listes['date_less'],
-            'date_more'=>$Listes['date_more'],
-            'arrondissement'=>$Listes['arrondissement'],
-            'nature_dossier'=>$Listes['nature_dossier'],
-        ]);
+        
     }
     public function createControle1(NouveauDossier $table){
         if($table->numero_controle == null){
@@ -455,23 +507,36 @@ class DossierController extends Controller
             $Listes = $this->service->searchListe($request);
             $Listes['Listes'] = $Listes['Listes']->where('controlleur_2','!=',null);
             $Listes['Listes'] = $Listes['Listes']->where('numero_visa','=',null);
+
+            return view ('bc.controle2.controle2-liste',[
+                'Listes'=>$Listes['Listes'],
+                'modifier'=>$modifier,
+                'numero_dossier'=>$Listes['numero_dossier'],
+                'nom_requerant'=>$Listes['nom_requerant'],
+                'date_less'=>$Listes['date_less'],
+                'date_more'=>$Listes['date_more'],
+                'arrondissement'=>$Listes['arrondissement'],
+                'nature_dossier'=>$Listes['nature_dossier'],
+            ]);
         }
         else{
             $Listes = $this->service->searchListe($request);
             $Listes['Listes'] = $Listes['Listes']->where('controlleur_2','=',null);
             $Listes['Listes'] = $Listes['Listes']->where('point','!=',null);
             $Listes['Listes'] = $Listes['Listes']->where('status','!=','ancien');
+
+            return view ('bc.controle2.controle2-liste-intro',[
+                'Listes'=>$Listes['Listes'],
+                'modifier'=>$modifier,
+                'numero_dossier'=>$Listes['numero_dossier'],
+                'nom_requerant'=>$Listes['nom_requerant'],
+                'date_less'=>$Listes['date_less'],
+                'date_more'=>$Listes['date_more'],
+                'arrondissement'=>$Listes['arrondissement'],
+                'nature_dossier'=>$Listes['nature_dossier'],
+            ]);
         }
-        return view ('bc.controle2.controle2-liste',[
-            'Listes'=>$Listes['Listes'],
-            'modifier'=>$modifier,
-            'numero_dossier'=>$Listes['numero_dossier'],
-            'nom_requerant'=>$Listes['nom_requerant'],
-            'date_less'=>$Listes['date_less'],
-            'date_more'=>$Listes['date_more'],
-            'arrondissement'=>$Listes['arrondissement'],
-            'nature_dossier'=>$Listes['nature_dossier'],
-        ]);
+        
     }
     public function createControle2(NouveauDossier $table){
         return view('bc.controle2.controle2-create',[
@@ -506,23 +571,36 @@ class DossierController extends Controller
             $Listes = $this->service->searchListe($request);
             $Listes['Listes'] = $Listes['Listes']->where('numero_mj','!=',null);
             $Listes['Listes'] = $Listes['Listes']->where('numero_visa','=',null);
+
+            return view ('bmj.mj.mj-liste',[
+                'Listes'=>$Listes['Listes'],
+                'modifier'=>$modifier,
+                'numero_dossier'=>$Listes['numero_dossier'],
+                'nom_requerant'=>$Listes['nom_requerant'],
+                'date_less'=>$Listes['date_less'],
+                'date_more'=>$Listes['date_more'],
+                'arrondissement'=>$Listes['arrondissement'],
+                'nature_dossier'=>$Listes['nature_dossier'],
+            ]);
         }
         else{
             $Listes = $this->service->searchListe($request);
             $Listes['Listes'] = $Listes['Listes']->where('numero_mj','=',null);
             $Listes['Listes'] = $Listes['Listes']->where('status','!=','ancien');
             $Listes['Listes'] = $Listes['Listes']->where('numero_controle','!=',null);
+
+            return view ('bmj.mj.mj-liste-intro',[
+                'Listes'=>$Listes['Listes'],
+                'modifier'=>$modifier,
+                'numero_dossier'=>$Listes['numero_dossier'],
+                'nom_requerant'=>$Listes['nom_requerant'],
+                'date_less'=>$Listes['date_less'],
+                'date_more'=>$Listes['date_more'],
+                'arrondissement'=>$Listes['arrondissement'],
+                'nature_dossier'=>$Listes['nature_dossier'],
+            ]);
         }
-        return view ('bmj.mj.mj-liste',[
-            'Listes'=>$Listes['Listes'],
-            'modifier'=>$modifier,
-            'numero_dossier'=>$Listes['numero_dossier'],
-            'nom_requerant'=>$Listes['nom_requerant'],
-            'date_less'=>$Listes['date_less'],
-            'date_more'=>$Listes['date_more'],
-            'arrondissement'=>$Listes['arrondissement'],
-            'nature_dossier'=>$Listes['nature_dossier'],
-        ]);
+        
     }
     public function createMj(NouveauDossier $table){
         return view('bmj.mj.mj-create',[

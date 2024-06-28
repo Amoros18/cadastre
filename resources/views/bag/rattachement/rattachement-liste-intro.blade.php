@@ -1,15 +1,15 @@
 @extends('bag/accueil')
 
-@section('title', 'Transmissions')
+@section('title', 'Rattachement')
 @section('content')
 <!-- @include('search') -->
-<h2  class="container-fluid d-flex ">TRANSMISSION DELEGUE</h2>
+<h2  class="container-fluid d-flex ">REGISTRE RATTACHEMENT</h2>
 <div class="container-fluid d-flex ">
     <nav aria-label="breadcrumb " class="first  d-md-flex" >
          <ol class="breadcrumb indigo lighten-6 first-1 shadow-lg mb-5  ">
             <li ><a class="black-text active-2" href="{{route('home')}}"><i class="fas fa-fw fa-home mr-md-2 mr-1 mb-1"></i><span>Accueil</span></a><i class="fas fa-solid fa-chevron-right ml-md-3 ml-1"></i> </li>
             
-            <li ><a class="black-text active-2  " href="#"><span >TRANSMISSION DOSSIERS\Transmission délégué</span></a><i class="fas fa-solid fa-chevron-right ml-md-3 ml-1"></i> </li>
+            <li ><a class="black-text active-2  " href="#"><span >REGISTRES\Rattachement</span></a><i class="fas fa-solid fa-chevron-right ml-md-3 ml-1"></i> </li>
             <!-- <li class="breadcrumb-item  mr-0 pr-0"><a class="black-text active-1 active-2" href="#"><span >Bread shape</span></a> </li> -->
         </ol>
     </nav>
@@ -21,27 +21,37 @@
     <div class="table-responsive card-body shadow">
     <table id="table" class="table table-hover table-responsible table-striped">
             <thead style="color: black">
-                <th>Numero Dossier</th>
-                <th>Nom requerant</th>
-                <th>nature dossier</th>
-                <th>telephone</th>
-                <th>zone</th>
-                <th>lieu dit</th>
-                <th>quartier</th>
-                <th>date ouverture</th>
-                <th>geometre</th>
-
+                <th>Requerant</th>
+                <th>Nature dossier</th>
+                <th>Téléphone</th>
+                <th>Zone</th>
+                <th>Lieu dit</th>
+                <th>Quartier</th>
+                <th>Mappe</th>
+                <th>Bloc</th>
+                <th>Lot</th>
+                <th>Numero feuille</th>
+                <th>Date ouverture</th>
+                <th>Géometre</th>
             </thead>
             <tbody>
                 @foreach ($Listes as $Liste )
-                    <tr class="table-row" data-href="{{route('transmission.delegue.create',['table'=>$Liste->id])}}">
-                        <td>{{$Liste->numero_dossier}}</td>
+                <tr class="table-row" data-href="@if ($modifier ==1)
+                                {{route('edit.rattachement',['table'=>json_decode(json_encode($Liste->id),true)])}}  
+                            @else
+                                {{route('create.rattachement',['table'=>json_decode(json_encode($Liste->id),true)])}}
+                            @endif
+                            ">
                         <td>{{$Liste->nom_requerant}}</td>
                         <td>{{$Liste->nature_dossier}}</td>
                         <td>{{$Liste->telephone}}</td>
                         <td>{{$Liste->zone}}</td>
                         <td>{{$Liste->lieu_dit}}</td>
                         <td>{{$Liste->quartier}}</td>
+                        <td>{{$Liste->mappe}}</td>
+                        <td>{{$Liste->bloc}}</td>
+                        <td>{{$Liste->lot}}</td>
+                        <td>{{$Liste->numero_feuille}}</td>
                         <td>{{$Liste->date_ouverture}}</td>
                         <td>{{$Liste->geometre}}</td>
 
