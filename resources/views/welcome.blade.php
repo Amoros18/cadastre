@@ -20,7 +20,7 @@
 
             <!-- BAG -->
             <div class="col my-2 mt-md-0">
-                <a class="container rectangle2" id="bag" href="{{route('user.bag')}}">
+                <a class="container rectangle2" id="bag" href="{{route('create.ouverture-dossier')}}">
                     <div class="container-fluid justify-content-center d-flex flex-wrap align-content-center icons8_off">
                         <img src="{{asset('img/Printer.png')}}">
                     </div>
@@ -30,7 +30,7 @@
 
             <!-- BMJ -->
             <div class="col my-2 mt-md-0">
-                <a class="container rectangle2" id="bmj" href="{{route('user.bmj')}}">
+                <a class="container rectangle2" id="bmj" href="{{route('liste.mj')}}">
                     <div class="container-fluid justify-content-center d-flex flex-wrap align-content-center icons8_off">
                         <img src="{{asset('img/Update.png')}}">
                     </div>
@@ -45,7 +45,7 @@
             <div class="col-md"></div>
             <!-- Bureau du controle -->
             <div class="col my-2 mt-md-0">
-                <a class="container p-0 rectangle2" id="bc" href="{{route('user.bc')}}">
+                <a class="container p-0 rectangle2" id="bc" href="{{route('liste.controle1')}}">
                     <div class="container-fluid justify-content-center d-flex flex-wrap align-content-center icons8_off">
                         <img class="" src="{{asset('img/ProtectIcon2.png')}}">
                     </div>
@@ -55,7 +55,7 @@
 
             <!-- Geometre -->
             <div class="col my-2 mt-md-0">
-                <a class="container p-0 rectangle2" id="geometre" href="{{route('user.geometre')}}">
+                <a class="container p-0 rectangle2" id="geometre" href="{{route('liste.ccp-intro')}}">
                     <div class="container-fluid justify-content-center d-flex flex-wrap align-content-center icons8_off">
                         <img class="" src="{{asset('img/tripod.png')}}">
                     </div>
@@ -65,7 +65,7 @@
 
             <!-- Archivages -->
             <div class="col my-2 mt-md-0">
-                <a class="container  p-0 rectangle2 bg-light" id="archive" href="{{route('user.archivage')}}">
+                <a class="container  p-0 rectangle2 bg-light" id="archive" href="{{route('liste.archivage-intro')}}">
                     <div class="container-fluid justify-content-center d-flex flex-wrap align-content-center icons8_off">
                         <img class="" src="{{asset('img/WinrarIcon.png')}}">
                     </div>

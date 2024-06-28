@@ -19,7 +19,11 @@
 
     <!-- Custom styles for this template-->
     <link href="{{asset('css/sb-admin-2.min.css')}}" rel="stylesheet">
+    <link rel="stylesheet" href="{{asset('css/style.css')}}">
 
+    <link rel="stylesheet" href="{{asset('css/dataTables.css')}}" />
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 
 <body id="page-top">
@@ -28,13 +32,11 @@
     <div id="wrapper">
 
         <!-- Sidebar -->
-        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar" style="background: linear-gradient(to top, #4bc5f6, #077cab)">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
-                <div class="sidebar-brand-icon rotate-n-15">
-                    <i class="fas fa-laugh-wink"></i>
-                </div>
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" style="background:" href = "{{route('home')}}">
+                
                 <div class="sidebar-brand-text mx-3">EDJE'L</div>
             </a>
 
@@ -43,27 +45,27 @@
 
             <li class="nav-item">
                 <a class="nav-link" href = "{{route('home')}}">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>Acceuil</span></a>
+                <i class="fas fa-fw fa-solid fa-home"></i>
+                    <span>ACCUEIL</span></a>
             </li>
 
             <li class="nav-item">
                 <a class="nav-link" href = "{{route('statistique')}}">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>Statistiques</span></a>
+                <i class="fas fa-fw fa-solid fa-chart-line"></i>
+                    <span>STATISTIQUES</span></a>
             </li>
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item">
                 <a class="nav-link" href = "{{route('liste.visa')}}">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>Viser un document</span></a>
+                    <i class="fas fa-fw fa-duotone fa-file"></i>
+                    <span>VISER UN DOCUMENT</span></a>
             </li>
 
             <li class="nav-item">
                 <a class="nav-link" href = "{{route('liste.courrier',['modifier'=>0])}}">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>Consulter un courier</span></a>
+                    <i class="fas fa-fw fa-envelope-open"></i>
+                    <span>CONSULTER COURRIER</span></a>
             </li>
 
             <!-- Divider -->
@@ -78,7 +80,7 @@
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
                     aria-expanded="true" aria-controls="collapseTwo">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <i class="fas fa-fw fa-solid fa-users"></i>
                     <span>UTILISATEURS</span>
                 </a>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
@@ -97,7 +99,7 @@
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseDossiers"
                     aria-expanded="true" aria-controls="collapseDossiers">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <i class="fa fa-fw fa-folder-open"></i>
                     <span>DOSSIERS</span>
                 </a>
                 <div id="collapseDossiers" class="collapse" aria-labelledby="headingUtilities"
@@ -118,7 +120,7 @@
              <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsBMJ"
                     aria-expanded="true" aria-controls="collapsBMJ">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <i class="fa fa-fw fa-solid fa-circle-notch"></i>
                     <span>BMJ</span>
                 </a>
                 <div id="collapsBMJ" class="collapse" aria-labelledby="headingUtilities"
@@ -127,7 +129,7 @@
                         <!-- <h6 class="collapse-header">Custom Utilities:</h6> -->
                         <a class="collapse-item" href = "{{route('registre.mj')}}">Mises à jour</a>
                         <a class="collapse-item" href = "{{route('registre.rejet_bmj')}}">Rejets mises à jour</a>
-                        <a class="collapse-item" href = "{{route('liste.mj',['modifier'=>1])}}">Modifier mise à jour</a>
+                        <a class="collapse-item" href = "{{route('liste.mj-intro',['modifier'=>1])}}">Modifier mise à jour</a>
                         <a class="collapse-item" href = "{{route('liste.mj-rejet',['modifier'=>1])}}">Modifier rejet mise à jour</a>
                     </div>
                 </div>
@@ -140,7 +142,7 @@
              <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsBAG"
                     aria-expanded="true" aria-controls="collapsBAG">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <i class="fas fa-fw fa-solid fa-print"></i>
                     <span>BAG</span>
                 </a>
                 <div id="collapsBAG" class="collapse" aria-labelledby="headingUtilities"
@@ -164,7 +166,7 @@
              <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseRPropres"
                     aria-expanded="true" aria-controls="collapseRPropres">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <i class="fas fa-fw fa-book"></i>
                     <span>REGISTRES PROPRES </span>
                 </a>
                 <div id="collapseRPropres" class="collapse" aria-labelledby="headingUtilities"
@@ -189,7 +191,7 @@
              <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseRArchives"
                     aria-expanded="true" aria-controls="collapseRArchives">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <i class="fas fa-fw fa-archive"></i>
                     <span>REGISTRES ARCHIVAGE </span>
                 </a>
                 <div id="collapseRArchives" class="collapse" aria-labelledby="headingUtilities"
@@ -209,7 +211,7 @@
              <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseGeometres"
                     aria-expanded="true" aria-controls="collapseGeometres">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <i class="fas fa-fw fa-stop"></i>
                     <span>GEOMETRES </span>
                 </a>
                 <div id="collapseGeometres" class="collapse" aria-labelledby="headingUtilities"
@@ -219,8 +221,8 @@
                         <a class="collapse-item" href = "{{route('registre.ccp')}}">Registre ccp</a>
                         <a class="collapse-item" href = "{{route('registre.main_courante')}}"> Registre Main Courante</a>
                         <a class="collapse-item" href = "{{route('liste.ccp',['modifier'=>1])}}">Modifier CCP</a>
-                        <a class="collapse-item" href = "{{route('liste.main-courante',['modifier'=>1])}}">Modifier Main Courante </a>
-                        <a class="collapse-item" href = "{{route('liste.sortie-geometre',['modifier'=>1])}}">Modifier sortis géomètres </a>
+                        <a class="collapse-item" href="{{route('liste.main-courante',['modifier'=>1])}}">Modifier Main Courante</a> 
+                        <a class="collapse-item" href = "{{route('liste.sortie-geometre',['modifier'=>1])}}">Modifier sorties géomètres </a>
                         <a class="collapse-item" href = "{{route('liste.points-modif',['modifier'=>1])}}"> Modifier les points</a>
                     </div>
                 </div>
@@ -233,7 +235,7 @@
              <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseContrôle"
                     aria-expanded="true" aria-controls="collapseContrôle">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <i class="fas fa-fw fa-check-double"></i>
                     <span>BUREAU DE CONTROLE </span>
                 </a>
                 <div id="collapseContrôle" class="collapse" aria-labelledby="headingUtilities"
@@ -279,7 +281,7 @@
         @method("delete")
         @csrf
         
-        <button class="btn btn-primary" type="submit">Se deconnecter</button>
+        <button class="btn btn-primary" type="submit" style="background: linear-gradient(to right, #4bc5f6, #077cab)">Se deconnecter</button>
       </form>
  
     @endauth
@@ -331,6 +333,25 @@
 
     <!-- Custom scripts for all pages-->
     <script src="{{asset('js/sb-admin-2.min.js')}}"></script>
+    <script>
+                        $(document).ready(function(){
+                            $(".table-row").click(function(){
+                                window.location=$(this).data("href");
+                            });
+                        });
+                    </script>
+
+<script
+  src="https://code.jquery.com/jquery-3.7.1.min.js"
+  integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+  crossorigin="anonymous"></script>
+
+                    <script src="{{asset('js/dataTables.js')}}"></script>
+                    <script>
+                        $(document).ready( function () {
+                        $('#table').DataTable();
+                        } );
+                    </script>
 
 </body>
 
