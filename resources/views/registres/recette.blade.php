@@ -10,7 +10,7 @@
         <div class="col-md-7">
             <h4>Registre de Recette</h4>
         </div>
-        <div class="col-md-5">
+        <div class="container-fluid m-3 d-flex me-0 justify-content-end">
             <a href="{{route('registre.recette_pdf',[
                 'nature_dossier'=>$nature_dossier,
                 'arrondissement'=>$arrondissement,
