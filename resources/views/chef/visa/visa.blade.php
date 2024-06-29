@@ -1,19 +1,17 @@
-<br><div class="container-fluid">
+<br>
+<div class="container-fluid">
     <div class=" container-fluid card-header shadow" style="background: linear-gradient(to right, #4bc5f6, #077cab)">
-    <h1 class="text-center" style="color: white">
-
-    Informations de visa
-</h1>
+        <h1 class="text-center" style="color: white">
+            Informations de visa
+        </h1>
     </div>
     <div class=" card-body container-fluid shadow">
-
-    <form id="formulaire_ancien_dossier" enctype="multipart/form-data" method="POST">
-        @csrf
-
+        <form id="formulaire_ancien_dossier" enctype="multipart/form-data" method="POST">
+            @csrf
             <div class="row mt-1">
                 <label for="numero_visa" class="label col-md-2 control-label">Numéro Visa:</label>
                 <div class="col-md-5">
-                    <input type="text" name="numero_visa" class="form-control" value="{{old('numero_visa',$table->numero_visa)}}" required>
+                    <input type="text" name="numero_visa" placeholder="Entrez le numero de visa" class="form-control" value="{{old('numero_visa',$table->numero_visa)}}" required>
                     @error("numero_visa")
                         <span class="text-danger" role="alert">
                             <strong>{{$message}}</strong>
@@ -31,15 +29,13 @@
                 </div>
             </div>
 
-
-       <button class="btn btn-success mt-3 w-100" type="submit" >
-            @if($table->numero_visa)
-                Valider
-            @else
-                Enregistrer
-            @endif
+            <button class="btn btn-success mt-3 w-100" type="submit">
+                @if($table->numero_visa)
+                    Valider
+                @else
+                    Enregistrer
+                @endif
             </button>
-
-
-    </form>
-</div></div>
+        </form>
+    </div>
+</div>
