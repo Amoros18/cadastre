@@ -18,7 +18,7 @@
         </div>
         <div class="col-mt-1 action action-div">
             <label for="nom" class="label col-md-4 control-label">Transmission Archivage:</label>
-            <a  href = "{{route('liste.rattachement')}}"> <button class=" action-button" type="edit">Effectuer</button></a>
+            <a  href = "{{route('liste.Rattachement')}}"> <button class=" action-button" type="edit">Effectuer</button></a>
         </div>
     </div>
 

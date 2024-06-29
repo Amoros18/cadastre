@@ -1,14 +1,26 @@
-@extends('base')
+@extends('bag/accueil')
 
 @section('title', 'Transmissions')
 @section('content')
-@include('search')
-<h1 class="text-primary text-center">Selectionner le dossier a Transmettre</h1>
-
-<div class="container">
-    <div class="table-responsive">
-        <table class="table table-hover table-responsible table-striped">
-            <thead>
+<!-- @include('search') -->
+<h2  class="container-fluid d-flex ">TRANSMISSION DELEGUE</h2>
+<div class="container-fluid d-flex ">
+    <nav aria-label="breadcrumb " class="first  d-md-flex" >
+         <ol class="breadcrumb indigo lighten-6 first-1 shadow-lg mb-5  ">
+            <li ><a class="black-text active-2" href="{{route('home')}}"><i class="fas fa-fw fa-home mr-md-2 mr-1 mb-1"></i><span>Accueil</span></a><i class="fas fa-solid fa-chevron-right ml-md-3 ml-1"></i> </li>
+            
+            <li ><a class="black-text active-2  " href="#"><span >TRANSMISSION DOSSIERS\Transmission délégué</span></a><i class="fas fa-solid fa-chevron-right ml-md-3 ml-1"></i> </li>
+            <!-- <li class="breadcrumb-item  mr-0 pr-0"><a class="black-text active-1 active-2" href="#"><span >Bread shape</span></a> </li> -->
+        </ol>
+    </nav>
+</div>
+<div class="container-fluid">
+    <div class="container-fluid card-header shadow" style="background: linear-gradient(to right, #7F00FF, #E100FF)">
+        <h1 class=" text-center" style="color: white">Choisir un dossier</h1>
+    </div>
+    <div class="table-responsive card-body shadow">
+    <table id="table" class="table table-hover table-responsible table-striped">
+            <thead style="color: black">
                 <th>Numero Dossier</th>
                 <th>Nom requerant</th>
                 <th>nature dossier</th>
@@ -19,11 +31,10 @@
                 <th>date ouverture</th>
                 <th>geometre</th>
 
-                <th>Modifier</th>
             </thead>
             <tbody>
                 @foreach ($Listes as $Liste )
-                    <tr>
+                    <tr class="table-row" data-href="{{route('transmission.delegue.create',['table'=>$Liste->id])}}">
                         <td>{{$Liste->numero_dossier}}</td>
                         <td>{{$Liste->nom_requerant}}</td>
                         <td>{{$Liste->nature_dossier}}</td>
@@ -34,8 +45,6 @@
                         <td>{{$Liste->date_ouverture}}</td>
                         <td>{{$Liste->geometre}}</td>
 
-                        <td><a  href = "{{route('transmission.delegue.create',['table'=>$Liste->id])}} ">
-                            <button type="edit">Enregistrer</button></a></td>
                     </tr>
                 @endforeach
             </tbody>

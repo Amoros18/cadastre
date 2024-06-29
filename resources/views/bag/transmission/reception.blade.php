@@ -1,10 +1,10 @@
-@extends('base')
+@extends('bag/accueil')
 
 @section('title', 'Transmission')
 
 @section('content')
 
-<div class="container d-flex">
+<div class="container-fluid card shadow">
     <div class="row">
         <div class="col-mt-1 action action-div">
             <label for="nom" class="label col-md-4 control-label">Reception Delegue:</label>

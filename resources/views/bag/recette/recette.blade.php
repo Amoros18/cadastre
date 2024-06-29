@@ -1,52 +1,34 @@
+<br><div class="container-fluid card">
+    <div id= "rattach" class=" container-fluid card-header shadow">
+    <h1 class="text-center" style="color: white">Informations de recette</h1>
+    </div>
 
-<h1 class="text-primary text-center">
-    @if ($table->montant_recette)
-        Modifier Les Informations Du Dossier
-    @else
-        Enter Les Informations Relatives Au Dossier
-    @endif
-</h1>
-
-<div class="container-fluid card shadow">
+<div class="container-fluid card-body shadow">
     <form id="formulaire_ancien_dossier" enctype="multipart/form-data" method="POST">
         @csrf
-
-        <div class="row">
-            <div class="col">
-                <h5 class="text-center">Entrer les informations du dossier</h5>
-            </div>
-        </div>
-
-        <div class="row mt-3">
-            <div class="bg-primary">
-                <h5 class="text-center">Information de la recette</h5>
-            </div>
+<div>
             @if ($nouveau_dossier_id)
-            <div class="row mt-1">
-                <label for="nouveau_dossier_id" class="label col-md-2 control-label">ID du dossier:</label>
-                <div class="col-md-10">
+                <label for="nouveau_dossier_id" class="control-label">ID du dossier:</label>
                     <input type="text" name="nouveau_dossier_id" readonly  class="form-control" value="{{old('nouveau_dossier_id',$nouveau_dossier_id)}}" readonly>
                 </div>
-            </div>
+
             @else
-            <div class="row mt-1">
-                <label for="nouveau_dossier_id" class="label col-md-2 control-label">Numero de dossier:</label>
-                <div class="col-md-10">
+            <div>
+                <label for="nouveau_dossier_id" class="control-label">Numero de dossier:</label>
                     <input type="text" name="nouveau_dossier_id" readonly class="form-control" value="{{old('nouveau_dossier_id',$quittance->nouveau_dossier_id)}}">
                     @error("nouveau_dossier_id")
                         <span class="text-danger" role="alert">
                             <strong>{{$message}}</strong>
                         </span>
                     @enderror
-                </div>
             </div>
             @endif
-            <div class="row mt-1">
-                <div class="row mt-1">
+            
+                
                     @if ($table->zone == 'zone urbaine')
-                    <label for="superficie_recette" class="label col-md-2 control-label">Superficie Recette en m2:</label>
-                    <div class="col-md-3">
-                        <select name="superficie_recette" id="zone"  class="form-select">
+                    <label for="superficie_recette" class="control-label">Superficie Recette en m2:</label>
+                    
+                        <select name="superficie_recette" id="zone"  class="form-control">
                             <option selected>{{old('superficie_recette',$quittance->superficie_recette)}}</option>
                             <option>Sup <= 5000m2</option>
                             <option>Sup >= 5000m2</option>
@@ -56,11 +38,10 @@
                                 <strong>{{$message}}</strong>
                             </span>
                         @enderror
-                    </div>
+                    
                     @elseif ($table->zone == 'zone urbaine')
-                    <label for="superficie_recette" class="label col-md-2 control-label">Superficie Recette en m2:</label>
-                    <div class="col-md-3">
-                        <select name="superficie_recette" id="zone"  class="form-select">
+                    <label for="superficie_recette" class="control-label">Superficie Recette en m2:</label>
+                        <select name="superficie_recette" id="zone"  class="form-control">
                             <option selected>{{old('superficie_recette',$quittance->superficie_recette)}}</option>
                             <option>Sup <= 5000m2</option>
                             <option>5000m2 <= sup <= 5ha</option>
@@ -72,11 +53,9 @@
                                 <strong>{{$message}}</strong>
                             </span>
                         @enderror
-                    </div>
                     @else
-                    <label for="superficie_recette" class="label col-md-2 control-label">Superficie Recette en m2:</label>
-                    <div class="col-md-3">
-                        <select name="superficie_recette" id="zone"  class="form-select">
+                    <label for="superficie_recette" class="control-label">Superficie Recette en m2:</label>
+                        <select name="superficie_recette" id="zone"  class="form-control">
                             <option selected>{{old('superficie_recette',$quittance->superficie_recette)}}</option>
                             <option>Sup <= 5000m2</option>
                             <option>Sup >= 5000m2</option>
@@ -89,81 +68,69 @@
                                 <strong>{{$message}}</strong>
                             </span>
                         @enderror
-                    </div>
+ 
                     @endif
 
-                    <label for="montant_recette" class="label col-md-1 control-label">Montant Recette:</label>
-                    <div class="col-md-2">
+                    <label for="montant_recette" class="control-label">Montant Recette:</label>
                         <input type="text" name="montant_recette" class="form-control" value="{{old('montant_recette',$quittance->montant_recette)}}">
                         @error("montant_recette")
                             <span class="text-danger" role="alert">
                                 <strong>{{$message}}</strong>
                             </span>
                         @enderror
-                    </div>
-                    <label for="cumule" class="label col-md-1 control-label">Cumule:</label>
-                    <div class="col-md-3">
+                    <label for="cumule" class="control-label">Cumule:</label>
                         <input type="text" name="cumule" class="form-control" value="{{old('cumule',$quittance->cumule)}}">
                         @error("cumule")
                             <span class="text-danger" role="alert">
                                 <strong>{{$message}}</strong>
                             </span>
                         @enderror
-                    </div>
-                </div>
 
-                <div class="row mt-1">
-                    <label for="date_cession" class="label col-md-2 control-label">Date Cession:</label>
-                    <div class="col-md-3">
+
+
+                    <label for="date_cession" class="control-label">Date Cession:</label>
                         <input type="date" name="date_cession" class="form-control" value="{{old('date_cession',$quittance->date_cession)}}">
                         @error("date_cession")
                             <span class="text-danger" role="alert">
                                 <strong>{{$message}}</strong>
                             </span>
                         @enderror    
-                    </div>
-                    <label for="montant_recette" class="label col-md-1 control-label">Numero Quittance:</label>
-                    <div class="col-md-2">
+                    <label for="montant_recette" class="control-label">Numero Quittance:</label>
                         <input type="text" name="numero_quittance" class="form-control" value="{{old('numero_quittance',$quittance->numero_quittance)}}">
                         @error("numero_quittance")
                             <span class="text-danger" role="alert">
                                 <strong>{{$message}}</strong>
                             </span>
                         @enderror
-                    </div>
-                    <label for="date_quittance" class="label col-md-1 control-label">Date Quittance:</label>
-                    <div class="col-md-3">
+                    <label for="date_quittance" class="control-label">Date Quittance:</label>
+                   
                         <input type="date" name="date_quittance" class="form-control" value="{{old('date_quittance',$quittance->date_quittance)}}">
                         @error("date_quittance")
                             <span class="text-danger" role="alert">
                                 <strong>{{$message}}</strong>
                             </span>
                         @enderror
-                    </div>
-                </div>
+       
+                
 
-                <div class="row mt-1">
-                    <label for="observation_recette" class="label col-md-2 control-label">Observation Recette:</label>
-                    <div class="col-md-10">
+   
+                    <label for="observation_recette" class="control-label">Observation Recette:</label>
                         <input type="text" name="observation_recette" class="form-control" value="{{old('observation_recette',$quittance->observation_recette)}}">
                         @error("observation_recette")
                             <span class="text-danger" role="alert">
                                 <strong>{{$message}}</strong>
                             </span>
                         @enderror
-                    </div>
-                </div>
 
-            </div>
-        </div>
+
         
-        <center class="mt-1"><button class="btn btn-primary me-2" type="submit" >
+        <button class="btn btn-success mt-3 w-100" type="submit" >
             @if($table->montant_recette)
                 Valider
             @else
                 Enregistrer
             @endif
-            </button > <input type="reset" class="btn btn-primary" value="Annuler"><br><br></center>
-        <small class="text-left">creat by Amoros </small>
+            </button>
+                   
     </form>
-</div>
+</div></div>

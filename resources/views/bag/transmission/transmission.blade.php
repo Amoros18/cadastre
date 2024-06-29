@@ -1,25 +1,14 @@
-<h1 class="text-primary text-center">
-    @if ($table->motif)
-        Modifier Les Informations De Transmission
-    @else
-        Enter Les Informations Relatives A La Transmission
-    @endif
-</h1>
+<br><div class="container-fluid card">
+    <div id= "rattach" class=" container-fluid card-header shadow">
+    <h1 class="text-center" style="color: white">Informations de transmission</h1>
+    </div>
 
-<div class="container-fluid">
+<div class="container-fluid card-body shadow">
     <form id="formulaire_ancien_dossier" enctype="multipart/form-data" method="POST">
         @csrf
         
-        <div class="row">
-            <div class="col">
-                <h5 class="text-center">Entrer les informations de transmissionr</h5>
-            </div>
-        </div>
-
-        <div class="row mt-3">
-            <div class="bg-primary">
-                <h5 class="text-center">Information De Transmission</h5>
-            </div>
+        <div >
+           
             @if ($nouveau_dossier_id)
             <div class="row mt-1">
                 <label for="numero_dossier" class="label col-md-2 control-label">ID du dossier:</label>
@@ -93,14 +82,13 @@
         </div>
 
 
-        <center class="mt-1"><button class="btn btn-primary me-2" type="submit" >
+        <center class="mt-1"><button class="btn btn-success mt-3 w-100" type="submit" >
             @if($table->motif)
-                Modifier
+                Valider
             @else
                 Enregistrer
             @endif
-            </button > <input type="reset" class="btn btn-primary" value="Annuler"><br><br></center>
-        <small class="text-left">creat by Amoros </small>
+         </center>
 
     </form>
-</div>
+</div></div>

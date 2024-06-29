@@ -1,19 +1,15 @@
 
-<h1 class="text-primary text-center"> @if($table->id)
-                        Modification d'un utilisateur
-                    @else
-                    Ajout d'un utilisateur
-                    @endif
-                </h1>
-<div class="card shadow" style="margin-left:200px; margin-right:200px;" >
-    <div class="card-body">
+    <div class="container-fluid">
+    <div class=" container-fluid card-header shadow" style="background: linear-gradient(to right, #4bc5f6, #077cab)">
+        <h1 class="text-center" style="color: white"> Informations de l'utilisateur</h1>
+    </div>
+    <div class=" card-body shadow">
         <form action="" method="POST" class="vstack gap 3 text-black">
             @csrf
-            
 
             <div class="form-group">
                 <label for="name" class="control-label" style="color: black">Nom:</label>
-                <input type="text" name="name" class="form-control " value="{{old('name',$table->name)}}" required>
+                <input type="text" name="name" class="form-control " value="{{old('name',$table->name)}}" required placeholder="Entrez votre nom">
                 @error('name')
                     <span class="text-danger" role="alert">
                         <strong>{{$message}}</strong>
@@ -23,7 +19,7 @@
 
             <div class="form-group">
                 <label for="bureau" style="color: black">Bureau occupé:</label>
-                    <select class="form-control " name="bureau" id="bureau"  class="form-select" required>
+                    <select class="form-control " name="bureau" id="bureau"  class="form-select" required placeholder="Sélectionner votre bureau">
                         <option selected>{{old('name',$table->name)}}</option>
                         <option>Bureau des affaires generales</option>
                         <option>Bureau de contrôle</option>
@@ -40,7 +36,7 @@
 
             <div class="form-group">
                 <label for="email" class="control-label" style="color: black">Email:</label>
-                <input type="email" name="email" class="form-control " required>
+                <input type="email" name="email" class="form-control " required placeholder="Entrez votre adresse mail">
                 @error('email')
                     <span class="text-danger" role="alert">
                         <strong>{{$message}}</strong>
@@ -50,7 +46,7 @@
 
             <div class="form-group">
                 <label for="password" class="control-label" style="color: black">Mot de passe:</label>
-                <input type="password" name="password" class="form-control " required>
+                <input type="password" name="password" class="form-control " required placeholder="Entrez votre mot de passe">
                 @error('password')
                     <span class="text-danger" role="alert">
                         <span class="text-danger" role="alert">
