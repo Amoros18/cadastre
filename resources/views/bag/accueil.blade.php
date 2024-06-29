@@ -61,6 +61,11 @@
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>INSERER DECISION</span></a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link"  href = "{{route('create.courrier')}}">
+                    <i class="fas fa-fw fa-envelope"></i>
+                    <span>INSERER COURRIER</span></a>
+            </li>
 
             <!-- Divider -->
             <hr class="sidebar-divider">
