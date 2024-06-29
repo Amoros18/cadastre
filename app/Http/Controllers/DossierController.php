@@ -17,6 +17,7 @@ use App\Models\AncienData;
 use App\Models\Archivage;
 use App\Models\Decisions;
 use App\Models\NouveauDossier;
+use App\Models\Natures;
 use App\Models\Points;
 use App\Models\RejetControlle;
 use App\Models\RejetMj;
@@ -39,25 +40,39 @@ class DossierController extends Controller
     // ouverture de dossier
     public function createOuvertureDossier(){
         $table = new NouveauDossier();
-        return view('bag.ouverture.ouverture-dossier-create',['table'=>$table]);
+        $decision = Decisions::all('id', 'numero_decision');
+        $nature = Natures::all();
+        return view('bag.ouverture.ouverture-dossier-create',[
+            'table'=>$table, 
+            'decisions' => $decision,
+            'natures' => $nature,
+        ]);
     }
+
     public function create_OuvertureDossier(OuvertueDossierRequest $request){
         $table = NouveauDossier::create($request->validated());
-        $decision = Decisions::get();
+        // $decision = Decisions::get();
         $table->status = 'nouveau';
         $table->save();        
         return redirect()->route('create.ouverture-dossier',['table'=>$table])->with('success',"Enregistrement effectuer avec succes");
     }
+
     public function editOuvertureDossier(NouveauDossier $table){
+        $decision = Decisions::get();
+        $nature = Natures::all();
+
         return view('bag.ouverture.ouverture-dossier-edit',[
-            'table' => $table
+            'table' => $table,
+            'decisions' => $decision,
+            'natures' => $nature
         ]);
     }
+
     public function edit_OuvertureDossier(NouveauDossier $table, OuvertueDossierRequest $request){
-      
         $table->update($request->validated());
         return redirect()->route('edit.ouverture-dossier',['table'=>$table->id])->with('success',"Enregistrement effectuer avec succes");
     }
+
     public function listOuvertureDossier(Request $request){
         $modifier = $request->input('modifier');
         if($modifier==1){
@@ -230,7 +245,7 @@ class DossierController extends Controller
     }
     public function create_Affectation(NouveauDossier $table,Request $request ){
         $validated = $request->validate([
-            'numero_dossier'=>'string|required',
+            'numero_dossier'=>'string|required|unique:nouveau_dossiers',
         ]);
         $numero_dossier = $validated['numero_dossier'];
         $table->update([
@@ -846,5 +861,15 @@ class DossierController extends Controller
 
     public function position(){
         
+    }
+
+    //Recherche dossier
+    public function rechercherDossier(Request $request){
+        if($request->recherche){
+            $dossier = NouveauDossier::where('nom_requerant', 'like', '%'.$request->nom_requerant.'%')->get();
+            return view('recherche', ['dossiers' => $dossier]);
+        } else {
+            return view('recherche');
+        }
     }
 }

@@ -42,7 +42,7 @@
             <div class="row mt-1">
                 <label for="controlleur_2" class="control-label">Nom Contrôleur 2:</label>
                 <div class="col-md-5">
-                    <input type="text" name="controlleur_2" class="form-control" value="{{old('controlleur_2',$table->controlleur_2)}}">
+                    <input type="text" name="controlleur_2" required class="form-control" value="{{old('controlleur_2',$table->controlleur_2)}}">
                     @error("controlleur_2")
                         <span class="text-danger" role="alert">
                             <strong>{{$message}}</strong>

@@ -37,6 +37,11 @@
                 @foreach ($Listes as $Liste )
                     <tr class="table-row" data-href="{{route('visualiser.dossier',['table'=>json_decode(json_encode($Liste->id),true)])}}">
                         <td>{{$Liste->nom_requerant}}</td>
+                        @if(empty($Liste->sexe_requerant))
+                            <td>Non defini</td>
+                        @else
+                            <td>{{$Liste->sexe_requerant}}</td>
+                        @endif
                         <td>{{$Liste->nature_dossier}}</td>
                         <td>{{$Liste->telephone}}</td>
                         <td>{{$Liste->zone}}</td>

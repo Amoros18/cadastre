@@ -38,7 +38,7 @@
             <div class="row mt-1">
                 <label for="date_transmission" class="label col-md-2 control-label">Date Transmission:</label>
                 <div class="col-md-3">
-                    <input type="date" name="date_transmission" class="form-control" value="{{old('date_transmission',$transmission->date_transmission)}}">
+                    <input type="date" name="date_transmission" required class="form-control" value="{{old('date_transmission',$transmission->date_transmission)}}">
                 </div>
                 @error("date_transmission")
                     <span class="text-danger" role="alert">
@@ -47,7 +47,7 @@
                  @enderror
                 <label for="statut" class="label col-md-1 control-label">Statut:</label>
                 <div class="col-md-2">
-                    <select name="statut" id="">
+                    <select name="statut" id="" required>
                         <option value="{{old('statut',$transmission->statut)}}">{{old('statut',$transmission->statut)}}</option>
                         <option value="ENVOYER">ENVOYER</option>
                         <option value="RECUPERER">RECUPERER</option>
@@ -71,7 +71,7 @@
             <div class="row mt-1">
                 <label for="motif" class="label col-md-2 control-label">motif:</label>
                 <div class="col-md-10">
-                    <input type="text" name="motif" class="form-control" value="{{old('motif',$transmission->motif)}}">
+                    <input type="text" name="motif" required class="form-control" value="{{old('motif',$transmission->motif)}}">
                 </div>
                 @error("motif")
                     <span class="text-danger" role="alert">

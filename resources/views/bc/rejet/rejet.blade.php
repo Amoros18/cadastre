@@ -10,7 +10,7 @@
             <div class="row mt-1">
                 <label for="numero_controle" class="label col-md-2 control-label">Motif de rejet:</label>
                 <div class="col-md-10">
-                    <input type="text" name="motif" class="form-control" value="{{old('motif',$rejet->motif)}}">
+                    <input type="text" required name="motif" class="form-control" value="{{old('motif',$rejet->motif)}}">
                     @error("motif")
                         <span class="text-danger" role="alert">
                             <strong>{{$message}}</strong>
@@ -22,7 +22,7 @@
             <div class="row mt-1">
                 <label for="controlleur_1" class="label col-md-2 control-label">Date Rejet:</label>
                 <div class="col-md-5">
-                    <input type="date" name="date_rejet" class="form-control" value="{{old('date_rejet',$rejet->date_rejet)}}">
+                    <input type="date" name="date_rejet" required class="form-control" value="{{old('date_rejet',$rejet->date_rejet)}}">
                     @error("date_rejet")
                         <span class="text-danger" role="alert">
                             <strong>{{$message}}</strong>

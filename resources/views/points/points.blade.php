@@ -58,7 +58,7 @@
             <div class="row mt-1">
                 <label for="date_reception" class="label col-md-2 control-label">Longitude x:{{$i+1}} </label>
                 <div class="col-md-4">
-                    <input type="texte" name="longitude{{$i}}" class="form-control" value="{{old('longitude'.$i.'',$points->get($i)->longitude)}}">
+                    <input type="number" name="longitude{{$i}}" class="form-control" value="{{old('longitude'.$i.'',$points->get($i)->longitude)}}">
                 </div>
                 @error('longitude'.$i)
                     <span class="text-danger" role="alert">
@@ -67,7 +67,7 @@
                  @enderror
                 <label for="latitude1" class="label col-md-2 control-label">Latitude y:{{$i+1}}</label>
                 <div class="col-md-4">
-                    <input type="text" name="latitude{{$i}}" class="form-control" value="{{old('latitude'.$i.'',$points->get($i)->latitude)}}">
+                    <input type="number" name="latitude{{$i}}" class="form-control" value="{{old('latitude'.$i.'',$points->get($i)->latitude)}}">
                 </div>
                 @error('latitude'.$i)
                     <span class="text-danger" role="alert">
@@ -80,7 +80,7 @@
             <div class="row mt-1">
                 <label for="date_reception" class="label col-md-2 control-label">Longitude x:{{$i+1}} </label>
                 <div class="col-md-4">
-                    <input type="texte" name="longitude{{$i}}" class="form-control" value="{{old('longitude'.$i.'')}}">
+                    <input type="number" name="longitude{{$i}}" class="form-control" value="{{old('longitude'.$i.'')}}">
                 </div>
                 @error('longitude'.$i)
                     <span class="text-danger" role="alert">
@@ -89,7 +89,7 @@
                  @enderror
                 <label for="latitude1" class="label col-md-2 control-label">Latitude y:{{$i+1}}</label>
                 <div class="col-md-4">
-                    <input type="text" name="latitude{{$i}}" class="form-control" value="{{old('latitude'.$i.'')}}">
+                    <input type="number" name="latitude{{$i}}" class="form-control" value="{{old('latitude'.$i.'')}}">
                 </div>
                 @error('latitude'.$i)
                     <span class="text-danger" role="alert">

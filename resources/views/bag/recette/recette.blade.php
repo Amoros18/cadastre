@@ -41,7 +41,7 @@
                     
                     @elseif ($table->zone == 'zone urbaine')
                     <label for="superficie_recette" class="control-label">Superficie Recette en m2:</label>
-                        <select name="superficie_recette" id="zone"  class="form-control">
+                        <select name="superficie_recette" required id="zone"  class="form-control">
                             <option selected>{{old('superficie_recette',$quittance->superficie_recette)}}</option>
                             <option>Sup <= 5000m2</option>
                             <option>5000m2 <= sup <= 5ha</option>
@@ -55,7 +55,7 @@
                         @enderror
                     @else
                     <label for="superficie_recette" class="control-label">Superficie Recette en m2:</label>
-                        <select name="superficie_recette" id="zone"  class="form-control">
+                        <select name="superficie_recette" required id="zone"  class="form-control">
                             <option selected>{{old('superficie_recette',$quittance->superficie_recette)}}</option>
                             <option>Sup <= 5000m2</option>
                             <option>Sup >= 5000m2</option>
@@ -72,7 +72,7 @@
                     @endif
 
                     <label for="montant_recette" class="control-label">Montant Recette:</label>
-                        <input type="text" name="montant_recette" class="form-control" value="{{old('montant_recette',$quittance->montant_recette)}}">
+                        <input type="text" required name="montant_recette" class="form-control" value="{{old('montant_recette',$quittance->montant_recette)}}">
                         @error("montant_recette")
                             <span class="text-danger" role="alert">
                                 <strong>{{$message}}</strong>
@@ -96,7 +96,7 @@
                             </span>
                         @enderror    
                     <label for="montant_recette" class="control-label">Numero Quittance:</label>
-                        <input type="text" name="numero_quittance" class="form-control" value="{{old('numero_quittance',$quittance->numero_quittance)}}">
+                        <input type="text" name="numero_quittance" required class="form-control" value="{{old('numero_quittance',$quittance->numero_quittance)}}">
                         @error("numero_quittance")
                             <span class="text-danger" role="alert">
                                 <strong>{{$message}}</strong>
@@ -104,7 +104,7 @@
                         @enderror
                     <label for="date_quittance" class="control-label">Date Quittance:</label>
                    
-                        <input type="date" name="date_quittance" class="form-control" value="{{old('date_quittance',$quittance->date_quittance)}}">
+                        <input type="date" name="date_quittance" required class="form-control" value="{{old('date_quittance',$quittance->date_quittance)}}">
                         @error("date_quittance")
                             <span class="text-danger" role="alert">
                                 <strong>{{$message}}</strong>

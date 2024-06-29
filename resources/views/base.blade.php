@@ -12,6 +12,7 @@
     <link rel="stylesheet" type="text/css" href="{{asset('base.css')}}">
     <script defer src="{{asset('modal.js')}}"></script>
     <script defer src="{{asset('base.js')}}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 </head>
 <header>

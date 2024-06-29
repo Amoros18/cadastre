@@ -22,7 +22,7 @@ class DecisionRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'numero_decision'=>'required',
+            'numero_decision'=>'required|unique:decisions',
             'date_decision'=>'required',
         ];
     }

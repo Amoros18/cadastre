@@ -199,7 +199,7 @@
                     <input type="text" name="observation_recette" class="form-control" value="{{old('observation_recette',$table->observation_recette)}}">
                 </div>
 
-            </div>
+            <!-- </div> -->
         </div>
         <div>
             

@@ -1,6 +1,6 @@
 @extends('chef/accueil')
 
-@section('title', 'Statistique')
+@section('title', 'Statistiques')
 
 @section('content')
 <script src="{{asset('javascript\chart.js')}}"></script>

@@ -14,6 +14,7 @@ class NouveauDossier extends Model
         'numero_ouverture',
         'numero_dossier',
         'nom_requerant',
+        'sexe_requerant',
         'telephone',
         'nature_dossier',
         'arrondissement',
@@ -60,5 +61,6 @@ class NouveauDossier extends Model
         'avis_mj',
         'numero_visa',
         'date_visa',
+        'numero_decision',
     ];
 }

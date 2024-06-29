@@ -8,6 +8,7 @@ use App\Models\NouveauDossier;
 use App\Models\RejetControlle;
 use App\Models\RejetMj;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\DB;
 
 class RejetController extends Controller
@@ -186,7 +187,11 @@ class RejetController extends Controller
         ]);
     }
     public function create_RejetMj(RejetRequest $request){
-        $table = RejetMj::create($request->validated());
+        $table = RejetMj::create($request->validate([
+            'numero_dossier'=>['string', 'required', Rule::exists('nouveau_dossiers', 'numero_dossier')],
+            'motif'=>'string|required',
+            'date_rejet'=>'nullable|required'
+        ]));
         $table->etat = 'Non traiter';
         $table->save();
         return redirect()->route('create.mj-rejet',['numero_dossier'=>$table->numero_dossier])->with('success',"Enregistrement effectuer avec succes");

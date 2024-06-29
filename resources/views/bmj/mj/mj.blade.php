@@ -19,7 +19,7 @@
                 </div>
                 <label for="numero_mj" class="label col-md-2 control-label">Code Mise A Jour:</label>
                 <div class="col-md-3">
-                    <input type="text" name="numero_mj" class="form-control" value="{{old('numero_mj',$table->numero_mj)}}">
+                    <input type="text" name="numero_mj" required class="form-control" value="{{old('numero_mj',$table->numero_mj)}}">
                     @error("numero_mj")
                         <span class="text-danger" role="alert">
                             <strong>{{$message}}</strong>
@@ -31,7 +31,7 @@
             <div class="row mt-1">
                 <label for="avis_mj" class="label col-md-2 control-label">Avis du verificateur:</label>
                 <div class="col-md-10">
-                    <input type="text" name="avis_mj" class="form-control" value="{{old('avis_mj',$table->avis_mj)}}">
+                    <input type="text" name="avis_mj" required class="form-control" value="{{old('avis_mj',$table->avis_mj)}}">
                     @error("avis_mj")
                         <span class="text-danger" role="alert">
                             <strong>{{$message}}</strong>

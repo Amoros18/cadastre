@@ -32,6 +32,7 @@ use App\Http\Controllers\Statistique;
 use App\Http\Controllers\StatistiqueController;
 use App\Http\Controllers\TransmissionController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\NatureController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -120,6 +121,9 @@ Route::prefix('liste/')->middleware('auth')->name('liste.')->group(function(){
     Route::post('/courrier',[CourrierController::class,'listCourrier']);
     Route::get('/decision',[DecisionController::class,'listDecision'])->name('decision');
     Route::post('/decision',[DecisionController::class,'listDecision']);
+    Route::get('/recherche',[DossierController::class,'rechercherDossier'])->name('recherche');
+    Route::post('/recherche',[DossierController::class,'rechercherDossier']);
+    Route::get('/nature',[NatureController::class,'listNature'])->name('nature');
 
 });
 
@@ -164,6 +168,8 @@ Route::prefix('create/')->middleware('auth')->name('create.')->group(function(){
     Route::post('/courrier',[CourrierController::class,'create_Courrier']);
     Route::get('/decision',[DecisionController::class,'createDecision'])->name('decision');
     Route::post('/decision',[DecisionController::class,'create_Decision']);
+    Route::get('/nature',[NatureController::class,'createNature'])->name('nature');
+    Route::post('/nature',[NatureController::class,'create_Nature'])->name('nature');
 
 
 
@@ -180,6 +186,7 @@ Route::prefix('create/')->middleware('auth')->name('create.')->group(function(){
 });
 
 Route::prefix('edit/')->middleware('auth')->name('edit.')->group(function(){
+    Route::get('/user/{table}',[UserController::class, 'editUser'])->name('user')->middleware('authChef');
     Route::get('/user/{table}',[UserController::class, 'editUser'])->name('user')->middleware('authChef');
     Route::post('/user/{table}',[UserController::class, 'edit_User']);
     Route::get('/ancien-dossier/{table}',[AncienDossierController::class,'editAncienDossier'])->name('ancien-dossier');
@@ -220,7 +227,8 @@ Route::prefix('edit/')->middleware('auth')->name('edit.')->group(function(){
     Route::post('/courrier/{table}',[CourrierController::class,'edit_Courrier']);
     Route::get('/decision/{table}',[DecisionController::class,'editDecision'])->name('decision');
     Route::post('/decision/{table}',[DecisionController::class,'edit_Decision']);
-
+    Route::get('/nature/{table}',[NatureController::class,'editNature'])->name('nature');
+    Route::post('/nature/{table}',[NatureController::class,'edit_Nature']);
 
     Route::prefix('employer/')->name('employer.')->group(function(){
         Route::get('geometre/{table}',[EmployerController::class,'editGeometre'])->name('geometre');
@@ -314,6 +322,12 @@ Route::prefix('delete')->name('delete.')->middleware('auth')->group(function(){
 });
 Route::get('statistique',[StatistiqueController::class,'statistique'])->middleware('auth')->name('statistique');
 Route::post('statistique',[StatistiqueController::class,'statistique']);
+
+Route::prefix('stats/')->middleware('auth')->name('stats.')->group(function(){
+    Route::get('general',[StatistiqueController::class,'general'])->name('general');
+    Route::post('general',[StatistiqueController::class,'general']);
+    Route::get('cotation', [StatistiqueController::class, 'cotation'])->name('cotation');
+});
 
 Route::get('lien-map',[PointController::class,'lienGoogleMap'])->name('lien-google-map');
 

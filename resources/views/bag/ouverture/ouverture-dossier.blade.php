@@ -19,19 +19,46 @@
                         <strong>{{$message}}</strong>
                     </span>
                 @enderror
+            </div>
         </div>
-        <div class="form-group">
-            <label for="prenom" class="control-label" style="color: black">Numero_decision:</label>
-            <input type="text" name="numero_decision" class="form-control" value="{{old('numero_decision',$table->numero_decision)}}" placeholder="Entrez le numéro de décision">
+
+        <div class="row mt-1">
+            <label for="sexe_requerant" class="label col-md-2 control-label">Sexe requerant:</label>
+            <div class="col-md-10">
+                <select name="sexe_requerant" id="sexe_requerant" class="form-select" required>
+                    <option >{{old('sexe_requerant',$table->sexe_requerant)}}</option>
+                    <option value="Homme">Homme</option>
+                    <option value="Femme">Femme</option>
+                    <option value="Mixte">Collectif</option>
+                    <option value="Personne Morale">Personne Morale</option>
+                </select>
+                @error("sexe_requerant")
+                    <span class="text-danger" role="alert">
+                        <strong>{{$message}}</strong>
+                    </span>
+                @enderror
+            </div>
+        </div>
+
+        <div class="row mt-1">
+            <label for="prenom" class="label col-md-2 control-label">Numero_decision:</label>
+            <div class="col-md-10">
+                <select name="numero_decision" class="form-select" required>
+                <option selected>{{old('numero_decision',$table->numero_decision)}}</option>
+                    @foreach ($decisions as $decision)
+                        <option value="{{ $decision->numero_decision }}">{{ $decision->numero_decision }}</option>
+                    @endforeach
+                </select>
                 @error("numero_decision")
                     <span class="text-danger" role="alert">
                         <strong>{{$message}}</strong>
                     </span>
                 @enderror
         </div>
+
         <div class="form-group">
             <label for="age" class="control-label" style="color: black">Telephone:</label>
-                <input type="text" name="telephone" class="form-control" value="{{old('telephone',$table->telephone)}}" placeholder="Entrez le numero de téléphone">
+                <input type="number" name="telephone" class="form-control" value="{{old('telephone',$table->telephone)}}" placeholder="Entrez le numero de téléphone">
                 @error("telephone")
                     <span class="text-danger" role="alert">
                         <strong>{{$message}}</strong>
@@ -39,9 +66,15 @@
                 @enderror
         </div>
     
-        <div class="form-group">
-            <label for="email" class="control-label" style="color: black">Nature du dossier:</label>
-                <input type="text" name="nature_dossier" class="form-control" value="{{old('nature_dossier',$table->nature_dossier)}}" placeholder="Entrez la nature du dossier">
+        <div class="row mt-1">
+            <label for="email" class="label col-md-2 control-label">Nature du dossier:</label>
+            <div class="col-md-10">
+                <select name="nature_dossier" class="form-select" required>
+                <option selected>{{old('nature_dossier',$table->nature_dossier)}}</option>
+                    @foreach ($natures as $nature)
+                        <option value="{{ $nature->nature }}">{{ $nature->nature }}</option>
+                    @endforeach
+                </select>
                 @error("nature_dossier")
                     <span class="text-danger" role="alert">
                         <strong>{{$message}}</strong>

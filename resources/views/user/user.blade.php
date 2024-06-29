@@ -9,7 +9,7 @@
 
             <div class="form-group">
                 <label for="name" class="control-label" style="color: black">Nom:</label>
-                <input type="text" name="name" class="form-control " value="{{old('name',$table->name)}}" required placeholder="Entrez votre nom">
+                <input type="text" name="name" class="form-control" required minlength="3" value="{{old('name',$table->name)}}" required placeholder="Entrez votre nom">
                 @error('name')
                     <span class="text-danger" role="alert">
                         <strong>{{$message}}</strong>
@@ -18,11 +18,11 @@
             </div>
 
             <div class="form-group">
-                <label for="bureau" style="color: black">Bureau occupé:</label>
-                    <select class="form-control " name="bureau" id="bureau"  class="form-select" required placeholder="Sélectionner votre bureau">
-                        <option selected>{{old('name',$table->name)}}</option>
-                        <option>Bureau des affaires generales</option>
-                        <option>Bureau de contrôle</option>
+                <label for="bureau">Bureau occupé:</label>
+                    <select name="bureau" id="bureau"  class="form-select">
+                        <option selected>{{old('bureau',$table->bureau)}}</option>
+                        <option>Bureau des affaires generale</option>
+                        <option>Bureau de controle</option>
                         <option>Bureau de mise a jour</option>
                         <option>Archivage</option>
                         <option>Bureau de geometre</option>
@@ -36,7 +36,7 @@
 
             <div class="form-group">
                 <label for="email" class="control-label" style="color: black">Email:</label>
-                <input type="email" name="email" class="form-control " required placeholder="Entrez votre adresse mail">
+                <input type="email" name="email" class="form-control" minlength="7" required placeholder="Entrez votre adresse mail">
                 @error('email')
                     <span class="text-danger" role="alert">
                         <strong>{{$message}}</strong>
@@ -46,7 +46,7 @@
 
             <div class="form-group">
                 <label for="password" class="control-label" style="color: black">Mot de passe:</label>
-                <input type="password" name="password" class="form-control " required placeholder="Entrez votre mot de passe">
+                <input type="text" name="password" class="form-control" minlength="5" required placeholder="Entrez votre mot de passe">
                 @error('password')
                     <span class="text-danger" role="alert">
                         <span class="text-danger" role="alert">

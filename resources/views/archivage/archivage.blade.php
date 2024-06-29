@@ -36,7 +36,7 @@
             <div class="row mt-1">
                 <label for="date_reception" class="label col-md-2 control-label">Date Reception:</label>
                 <div class="col-md-3">
-                    <input type="date" name="date_reception" class="form-control" value="{{old('date_reception',$archive->date_reception)}}">
+                    <input type="date" name="date_reception" required class="form-control" value="{{old('date_reception',$archive->date_reception)}}">
                 </div>
                 @error("date_reception")
                     <span class="text-danger" role="alert">
@@ -45,7 +45,7 @@
                  @enderror
                 <label for="numero_tirroir" class="label col-md-1 control-label">Numero Tirroir:</label>
                 <div class="col-md-2">
-                    <input type="text" name="numero_tirroir" class="form-control" value="{{old('numero_tirroir',$archive->numero_tirroir)}}">
+                    <input type="text" name="numero_tirroir" required class="form-control" value="{{old('numero_tirroir',$archive->numero_tirroir)}}">
                 </div>
                 @error("numero_tirroir")
                     <span class="text-danger" role="alert">
@@ -57,7 +57,7 @@
             <div class="row mt-1">
                 <label for="observation" class="label col-md-2 control-label">Observation:</label>
                 <div class="col-md-10">
-                    <input type="text" name="observation" class="form-control" value="{{old('observation',$archive->observation)}}">
+                    <input type="text" name="observation" required class="form-control" value="{{old('observation',$archive->observation)}}">
                 </div>
                 @error("observation")
                     <span class="text-danger" role="alert">

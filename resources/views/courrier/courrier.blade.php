@@ -17,7 +17,7 @@
             <div class="row mt-1">
                 <label for="numero_ccp" class="label col-md-2 control-label">Expediteur:</label>
                 <div class="col-md-10">
-                    <input type="text" name="expediteur" class="form-control" value="{{old('expediteur',$table->expediteur)}}">
+                    <input type="text" required name="expediteur" class="form-control" value="{{old('expediteur',$table->expediteur)}}">
                     @error("expediteur")
                         <span class="text-danger" role="alert">
                             <strong>{{$message}}</strong>
@@ -29,7 +29,7 @@
             <div class="row mt-1">
                 <label for="dao" class="label col-md-2 control-label">Date D'Arrivée:</label>
                 <div class="col-md-5">
-                    <input type="date" name="date_arrive" class="form-control" value="{{old('date_arrive',$table->date_arrive)}}">
+                    <input type="date" required name="date_arrive" class="form-control" value="{{old('date_arrive',$table->date_arrive)}}">
                     @error("date_arrive")
                         <span class="text-danger" role="alert">
                             <strong>{{$message}}</strong>
@@ -38,7 +38,7 @@
                 </div>
                 <label for="numero_dossier" class="label col-md-2 control-label">Date Correspondance:</label>
                 <div class="col-md-3">
-                    <input type="date" name="date_correspondance" class="form-control" value="{{old('date_correspondance',$table->date_correspondance)}}">
+                    <input type="date" required name="date_correspondance" class="form-control" value="{{old('date_correspondance',$table->date_correspondance)}}">
                     @error("date_correspondance")
                         <span class="text-danger" role="alert">
                             <strong>{{$message}}</strong>
@@ -50,7 +50,7 @@
             <div class="row mt-1">
                 <label for="numero_correspondance" class="label col-md-2 control-label">Numero Correspondance:</label>
                 <div class="col-md-5">
-                    <input type="text" name="numero_correspondance" class="form-control" value="{{old('numero_correspondance',$table->numero_correspondance)}}">
+                    <input type="text" name="numero_correspondance" required class="form-control" value="{{old('numero_correspondance',$table->numero_correspondance)}}">
                     @error("numero_correspondance")
                         <span class="text-danger" role="alert">
                             <strong>{{$message}}</strong>
@@ -71,7 +71,7 @@
             <div class="row mt-1">
                 <label for="objet" class="label col-md-2 control-label">Objet: </label>
                 <div class="col-md-5">
-                    <input type="text" name="objet" class="form-control" value="{{old('objet',$table->objet)}}">
+                    <input type="text" name="objet" required class="form-control" value="{{old('objet',$table->objet)}}">
                     @error("objet")
                         <span class="text-danger" role="alert">
                             <strong>{{$message}}</strong>

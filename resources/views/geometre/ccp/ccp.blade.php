@@ -17,14 +17,14 @@
            
 
                 <label for="dao" class="control-label">Nom DAO:</label>
-                    <input type="text" name="dao" class="form-control" value="{{old('dao',$table->dao)}}" placeholder="Entrez le nom DAO">
+                    <input type="text" name="dao" required class="form-control" value="{{old('dao',$table->dao)}}" placeholder="Entrez le nom DAO">
                     @error("dao")
                         <span class="text-danger" role="alert">
                             <strong>{{$message}}</strong>
                         </span>
                     @enderror
                 <label for="numero_dossier" class="control-label">Echelle:</label>
-                    <input type="text" name="echelle" class="form-control" value="{{old('echelle',$table->echelle)}}" placeholder="Entrez l'echelle">
+                    <input type="text" name="echelle" required class="form-control" value="{{old('echelle',$table->echelle)}}" placeholder="Entrez l'echelle">
                     @error("echelle")
                         <span class="text-danger" role="alert">
                             <strong>{{$message}}</strong>
@@ -32,7 +32,7 @@
                     @enderror
 
                 <label for="superficie" class="control-label">Superficie:</label>
-                    <input type="text" name="superficie" class="form-control" value="{{old('superficie',$table->superficie)}}" placeholder="Entrez la superficie">
+                    <input type="text" name="superficie" required class="form-control" value="{{old('superficie',$table->superficie)}}" placeholder="Entrez la superficie">
                     @error("superficie")
                         <span class="text-danger" role="alert">
                             <strong>{{$message}}</strong>
