@@ -2,10 +2,10 @@
 <link rel="stylesheet" href="{{asset('css/welcome.css')}}">
 <div class="container-fluid d-block m-0 p-0 h-100" id='content'>
     
-    <div class="container-fluid w-100  m-0" id="contain">
+    <div class="container-fluid w-100 m-0" id="contain">
         <!-- First Row -->
         <div class="container-fluid d-flex justify-content-center row m-0 " id="first-row">
-            <div class="col-md"></div>
+            <div class="col-md col-lg-5 ms-lg-3"></div>
             <!-- Bureau du chef -->
             <div class="col">
                 <a class="container rectangle2" id="chef" href="{{route('statistique')}}">
@@ -40,7 +40,7 @@
 
         <!-- Second Row -->
         <div class="container-fluid d-flex justify-content-center row ms-0 mt-md-4" id="second-row">
-            <div class="col-md"></div>
+            <div class="col-md col-lg-5 ms-lg-3"></div>
             <!-- Bureau du controle -->
             <div class="col my-2 mt-md-0">
                 <a class="container p-0 rectangle2" id="bc" href="{{route('user.bc')}}">
