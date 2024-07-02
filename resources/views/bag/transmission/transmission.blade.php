@@ -1,4 +1,4 @@
-<br><div class="container-fluid card">
+<br><div class="container-fluid p-0 card">
     <div id= "rattach" class=" container-fluid card-header shadow">
     <h1 class="text-center" style="color: white">Informations de transmission</h1>
     </div>
@@ -10,23 +10,20 @@
         <div >
            
             @if ($nouveau_dossier_id)
-            <div class="row mt-1">
-                <label for="numero_dossier" class="label col-md-2 control-label">ID du dossier:</label>
-                <div class="col-md-10">
-                    <input type="text" name="nouveau_dossier_id" class="form-control" value="{{old('nouveau_dossier_id',$nouveau_dossier_id)}}" readonly>
-                </div>
+            <div class="form-group">
+                <label for="numero_dossier" class="control-label">ID du dossier:</label>
+                <input type="text" name="nouveau_dossier_id" class="form-control" value="{{old('nouveau_dossier_id',$nouveau_dossier_id)}}" readonly>
                 @error("nouveau_dossier_id")
                     <span class="text-danger" role="alert">
                         <strong>{{$message}}</strong>
                     </span>
                 @enderror
             </div>
+
             @else
-            <div class="row mt-1">
-                <label for="nouveau_dossier_id" class="label col-md-2 control-label">ID du dossier:</label>
-                <div class="col-md-10">
-                    <input type="text" name="nouveau_dossier_id" class="form-control" value="{{old('nouveau_dossier_id',$transmission->nouveau_dossier_id)}}">
-                </div>
+            <div class="form-group">
+                <label for="nouveau_dossier_id" class="control-label">ID du dossier:</label>
+                <input type="text" name="nouveau_dossier_id" class="form-control" value="{{old('nouveau_dossier_id',$transmission->nouveau_dossier_id)}}">
                 @error("nouveau_dossier_id")
                     <span class="text-danger" role="alert">
                         <strong>{{$message}}</strong>
@@ -35,9 +32,9 @@
             </div>
             @endif
 
-            <div class="row mt-1">
-                <label for="date_transmission" class="label col-md-2 control-label">Date Transmission:</label>
-                <div class="col-md-3">
+            <div class="row">
+                <div class="col-md form-group">
+                    <label for="date_transmission" class="control-label">Date Transmission:</label>
                     <input type="date" name="date_transmission" required class="form-control" value="{{old('date_transmission',$transmission->date_transmission)}}">
                 </div>
                 @error("date_transmission")
@@ -45,9 +42,10 @@
                         <strong>{{$message}}</strong>
                     </span>
                  @enderror
-                <label for="statut" class="label col-md-1 control-label">Statut:</label>
-                <div class="col-md-2">
-                    <select name="statut" id="" required>
+
+                 <div class="col-md form-group">
+                    <label for="statut" class="control-label">Statut:</label>
+                    <select name="statut" id="" class="form-control" required>
                         <option value="{{old('statut',$transmission->statut)}}">{{old('statut',$transmission->statut)}}</option>
                         <option value="ENVOYER">ENVOYER</option>
                         <option value="RECUPERER">RECUPERER</option>
@@ -58,8 +56,9 @@
                         <strong>{{$message}}</strong>
                     </span>
                 @enderror
-                <label for="date_reception" class="label col-md-2 control-label">Date Reception:</label>
-                <div class="col-md-2">
+
+                <div class="col-md form-group">
+                    <label for="date_reception" class="control-label">Date Reception:</label>
                     <input type="date" name="date_reception" class="form-control" value="{{old('date_reception',$transmission->date_reception)}}">
                 </div>
                 @error("date_reception")
@@ -68,11 +67,9 @@
                     </span>
                  @enderror
             </div>
-            <div class="row mt-1">
-                <label for="motif" class="label col-md-2 control-label">motif:</label>
-                <div class="col-md-10">
-                    <input type="text" name="motif" required class="form-control" value="{{old('motif',$transmission->motif)}}">
-                </div>
+            <div class="form-group">
+                <label for="motif" class="control-label">motif:</label>
+                <input type="text" name="motif" required class="form-control" value="{{old('motif',$transmission->motif)}}">
                 @error("motif")
                     <span class="text-danger" role="alert">
                         <strong>{{$message}}</strong>

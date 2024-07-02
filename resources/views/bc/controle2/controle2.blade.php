@@ -1,4 +1,4 @@
-<br><div class="container-fluid card">
+<br><div class="container-fluid p-0 card">
     <div id= "rattach" class=" container-fluid card-header shadow">
     <h1 class="text-center" style="color: white">Informations de contrôle 2</h1>
     </div>
@@ -6,21 +6,19 @@
 <div class="container-fluid card-body shadow">
     <form id="formulaire_ancien_dossier" enctype="multipart/form-data" method="POST">
         @csrf
-            <div class="row mt-1">
+            <div class="form-group">
                 <label for="numero_controle" class="control-label">Numero Code Contrôle:</label>
-                <div class="col-md-10">
-                    <input type="text" name="numero_controle" class="form-control" value="{{old('numero_controle',$table->numero_controle)}}" readonly>
-                    @error("numero_controle")
-                        <span class="text-danger" role="alert">
-                            <strong>{{$message}}</strong>
-                        </span>
-                    @enderror
-                </div>
+                <input type="text" name="numero_controle" class="form-control" value="{{old('numero_controle',$table->numero_controle)}}" readonly>
+                @error("numero_controle")
+                    <span class="text-danger" role="alert">
+                        <strong>{{$message}}</strong>
+                    </span>
+                @enderror
             </div>
 
-            <div class="row mt-1">
-                <label for="controlleur_1" class="control-label">Nom Contrôleur 1:</label>
-                <div class="col-md-5">
+            <div class="row ">
+                <div class="col-md form-group">
+                    <label for="controlleur_1" class="control-label">Nom Contrôleur 1:</label>
                     <input type="text" name="controlleur_1" class="form-control" value="{{old('controlleur_1',$table->controlleur_1)}}" readonly>
                     @error("controlleur_1")
                         <span class="text-danger" role="alert">
@@ -28,8 +26,9 @@
                         </span>
                     @enderror 
                 </div>
-                <label for="date_controle_1" class="control-label">Date contrôle 1:</label>
-                <div class="col-md-3">
+
+                <div class="col-md form-group">
+                    <label for="date_controle_1" class="control-label">Date contrôle 1:</label>
                     <input type="date" name="date_controle_1" class="form-control" value="{{old('date_controle_1',$table->date_controle_1)}}" readonly>
                     @error("date_controle_1")
                         <span class="text-danger" role="alert">
@@ -39,18 +38,19 @@
                 </div>
             </div>
 
-            <div class="row mt-1">
-                <label for="controlleur_2" class="control-label">Nom Contrôleur 2:</label>
-                <div class="col-md-5">
-                    <input type="text" name="controlleur_2" required class="form-control" value="{{old('controlleur_2',$table->controlleur_2)}}">
+            <div class="row">
+                <div class="col-md form-group">
+                    <label for="controlleur_2" class="control-label">Nom Contrôleur 2:</label>
+                    <input type="text" name="controlleur_2" placeholder="Entrez le nom du contôleur" required class="form-control" value="{{old('controlleur_2',$table->controlleur_2)}}">
                     @error("controlleur_2")
                         <span class="text-danger" role="alert">
                             <strong>{{$message}}</strong>
                         </span>
                     @enderror
                 </div>
-                <label for="date_controle_2" class="control-label">Date contrôle 2:</label>
-                <div class="col-md-3">
+
+                <div class="col-md form-group">
+                    <label for="date_controle_2" class="control-label">Date contrôle 2:</label>
                     <input type="date" name="date_controle_2" class="form-control" value="{{old('date_controle_2',$table->date_controle_2)}}">
                     @error("date_controle_2")
                         <span class="text-danger" role="alert">

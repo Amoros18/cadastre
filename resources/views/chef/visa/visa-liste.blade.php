@@ -15,15 +15,20 @@
          <ol class="breadcrumb indigo lighten-6 first-1 shadow-lg mb-5  ">
             <li><a class="black-text active-2" href="{{route('home')}}"><i class="fas fa-fw fa-solid fa-home mr-md-2 mr-1 mb-1"></i><span>Accueil</span></a><i class="fas fa-solid fa-chevron-right mx-md-3 mx-1"></i> </li>
             <li><a class="black-text active-2" href="{{route('statistique')}}"><span>Chef</span></a><i class="fas fa-solid fa-chevron-right mx-md-3 mx-1"></i></li>
-            <li><a class="black-text active-2" href="#">
-                <span>
-                    @if ($modifier==1)
-                        Registres propres \ Modifier registre visa
-                    @else
-                        Viser un document
-                    @endif
-                </span>
-            </a></li>
+            @if ($modifier==1)
+                <li ><a class="black-text active-2  " href="#">
+                    <span>Registres propres</span>
+                    <i class="fas fa-solid fa-chevron-right mx-md-3 mx-1"></i>
+                </a></li>
+                <li><a href="#">
+                    <span>Modifier visa</span>
+                </a></li>
+            @else
+                <li ><a class="black-text active-2  " href="#">
+                    <span>Viser un document</span>
+                </a></li>
+            @endif
+                
             <!-- <li class="breadcrumb-item  mr-0 pr-0"><a class="black-text active-1 active-2" href="#"><span >Bread shape</span></a> </li> -->
         </ol>
     </nav>
@@ -38,6 +43,7 @@
         <table id="table" class="table table-hover table-responsible table-striped">
             <thead style="color: black">
                 <th>Requerant</th>
+                <th>Sexe</th>
                 <th>Nature dossier</th>
                 <th>Téléphone</th>
                 <th>Zone</th>
@@ -59,6 +65,7 @@
                             @endif
                             ">
                         <td>{{$Liste->nom_requerant}}</td>
+                        <td>{{$Liste->sexe_requerant}}</td>
                         <td>{{$Liste->nature_dossier}}</td>
                         <td>{{$Liste->telephone}}</td>
                         <td>{{$Liste->zone}}</a></td>

@@ -6,25 +6,22 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
 
-    <title>Accueil</title>
+    <title>@yield('title')</title>
 
     <!-- Custom fonts for this template-->
     <link href="{{asset('vendor/fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css">
-    <link
-        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
     <!-- Custom styles for this template-->
     <link href="{{asset('css/sb-admin-2.min.css')}}" rel="stylesheet">
     <link rel="stylesheet" href="{{asset('css/style.css')}}">
-
-    
     <link rel="stylesheet" href="{{asset('css/dataTables.css')}}" />
-    
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <style>
+        #info{background: linear-gradient(to right, #004e92, #000428)}
+        #rattach{background: linear-gradient(to right, #004e92, #000428)}
+    </style>
 </head>
 
 <body id="page-top">
@@ -36,8 +33,7 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar" style="background: linear-gradient(to top, #004e92, #000428);">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" style="background: " href = "{{route('home')}}">
-                
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href = "{{route('home')}}">
                 <div class="sidebar-brand-text mx-3">EDJE'L</div>
             </a>
 
@@ -47,13 +43,15 @@
             <li class="nav-item">
                 <a class="nav-link" href = "{{route('home')}}">
                     <i class="fas fa-fw fa-home"></i>
-                    <span>ACCUEIL</span></a>
+                    <span>ACCUEIL</span>
+                </a>
             </li>
 
             <li class="nav-item">
                 <a class="nav-link" href = "{{route('liste.archivage-intro')}}">
                     <i class="fas fa-fw fa-archive"></i>
-                    <span>ARCHIVER DOSSIER</span></a>
+                    <span>ARCHIVER DOSSIER</span>
+                </a>
             </li>
 
            
@@ -70,52 +68,35 @@
 
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
-        
-        <div id="content">
+            <div id="content">
+                <!-- Topbar -->
+                <nav class="navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">    
+                    <!-- <nav class="navbar navbar-dark  navbar-expand-sm"> -->
+                    <div class="container-fluid">
+                    <span class="text-blue nav-item" style="margin: 15px">Bienvenue {{Auth::user()->name}}</span>
+                        @auth
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
+                        <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <form class="d-flex" action="{{route('auth.logout')}}" method="POST" style="float: right; margin: 15px">
+                            @method("delete")
+                            @csrf
+                            
+                            <button class="btn btn-primary" type="submit" style="background: linear-gradient(to right, #004e92, #000428);">Se deconnecter</button>
+                        </form>
+                    
+                        @endauth
+                    </div>
+                </nav>
 
-<!-- Topbar -->
-<nav class="navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
-    
-<!-- <nav class="navbar navbar-dark  navbar-expand-sm"> -->
-  <div class="container-fluid">
-  <span class="text-blue nav-item" style="margin: 15px">Bienvenue {{Auth::user()->name}}</span>
-    @auth
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-      <form class="d-flex" action="{{route('auth.logout')}}" method="POST" style="float: right; margin: 15px">
-        @method("delete")
-        @csrf
-        
-        <button class="btn btn-primary" type="submit" style="background: linear-gradient(to right, #004e92, #000428);">Se deconnecter</button>
-      </form>
- 
-    @endauth
-  </div>
-<!-- </nav> -->
-<!-- <form class="d-flex" action="{{route('auth.logout')}}" method="POST" style="float: right; margin: 15px">
-        @method("delete")
-        @csrf
-        <ul>
-    <a href="{{route('home')}}">Accueil</a>
-    <a href="{{route('user.chef')}}" style="margin: 60px"> Statistiques </a>
-   </ul> 
-        <button class="btn btn-primary" type="submit" >Se deconnecter</button>
-      </form> -->
-</nav>
-<div>
-@yield('content')
-</div>
-
-        </div>
+                <!-- Page content -->
+                <div>
+                @yield('content')
+                </div>
+            </div>
             <!-- End of Main Content -->
-
-            <!-- Footer -->
-            <!-- End of Footer -->
-
         </div>
         <!-- End of Content Wrapper -->
-
     </div>
     <!-- End of Page Wrapper -->
 
@@ -136,29 +117,12 @@
 
     <!-- Core plugin JavaScript-->
     <script src="{{asset('vendor/jquery-easing/jquery.easing.min.js')}}"></script>
+    <script src="{{asset('js/dataTables.js')}}"></script>
 
     <!-- Custom scripts for all pages-->
     <script src="{{asset('js/sb-admin-2.min.js')}}"></script>
-    <script>
-                        $(document).ready(function(){
-                            $(".table-row").click(function(){
-                                window.location=$(this).data("href");
-                            });
-                        });
-                    </script>
+    <script src="{{asset('js/tables.js')}}"></script>
 
-<script
-                        src="https://code.jquery.com/jquery-3.7.1.min.js"
-                        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
-                        crossorigin="anonymous">
-                    </script>
-
-<script src="{{asset('js/dataTables.js')}}"></script>
-                    <script>
-                        $(document).ready( function () {
-                        $('#table').DataTable();
-                        } );
-                    </script>
 </body>
 
 </html>

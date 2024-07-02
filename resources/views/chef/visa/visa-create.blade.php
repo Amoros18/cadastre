@@ -19,8 +19,4 @@
 </div>
     @include('info-ouverture')
     @include('chef.visa.visa')
-    <style>
-        #info{background: linear-gradient(to right, #4bc5f6, #077cab)}
-        #rattach{background: linear-gradient(to right, #4bc5f6, #077cab)}
-    </style>
 @endsection

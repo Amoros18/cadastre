@@ -1,5 +1,5 @@
 <br>
-<div class="container-fluid">
+<div class="container-fluid p-0">
     <div class=" container-fluid card-header shadow" style="background: linear-gradient(to right, #4bc5f6, #077cab)">
         <h1 class="text-center" style="color: white">
             Informations de visa

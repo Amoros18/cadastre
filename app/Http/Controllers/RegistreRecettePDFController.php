@@ -94,22 +94,24 @@ class RegistreRecettePDFController extends Controller
         <h3 align="center"> Registre de Recette <h3>
         <table width = "100%" style = "border-collapse:collapse; border:0px;"
             <tr>
-                <th style = "border: 1px solid; padding:6px;" width = 10% >Nom Requerant</th>
-                <th style = "border: 1px solid; padding:6px;" width = 10% >Lieu Dit</th>
-                <th style = "border: 1px solid; padding:6px;" width = 10% >Nature Dossier</th>
-                <th style = "border: 1px solid; padding:6px;" width = 10% >Montant</th>
-                <th style = "border: 1px solid; padding:6px;" width = 10% >Zone</th>
-                <th style = "border: 1px solid; padding:6px;" width = 10% >Superficie</th>
-                <th style = "border: 1px solid; padding:6px;" width = 10% >Date Etat Session</th>
-                <th style = "border: 1px solid; padding:6px;" width = 10% >Numero Quittance</th>
-                <th style = "border: 1px solid; padding:6px;" width = 10% >Date Quittance</th>
-                <th style = "border: 1px solid; padding:6px;" width = 10% >Observation</th>
+                <th style = "border: 1px solid; padding:6px;" width = 9.09% >Nom Requerant</th>
+                <th style = "border: 1px solid; padding:6px;" width = 9.09% >Sexe</th>
+                <th style = "border: 1px solid; padding:6px;" width = 9.09% >Lieu Dit</th>
+                <th style = "border: 1px solid; padding:6px;" width = 9.09% >Nature Dossier</th>
+                <th style = "border: 1px solid; padding:6px;" width = 9.09% >Montant</th>
+                <th style = "border: 1px solid; padding:6px;" width = 9.09% >Zone</th>
+                <th style = "border: 1px solid; padding:6px;" width = 9.09% >Superficie</th>
+                <th style = "border: 1px solid; padding:6px;" width = 9.09% >Date Etat Session</th>
+                <th style = "border: 1px solid; padding:6px;" width = 9.09% >Numero Quittance</th>
+                <th style = "border: 1px solid; padding:6px;" width = 9.09% >Date Quittance</th>
+                <th style = "border: 1px solid; padding:6px;" width = 9.09% >Observation</th>
             </tr>
         ';
         foreach($registre as $enregistrement){
             $output .='
             <tr>
                 <td style = "border: 1px solid; padding:6px;">'.$enregistrement->nom_requerant.'</td>
+                <td style = "border: 1px solid; padding:6px;">'.$enregistrement->sexe_requerant.'</td>
                 <td style = "border: 1px solid; padding:6px;">'.$enregistrement->lieu_dit.'</td>
                 <td style = "border: 1px solid; padding:6px;">'.$enregistrement->nature_dossier.'</td>
                 <td style = "border: 1px solid; padding:6px;">'.$enregistrement->montant_recette.'</td>

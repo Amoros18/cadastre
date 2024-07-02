@@ -7,11 +7,16 @@
 
 <div class="container-fluid d-flex ">
     <nav aria-label="breadcrumb " class="first  d-md-flex" >
-         <ol class="breadcrumb indigo lighten-6 first-1 shadow-lg mb-5  ">
-            <li ><a class="black-text active-2" href="{{route('home')}}"><i class="fas fa-fw fa-home mr-md-2 mr-1 mb-1"></i><span>Accueil</span></a><i class="fas fa-solid fa-chevron-right ml-md-3 ml-1"></i> </li>
-            <li><a class="black-text active-2" href="{{route('statistique')}}"><span >Statistiques</span></a><i class="fas fa-solid fa-chevron-right ml-md-3 ml-1"></i></li>
+        <ol class="breadcrumb indigo lighten-6 first-1 shadow-lg mb-5  ">
+            <li><a class="black-text active-2" href="{{route('home')}}"><i class="fas fa-fw fa-solid fa-home mr-md-2 mr-1 mb-1"></i><span>Accueil</span></a><i class="fas fa-solid fa-chevron-right mx-md-3 mx-1"></i> </li>
+            <li><a class="black-text active-2" href="{{route('statistique')}}"><span>Chef</span></a><i class="fas fa-solid fa-chevron-right mx-md-3 mx-1"></i></li>
             <li ><a class="black-text active-2  " href="#">
-                <span >GEOMETRES\Modifier les points</span></a><i class="fas fa-solid fa-chevron-right ml-md-3 ml-1"></i> </li>
+                <span>Géomètre</span>
+                <i class="fas fa-solid fa-chevron-right mx-md-3 mx-1"></i>
+            </a></li>
+            <li><a href="#">
+                <span>Modifier les points</span>
+            </a></li>
             <!-- <li class="breadcrumb-item  mr-0 pr-0"><a class="black-text active-1 active-2" href="#"><span >Bread shape</span></a> </li> -->
         </ol>
     </nav>
@@ -26,6 +31,7 @@
             <thead style="color: black">
                 <th>Numero Dossier</th>
                 <th>Nom requerant</th>
+                <th>Sexe</th>
                 <th>nature dossier</th>
                 <th>telephone</th>
                 <th>zone</th>
@@ -34,15 +40,19 @@
                 <th>lot</th>
                 <th>date ouverture</th>
                 <th>geometre</th>
-
             </thead>
             <tbody>
                 @foreach ($Listes as $Liste )
                     <tr class="table-row" data-href="{{route('edit.points',['numero_dossier'=>$Liste->numero_dossier])}} ">
                         <td>{{$Liste->numero_dossier}}</td>
                         <td>{{$Liste->nom_requerant}}</td>
+                        <td>{{$Liste->sexe_requerant}}</td>
                         <td>{{$Liste->nature_dossier}}</td>
                         <td>{{$Liste->telephone}}</td>
+                        <th>{{$Liste->zone}}</th>
+                        <th>{{$Liste->lieu_dit}}</th>
+                        <th>{{$Liste->quartier}}</th>
+                        <th>{{$Liste->lot}}</th>
                         <td>{{$Liste->date_ouverture}}</td>
                         <td>{{$Liste->geometre}}</td>
 

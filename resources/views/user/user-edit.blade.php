@@ -13,6 +13,8 @@
             <li ><a class="black-text active-2  " href="#">
                 <span>Utilisateurs</span>
                 <i class="fas fa-solid fa-chevron-right mx-md-3 mx-1"></i>
+            </a></li>
+            <li><a href="#">
                 <span>Modifier utilisateur</span>
             </a></li>
             <!-- <li class="breadcrumb-item  mr-0 pr-0"><a class="black-text active-1 active-2" href="#"><span >Bread shape</span></a> </li> -->

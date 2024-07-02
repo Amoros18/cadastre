@@ -1,4 +1,4 @@
-<br><div class="container-fluid card">
+<br><div class="container-fluid p-0 card">
     <div id= "rattach" class=" container-fluid card-header shadow">
     <h1 class="text-center" style="color: white">Informations de rejet contrôle </h1>
     </div>
@@ -7,21 +7,19 @@
     <form id="formulaire_ancien_dossier" enctype="multipart/form-data" method="POST">
         @csrf
 
-            <div class="row mt-1">
-                <label for="numero_controle" class="label col-md-2 control-label">Motif de rejet:</label>
-                <div class="col-md-10">
-                    <input type="text" required name="motif" class="form-control" value="{{old('motif',$rejet->motif)}}">
-                    @error("motif")
-                        <span class="text-danger" role="alert">
-                            <strong>{{$message}}</strong>
-                        </span>
-                    @enderror
-                </div>
+            <div class="form-group">
+                <label for="numero_controle" class="control-label" style="color: black;">Motif de rejet:</label>
+                <input type="text" required placeholder="Entrez le motif du rejet" name="motif" class="form-control" value="{{old('motif',$rejet->motif)}}">
+                @error("motif")
+                    <span class="text-danger" role="alert">
+                        <strong>{{$message}}</strong>
+                    </span>
+                @enderror
             </div>
 
-            <div class="row mt-1">
-                <label for="controlleur_1" class="label col-md-2 control-label">Date Rejet:</label>
-                <div class="col-md-5">
+            <div class="row">
+                <div class="col-md form-group">
+                    <label for="controlleur_1" class="control-label" style="color: black;">Date Rejet:</label>
                     <input type="date" name="date_rejet" required class="form-control" value="{{old('date_rejet',$rejet->date_rejet)}}">
                     @error("date_rejet")
                         <span class="text-danger" role="alert">
@@ -29,12 +27,11 @@
                         </span>
                     @enderror
                 </div>
+
                 @if ($numero_dossier)
-                <div class="row mt-1">
-                    <label for="numero_dossier" class="label col-md-2 control-label">Numero de dossier:</label>
-                    <div class="col-md-10">
-                        <input type="text" name="numero_dossier" class="form-control" value="{{old('numero_dossier',$numero_dossier)}}" readonly>
-                    </div>
+                <div class="col-md form-group">
+                    <label for="numero_dossier" class="control-label" style="color: black;">Numero de dossier:</label>
+                    <input type="text" name="numero_dossier" class="form-control" value="{{old('numero_dossier',$numero_dossier)}}" readonly>
                     @error("numero_dossier")
                         <span class="text-danger" role="alert">
                             <strong>{{$message}}</strong>
@@ -42,11 +39,9 @@
                     @enderror
                 </div>
                 @else
-                <div class="row mt-1">
-                    <label for="numero_dossier" class="label col-md-2 control-label">Numero de dossier:</label>
-                    <div class="col-md-10">
-                        <input type="text" name="numero_dossier" class="form-control" value="{{old('numero_dossier',$rejet->numero_dossier)}}">
-                    </div>
+                <div class="col-md form-group">
+                    <label for="numero_dossier" class="control-label" style="color: black;">Numero de dossier:</label>
+                    <input type="text" name="numero_dossier" class="form-control" value="{{old('numero_dossier',$rejet->numero_dossier)}}">
                     @error("numero_dossier")
                         <span class="text-danger" role="alert">
                             <strong>{{$message}}</strong>

@@ -87,13 +87,14 @@ class RegistreNonCotePDFController extends Controller
         <h3 align="center"> Registre de dossier non cote <h3>
         <table width = "100%" style = "border-collapse:collapse; border:0px;"
             <tr>
-                <th style = "border: 1px solid; padding:6px;" width = 10% >Numero Dossier</th>
-                <th style = "border: 1px solid; padding:6px;" width = 10% >Non Requerant</th>
-                <th style = "border: 1px solid; padding:6px;" width = 10% >Arrondissement</th>
-                <th style = "border: 1px solid; padding:6px;" width = 10% >Lieu Dit</th>
-                <th style = "border: 1px solid; padding:6px;" width = 10% >Nature Dosssier</th>
-                <th style = "border: 1px solid; padding:6px;" width = 10% >Bloc</th>
-                <th style = "border: 1px solid; padding:6px;" width = 10% >Date Ouverture</th>
+                <th style = "border: 1px solid; padding:6px;" width = 14.29% >Numero Dossier</th>
+                <th style = "border: 1px solid; padding:6px;" width = 14.29% >Nom Requerant</th>
+                <th style = "border: 1px solid; padding:6px;" width = 14.29% >Sexe</th>
+                <th style = "border: 1px solid; padding:6px;" width = 14.29% >Arrondissement</th>
+                <th style = "border: 1px solid; padding:6px;" width = 14.29% >Lieu Dit</th>
+                <th style = "border: 1px solid; padding:6px;" width = 14.29% >Nature Dosssier</th>
+                <th style = "border: 1px solid; padding:6px;" width = 14.29% >Bloc</th>
+                <th style = "border: 1px solid; padding:6px;" width = 14.29% >Date Ouverture</th>
             </tr>
         ';
         foreach($registre as $enregistrement){
@@ -101,6 +102,7 @@ class RegistreNonCotePDFController extends Controller
             <tr>
                 <td style = "border: 1px solid; padding:6px;">'.$enregistrement->numero_dossier.'</td>
                 <td style = "border: 1px solid; padding:6px;">'.$enregistrement->nom_requerant.'</td>
+                <td style = "border: 1px solid; padding:6px;">'.$enregistrement->sexe_requerant.'</td>
                 <td style = "border: 1px solid; padding:6px;">'.$enregistrement->arrondissement.'</td>
                 <td style = "border: 1px solid; padding:6px;">'.$enregistrement->lieu_dit.'</td>
                 <td style = "border: 1px solid; padding:6px;">'.$enregistrement->nature_dossier.'</td>

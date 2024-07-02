@@ -84,19 +84,20 @@ class RegistreMJPDFController extends Controller
 
     function convert_registre_to_html($registre){
         $output = '
-        <h3 align="center"> Registre de Recette <h3>
+        <h3 align="center"> Registre des Mises a Jour<h3>
         <table width = "100%" style = "border-collapse:collapse; border:0px;"
             <tr>
-                <th style = "border: 1px solid; padding:6px;" width = 10% >Numero Dossier</th>
-                <th style = "border: 1px solid; padding:6px;" width = 10% >Nom Requerant</th>
-                <th style = "border: 1px solid; padding:6px;" width = 10% >Arrondissement</th>
-                <th style = "border: 1px solid; padding:6px;" width = 10% >Nature Dossier</th>
-                <th style = "border: 1px solid; padding:6px;" width = 10% >Lieu Dit</th>
-                <th style = "border: 1px solid; padding:6px;" width = 10% >Code MJ</th>
-                <th style = "border: 1px solid; padding:6px;" width = 20% >Verificateur</th>
-                <th style = "border: 1px solid; padding:6px;" width = 10% >Avis</th>
-                <th style = "border: 1px solid; padding:6px;" width = 10% >Numero CCP</th>
-                <th style = "border: 1px solid; padding:6px;" width = 10% >Numero Controle</th>
+                <th style = "border: 1px solid; padding:6px;" width = 9.09% >Numero Dossier</th>
+                <th style = "border: 1px solid; padding:6px;" width = 9.09% >Nom Requerant</th>
+                <th style = "border: 1px solid; padding:6px;" width = 9.09% >Sexe</th>
+                <th style = "border: 1px solid; padding:6px;" width = 9.09% >Arrondissement</th>
+                <th style = "border: 1px solid; padding:6px;" width = 9.09% >Nature Dossier</th>
+                <th style = "border: 1px solid; padding:6px;" width = 9.09% >Lieu Dit</th>
+                <th style = "border: 1px solid; padding:6px;" width = 9.09% >Code MJ</th>
+                <th style = "border: 1px solid; padding:6px;" width = 9.09% >Verificateur</th>
+                <th style = "border: 1px solid; padding:6px;" width = 9.09% >Avis</th>
+                <th style = "border: 1px solid; padding:6px;" width = 9.09% >Numero CCP</th>
+                <th style = "border: 1px solid; padding:6px;" width = 9.09% >Numero Controle</th>
             </tr>
         ';
         foreach($registre as $enregistrement){
@@ -104,6 +105,7 @@ class RegistreMJPDFController extends Controller
             <tr>
                 <td style = "border: 1px solid; padding:6px;">'.$enregistrement->numero_dossier.'</td>
                 <td style = "border: 1px solid; padding:6px;">'.$enregistrement->nom_requerant.'</td>
+                <td style = "border: 1px solid; padding:6px;">'.$enregistrement->sexe_requerant.'</td>
                 <td style = "border: 1px solid; padding:6px;">'.$enregistrement->arrondissement.'</td>
                 <td style = "border: 1px solid; padding:6px;">'.$enregistrement->nature_dossier.'</td>
                 <td style = "border: 1px solid; padding:6px;">'.$enregistrement->lieu_dit.'</td>

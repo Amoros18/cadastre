@@ -1,42 +1,27 @@
-
-<h1 class="text-primary text-center">
-    @if ($table->id)
-    <div class="row">
-        <div class="col">
-            <p class="text-center text-white">Editer une nature de dossier</p>
-        </div>
+<div class="container-fluid card">
+    <div id= "Rattach" class=" container-fluid card-header shadow">
+        <h1 class="text-center" style="color: white">Informations de la nature</h1>
     </div>
-    @else
-        
-    <div class="row">
-        <div class="col">
-            <p class="text-center text-white">Enregistrer une nature de dossier</p>
-        </div>
-    </div>
-    @endif
-</h1>
 
-<div class="container-fluid">
+<div class="container-fluid card-body shadow">
     <form id="formulaire" enctype="multipart/form-data" method="POST">
         @csrf
 
 
-        <div class="row mt-1">
-            <label for="prenom" class="label col-md-2 control-label">Nature du dossier:</label>
-            <div class="col-md-10">
-                <input type="text" name="nature" class="form-control" value="{{old('nature',$table->nature)}}">
-                @error("nature")
-                    <span class="text-danger" role="alert">
-                        <strong>{{$message}}</strong>
-                    </span>
-                @enderror
-            </div>
+        <div class="form-group">
+            <label for="nature" class="control-label" style="color: black;">Nature du dossier:</label>
+            <input type="text" name="nature" required placeholder="Entrez la nature du dossier" class="form-control" value="{{old('nature',$table->nature)}}">
+            @error("nature")
+                <span class="text-danger" role="alert">
+                    <strong>{{$message}}</strong>
+                </span>
+            @enderror
         </div>  
     
-        <div class="mt-1 text-end">
-            <button class="btn btn-success w-25" type="submit" >
+        <div class="row">
+            <button class="btn btn-success w-100" type="submit" >
             @if($table->id)
-                Modifier
+                Valider
             @else
                 Enregistrer
             @endif

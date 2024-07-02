@@ -87,17 +87,18 @@ class RegistreMainCourantePDFController extends Controller
         <h3 align="center"> Registre de Main Courante <h3>
         <table width = "100%" style = "border-collapse:collapse; border:0px;"
             <tr>
-                <th style = "border: 1px solid; padding:6px;" width = 10% >Numero Dossier</th>
-                <th style = "border: 1px solid; padding:6px;" width = 10% >Non Requerant</th>
-                <th style = "border: 1px solid; padding:6px;" width = 10% >Mise en valeur</th>
-                <th style = "border: 1px solid; padding:6px;" width = 10% >Message Porter</th>
-                <th style = "border: 1px solid; padding:6px;" width = 10% >Lieu Dit</th>
-                <th style = "border: 1px solid; padding:6px;" width = 10% >Avis</th>
-                <th style = "border: 1px solid; padding:6px;" width = 10% >Date Bornage</th>
-                <th style = "border: 1px solid; padding:6px;" width = 10% >Observation</th>
-                <th style = "border: 1px solid; padding:6px;" width = 20% >Geometre</th>
-                <th style = "border: 1px solid; padding:6px;" width = 10% >Numero CCP</th>
-                <th style = "border: 1px solid; padding:6px;" width = 10% >S/C</th>
+                <th style = "border: 1px solid; padding:6px;" width = 8.33% >Numero Dossier</th>
+                <th style = "border: 1px solid; padding:6px;" width = 8.33% >Non Requerant</th>
+                <th style = "border: 1px solid; padding:6px;" width = 8.33% >Sexe</th>
+                <th style = "border: 1px solid; padding:6px;" width = 8.33% >Mise en valeur</th>
+                <th style = "border: 1px solid; padding:6px;" width = 8.33% >Message Porter</th>
+                <th style = "border: 1px solid; padding:6px;" width = 8.33% >Lieu Dit</th>
+                <th style = "border: 1px solid; padding:6px;" width = 8.33% >Avis</th>
+                <th style = "border: 1px solid; padding:6px;" width = 8.33% >Date Bornage</th>
+                <th style = "border: 1px solid; padding:6px;" width = 8.33% >Observation</th>
+                <th style = "border: 1px solid; padding:6px;" width = 8.33% >Geometre</th>
+                <th style = "border: 1px solid; padding:6px;" width = 8.33% >Numero CCP</th>
+                <th style = "border: 1px solid; padding:6px;" width = 8.33% >S/C</th>
             </tr>
         ';
         foreach($registre as $enregistrement){
@@ -105,6 +106,7 @@ class RegistreMainCourantePDFController extends Controller
             <tr>
                 <td style = "border: 1px solid; padding:6px;">'.$enregistrement->numero_dossier.'</td>
                 <td style = "border: 1px solid; padding:6px;">'.$enregistrement->nom_requerant.'</td>
+                <td style = "border: 1px solid; padding:6px;">'.$enregistrement->sexe_requerant.'</td>
                 <td style = "border: 1px solid; padding:6px;">'.$enregistrement->mise_en_valeur.'</td>
                 <td style = "border: 1px solid; padding:6px;">'.$enregistrement->message_porter.'</td>
                 <td style = "border: 1px solid; padding:6px;">'.$enregistrement->lieu_dit.'</td>

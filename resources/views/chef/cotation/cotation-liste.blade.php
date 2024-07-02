@@ -4,22 +4,35 @@
 @section('content')
 <!-- @include('search') -->
 <h2  class="container-fluid d-flex ">
-    @if($modifier==1)MODIFIER COTATION
+    @if($modifier==1)
+        MODIFIER COTATION
     @else 
-    COTER UN DOSSIER
+        COTER UN DOSSIER
     @endif
 </h2>
 <div class="container-fluid d-flex ">
     <nav aria-label="breadcrumb card" class="first  d-md-flex" >
          <ol class="breadcrumb indigo lighten-6 first-1 shadow-lg mb-5  ">         
-            <li ><a class="black-text active-2" href="{{route('home')}}"><i class="fas fa-fw fa-home mr-md-2 mr-1 mb-1"></i><span>Accueil</span></a><i class="fas fa-solid fa-chevron-right ml-md-3 ml-1"></i> </li>
-            <li ><a class="black-text active-2" href="{{route('statistique')}}"><span >Chef</span></a><i class="fas fa-solid fa-chevron-right ml-md-3 ml-1"></i></li>
-            <li ><a class="black-text active-2  " href="#"><span >
-                @if ($modifier==1)REGISTRES PROPRES\Modifier cotations
+            <li ><a class="black-text active-2" href="{{route('home')}}"><i class="fas fa-fw fa-home mr-md-2 mr-1 mb-1"></i><span>Accueil</span></a><i class="fas fa-solid fa-chevron-right mx-md-3 mx-1"></i> </li>
+            <li ><a class="black-text active-2" href="{{route('statistique')}}"><span >Chef</span></a><i class="fas fa-solid fa-chevron-right mx-md-3 mx-1"></i></li>
+                @if ($modifier==1)
+                    <li><a class="black-text active-2" href="#">
+                        <span>Registres propres</span>
+                        <i class="fas fa-solid fa-chevron-right mx-md-3 mx-1"></i>
+                    </a></li>
+                    <li><a href="#">
+                        <span>Modifier cotations</span>
+                    </a></li>
                 @else 
-                DOSSIERS\Coter un dossier
+                    <li><a class="black-text active-2" href="#">
+                        <span>Dossiers</span>
+                        <i class="fas fa-solid fa-chevron-right mx-md-3 mx-1"></i>
+                    </a></li>
+                    
+                    <li><a href="#">
+                        Coter un dossier
+                    </a></li>
                 @endif
-            </span></a><i class="fas fa-solid fa-chevron-right ml-md-3 ml-1"></i> </li>
             <!-- <li class="breadcrumb-item  mr-0 pr-0"><a class="black-text active-1 active-2" href="#"><span >Bread shape</span></a> </li> -->
         </ol>
     </nav>
@@ -34,6 +47,7 @@
         <table id="table" class="table table-hover table-responsible table-striped">
             <thead style="color: black">
                 <th>Requerant</th>
+                <th>Sexe</th>
                 <th>Nature dossier</th>
                 <th>Télephone</th>
                 <th>Zone</th>
@@ -58,6 +72,7 @@
                             @endif
                                 ">
                         <td>{{$Liste->nom_requerant}}</td>
+                        <td>{{$Liste->sexe_requerant}}</td>
                         <td>{{$Liste->nature_dossier}}</td>
                         <td>{{$Liste->telephone}}</td>
                         <td>{{$Liste->zone}}</td>

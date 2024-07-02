@@ -84,24 +84,26 @@ class RegistreRattachementPDFController extends Controller
 
     function convert_registre_to_html($registre){
         $output = '
-        <h3 align="center"> Registre de Recette <h3>
+        <h3 align="center"> Registre de rattachement <h3>
         <table width = "100%" style = "border-collapse:collapse; border:0px;"
             <tr>
-                <th style = "border: 1px solid; padding:6px;" width = 20% >Nom Requerant</th>
-                <th style = "border: 1px solid; padding:6px;" width = 10% >Arrondissement</th>
-                <th style = "border: 1px solid; padding:6px;" width = 10% >Nature Dossier</th>
-                <th style = "border: 1px solid; padding:6px;" width = 10% >Lieu Dit</th>
-                <th style = "border: 1px solid; padding:6px;" width = 10% >Telephone</th>
-                <th style = "border: 1px solid; padding:6px;" width = 20% >Geometre</th>
-                <th style = "border: 1px solid; padding:6px;" width = 10% >Montant Verser</th>
-                <th style = "border: 1px solid; padding:6px;" width = 10% >Date Recetion</th>
-                <th style = "border: 1px solid; padding:6px;" width = 10% >Observation</th>
+                <th style = "border: 1px solid; padding:6px;" width = 11.11% >Nom Requerant</th>
+                <th style = "border: 1px solid; padding:6px;" width = 11.11% >Sexe</th>
+                <th style = "border: 1px solid; padding:6px;" width = 11.11% >Arrondissement</th>
+                <th style = "border: 1px solid; padding:6px;" width = 11.11% >Nature Dossier</th>
+                <th style = "border: 1px solid; padding:6px;" width = 11.11% >Lieu Dit</th>
+                <th style = "border: 1px solid; padding:6px;" width = 11.11% >Telephone</th>
+                <th style = "border: 1px solid; padding:6px;" width = 11.11% >Geometre</th>
+                <th style = "border: 1px solid; padding:6px;" width = 11.11% >Montant Verser</th>
+                <th style = "border: 1px solid; padding:6px;" width = 11.11% >Date Recetion</th>
+                <th style = "border: 1px solid; padding:6px;" width = 11.11% >Observation</th>
             </tr>
         ';
         foreach($registre as $enregistrement){
             $output .='
             <tr>
                 <td style = "border: 1px solid; padding:6px;">'.$enregistrement->nom_requerant.'</td>
+                <td style = "border: 1px solid; padding:6px;">'.$enregistrement->sexe_requerant.'</td>
                 <td style = "border: 1px solid; padding:6px;">'.$enregistrement->arrondissement.'</td>
                 <td style = "border: 1px solid; padding:6px;">'.$enregistrement->nature_dossier.'</td>
                 <td style = "border: 1px solid; padding:6px;">'.$enregistrement->lieu_dit.'</td>

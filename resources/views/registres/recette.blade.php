@@ -24,6 +24,7 @@
             <thead>
                 <tr>
                     <th >Nom Requerant</th>
+                    <th>Sexe</th>
                     <th >Lieu Dit</th>
                     <th >Nature Dossier</th>
                     <th >Montant</th>
@@ -39,6 +40,7 @@
                 @foreach($registre as $enregistrement)
                     <tr>
                         <td>{{$enregistrement->nom_requerant}}</td>
+                        <td>{{$enregistrement->sexe_requerant}}</td>
                         <td>{{$enregistrement->lieu_dit}}</td>
                         <td>{{$enregistrement->nature_dossier}}</td>
                         <td>{{$enregistrement->montant_recette}}</td>

@@ -11,40 +11,47 @@
     <form action="" method="POST" class="vstack gap 3 text-black">
         @csrf
 
+        <div class="row">
+            <div class="col-md form-group">
+                <label for="prenom" class="control-label" style="color: black">Nom Requerant:</label>
+                <input type="text" required name="nom_requerant" class="form-control" value="{{old('nom_requerant',$table->nom_requerant)}}" placeholder="Entrez le nom du requerant">
+                    @error("nom_requerant")
+                        <span class="text-danger" role="alert">
+                            <strong>{{$message}}</strong>
+                        </span>
+                    @enderror
+            </div>
+
+            <div class="col-md form-group">
+                <label for="sexe_requerant" class="control-label" style="color: black">Sexe requerant:</label>
+                    <select name="sexe_requerant" id="sexe_requerant" class="form-control" required>
+                        @if(old('sexe_requerant',$table->sexe_requerant) =='')
+                            <option selected disabled hidden value="">Selectionnez le sexe du requerant</option>
+                        @else
+                            <option >{{old('sexe_requerant',$table->sexe_requerant)}}</option>
+                        @endif
+                        <option value="Homme">Homme</option>
+                        <option value="Femme">Femme</option>
+                        <option value="Mixte">Collectif</option>
+                        <option value="Personne Morale">Personne Morale</option>
+                    </select>
+                    @error("sexe_requerant")
+                        <span class="text-danger" role="alert">
+                            <strong>{{$message}}</strong>
+                        </span>
+                    @enderror
+            </div>
+        </div>
+
         <div class="form-group">
-            <label for="prenom" class="control-label" style="color: black">Nom Requerant:</label>
-            <input type="text" name="nom_requerant" class="form-control" value="{{old('nom_requerant',$table->nom_requerant)}}" placeholder="Entrez le nom du requerant">
-                @error("nom_requerant")
-                    <span class="text-danger" role="alert">
-                        <strong>{{$message}}</strong>
-                    </span>
-                @enderror
-            </div>
-        </div>
+            <label for="prenom" class="control-label" style="color: black">Numero decision:</label>
+                <select name="numero_decision" class="form-control" required>
+                    @if(old('numero_decision',$table->numero_decision) =='')
+                        <option selected disabled hidden value="">Selectionnez le numero de decision</option>
+                    @else
+                        <option selected>{{old('numero_decision',$table->numero_decision)}}</option>
+                    @endif
 
-        <div class="row mt-1">
-            <label for="sexe_requerant" class="label col-md-2 control-label">Sexe requerant:</label>
-            <div class="col-md-10">
-                <select name="sexe_requerant" id="sexe_requerant" class="form-select" required>
-                    <option >{{old('sexe_requerant',$table->sexe_requerant)}}</option>
-                    <option value="Homme">Homme</option>
-                    <option value="Femme">Femme</option>
-                    <option value="Mixte">Collectif</option>
-                    <option value="Personne Morale">Personne Morale</option>
-                </select>
-                @error("sexe_requerant")
-                    <span class="text-danger" role="alert">
-                        <strong>{{$message}}</strong>
-                    </span>
-                @enderror
-            </div>
-        </div>
-
-        <div class="row mt-1">
-            <label for="prenom" class="label col-md-2 control-label">Numero_decision:</label>
-            <div class="col-md-10">
-                <select name="numero_decision" class="form-select" required>
-                <option selected>{{old('numero_decision',$table->numero_decision)}}</option>
                     @foreach ($decisions as $decision)
                         <option value="{{ $decision->numero_decision }}">{{ $decision->numero_decision }}</option>
                     @endforeach
@@ -66,11 +73,15 @@
                 @enderror
         </div>
     
-        <div class="row mt-1">
-            <label for="email" class="label col-md-2 control-label">Nature du dossier:</label>
-            <div class="col-md-10">
-                <select name="nature_dossier" class="form-select" required>
-                <option selected>{{old('nature_dossier',$table->nature_dossier)}}</option>
+        <div class="form-group">
+            <label for="email" class="control-label" style="color: black">Nature du dossier:</label>
+                <select name="nature_dossier" class="form-control" required>
+                    @if(old('nature_dossier',$table->nature_dossier) =='')
+                        <option selected disabled hidden value="">Selectionnez la nature du dossier</option>
+                    @else
+                        <option selected>{{old('nature_dossier',$table->nature_dossier)}}</option>
+                    @endif
+
                     @foreach ($natures as $nature)
                         <option value="{{ $nature->nature }}">{{ $nature->nature }}</option>
                     @endforeach
@@ -84,8 +95,12 @@
     
         <div class="form-group">
             <label for="adresse" class="control-label" style="color: black">Arrondissement</label>
-                <select name="arrondissement" id="zone"  class="form-control" placeholder="Entrez l'arrondissement">
-                    <option selected>{{old('arrondissement',$table->arrondissement)}}</option>
+                <select name="arrondissement" required id="zone"  class="form-control" placeholder="Entrez l'arrondissement">
+                    @if(old('arrondissement',$table->arrondissement) =='')
+                        <option selected disabled hidden value="">Selectionnez l'arrondissement</option>
+                    @else
+                        <option selected>{{old('arrondissement',$table->arrondissement)}}</option>
+                    @endif
                     <option>Maroua 1</option>
                     <option>Maroua 2</option>
                     <option>Maroua 3</option>
@@ -103,44 +118,49 @@
                 @enderror
         </div>
 
-        <div class="form-group">
-            <label for="ville" class="control-label" style="color: black">Quartier:</label>
-                <input type="text" name="quartier" class="form-control" value="{{old('quartier',$table->quartier)}}" placeholder="Entrez le nom du quartier">
-                @error("quartier")
-                    <span class="text-danger" role="alert">
-                        <strong>{{$message}}</strong>
-                    </span>
-                @enderror
+        <div class="row">
+            <div class="col-md form-group">
+                <label for="ville" class="control-label" style="color: black">Quartier:</label>
+                    <input type="text" name="quartier" class="form-control" value="{{old('quartier',$table->quartier)}}" placeholder="Entrez le nom du quartier">
+                    @error("quartier")
+                        <span class="text-danger" role="alert">
+                            <strong>{{$message}}</strong>
+                        </span>
+                    @enderror
+            </div>
+
+            <div class="col-md form-group">
+                <label for="pays" class="control-label" style="color: black">Lieu Dit:</label>
+                    <input type="text" name="lieu_dit" class="form-control" value="{{old('lieu_dit',$table->lieu_dit)}}" placeholder="Entrez le lieu">
+                    @error("lieu_dit")
+                        <span class="text-danger" role="alert">
+                            <strong>{{$message}}</strong>
+                        </span>
+                    @enderror
+            </div>
         </div>
 
-        <div class="form-group">
-            <label for="pays" class="control-label" style="color: black">Lieu Dit:</label>
-                <input type="text" name="lieu_dit" class="form-control" value="{{old('lieu_dit',$table->lieu_dit)}}" placeholder="Entrez le lieu">
-                @error("lieu_dit")
+        <div class="row">
+            <div class="col-md form-group">
+                <label for="pays" class="control-label" style="color: black">Mappe:</label>
+                    <input type="text" name="mappe" class="form-control" value="{{old('mappe',$table->mappe)}}" placeholder="Entrez la mappe">
+                    @error("mappe")
                     <span class="text-danger" role="alert">
                         <strong>{{$message}}</strong>
                     </span>
                 @enderror
+            </div>
+            <div class="col-md form-group">
+                <label for="pays" class="control-label" style="color: black">Blog:</label>
+                    <input type="text" name="bloc" class="form-control" value="{{old('bloc',$table->bloc)}}" placeholder="Entrez le blog">
+                    @error("bloc")
+                        <span class="text-danger" role="alert">
+                            <strong>{{$message}}</strong>
+                        </span>
+                    @enderror
+            </div>
         </div>
 
-        <div class="form-group">
-            <label for="pays" class="control-label" style="color: black">Mappe:</label>
-                <input type="text" name="mappe" class="form-control" value="{{old('mappe',$table->mappe)}}" placeholder="Entrez la mappe">
-                @error("mappe")
-                <span class="text-danger" role="alert">
-                    <strong>{{$message}}</strong>
-                </span>
-            @enderror
-        </div>
-        <div class="form-group">
-            <label for="pays" class="control-label" style="color: black">Blog:</label>
-                <input type="text" name="bloc" class="form-control" value="{{old('bloc',$table->bloc)}}" placeholder="Entrez le blog">
-                @error("bloc")
-                    <span class="text-danger" role="alert">
-                        <strong>{{$message}}</strong>
-                    </span>
-                @enderror
-        </div>
         <div class="form-group">
             <label for="pays" class="control-label" style="color: black">Lot:</label>
                 <input type="text" name="lot" class="form-control" value="{{old('lot',$table->lot)}}" placeholder="Entrez le lot">
@@ -163,9 +183,15 @@
         <div class="form-group">
             <label for="zone" class="control-label" style="color: black">Zone:</label>
                 <select name="zone" id="zone"  class="form-control" placeholder="Entrez la zone">
-                    <option selected>{{old('zone',$table->zone)}}</option>
+                    @if(old('zone',$table->zone) =='')
+                        <option selected disabled hidden value="">Selectionnez la zone</option>
+                    @else
+                        <option selected>{{old('zone',$table->zone)}}</option>
+                    @endif
+
                     <option>zone urbaine</option>
                     <option>zone rurale</option>
+
                 </select>
                 @error("zone")
                     <span class="text-danger" role="alert">

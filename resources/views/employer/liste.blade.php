@@ -1,4 +1,4 @@
-<div id="rattach" class="container card-header shadow" style="background: linear-gradient(to right, #7F00FF, #E100FF)">
+<div id="rattach" class="container card-header shadow" style="background: linear-gradient(to left, #7F00FF, #E100FF)">
         <h1 class=" text-center" style="color: white">
 
     @if ($nb==1)
@@ -6,11 +6,11 @@
     @elseif ($nb==2)
         Contrôleurs
     @elseif ($nb==3)
-        Liste DAO
+        DAO
     @endif
 </h1>
 </div>
-<div class="container card shadow">
+<div class="container card-body shadow">
     <table id="table" class="table table-hover table-striped">
         <thead>
             <th>Numero</th>

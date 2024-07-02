@@ -20,7 +20,7 @@
 <body">
 <div class="card border border-0 w-50 mx-auto py-5 px-5" id="formcontainer">
     <div class="container ms-1 ">
-        <h3 class="text-primary">Edje'el</h3>
+        <h3 class="text-primary">Edje'l</h3>
         <span class="text-dark">Connectez-vous !</span>
     </div>
     <div class="card-body text-black">

@@ -8,19 +8,15 @@
 <div class="container-fluid d-flex ">
     <nav aria-label="breadcrumb " class="first  d-md-flex" >
          <ol class="breadcrumb indigo lighten-6 first-1 shadow-lg mb-5  ">
-            <li ><a class="black-text active-2" href="{{route('home')}}"><i class="fas fa-fw fa-solid fa-home mr-md-2 mr-1 mb-1"></i><span>Accueil</span></a><i class="fas fa-solid fa-chevron-right ml-md-3 ml-1"></i> </li>
-            <li><a class="black-text active-2" href="{{route('liste.mj-intro')}}"><span >BMJ</span></a><i class="fas fa-solid fa-chevron-right ml-md-3 ml-1"></i></li>
+            <li ><a class="black-text active-2" href="{{route('home')}}"><i class="fas fa-fw fa-solid fa-home mr-md-2 mr-1 mb-1"></i><span>Accueil</span></a><i class="fas fa-solid fa-chevron-right mx-md-3 mx-1"></i> </li>
+            <li><a class="black-text active-2" href="{{route('liste.mj')}}"><span >BMJ</span></a><i class="fas fa-solid fa-chevron-right mx-md-3 mx-1"></i></li>
             <li ><a class="black-text active-2  " href="#">
-                <span >REJET DOSSIER</span></a><i class="fas fa-solid fa-chevron-right ml-md-3 ml-1"></i> </li>
+                <span >Rejet de dossier</span>
+            </a></li>
             <!-- <li class="breadcrumb-item  mr-0 pr-0"><a class="black-text active-1 active-2" href="#"><span >Bread shape</span></a> </li> -->
         </ol>
     </nav>
 </div>
     @include('info-ouverture')
     @include('bmj.rejet.rejet')
-    <style>
-        #info{background: linear-gradient(to top, #00CDAC, #02AAB0)}
-        #rattach{background: linear-gradient(to top, #00CDAC, #02AAB0)}
-    </style>
-   
 @endsection

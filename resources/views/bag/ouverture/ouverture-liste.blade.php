@@ -7,9 +7,15 @@
 <div class="container-fluid d-flex ">
     <nav aria-label="breadcrumb " class="first  d-md-flex" >
          <ol class="breadcrumb indigo lighten-6 first-1 shadow-lg mb-5  ">
-            <li ><a class="black-text active-2" href="{{route('home')}}"><i class="fas fa-fw fa-solid fa-home mr-md-2 mr-1 mb-1"></i><span>Accueil</span></a><i class="fas fa-solid fa-chevron-right ml-md-3 ml-1"></i> </li>
-            <li><a class="black-text active-2" href="{{route('statistique')}}"><span >Chef</span></a><i class="fas fa-solid fa-chevron-right ml-md-3 ml-1"></i></li>
-            <li ><a class="black-text active-2  " href="#"><span >BAG\Modifier ouverture dossier</span></a><i class="fas fa-solid fa-chevron-right ml-md-3 ml-1"></i> </li>
+            <li ><a class="black-text active-2" href="{{route('home')}}"><i class="fas fa-fw fa-solid fa-home mr-md-2 mr-1 mb-1"></i><span>Accueil</span></a><i class="fas fa-solid fa-chevron-right mx-md-3 mx-1"></i> </li>
+            <li><a class="black-text active-2" href="{{route('statistique')}}"><span >Chef</span></a><i class="fas fa-solid fa-chevron-right mx-md-3 mx-1"></i></li>
+            <li ><a class="black-text active-2  " href="#">
+                <span>BAG</span>
+                <i class="fas fa-solid fa-chevron-right mx-md-3 mx-1"></i>
+            </a></li>
+            <li><a href="#">
+                <span>Modifier ouverture de dossier</span>
+            </a></li>
             <!-- <li class="breadcrumb-item  mr-0 pr-0"><a class="black-text active-1 active-2" href="#"><span >Bread shape</span></a> </li> -->
         </ol>
     </nav>
@@ -22,6 +28,7 @@
         <table id="table" class="table table-hover table-responsible table-striped">
             <thead style="color: black">
                 <th>Requerant</th>
+                <th>Sexe</th>
                 <th>Nature dossier</th>
                 <th>Téléphone</th>
                 <th>Zone</th>
@@ -39,6 +46,7 @@
                 @foreach ($Listes as $Liste )
                     <tr class="table-row" data-href="{{route('edit.ouverture-dossier',['table'=>json_decode(json_encode($Liste->id),true)])}} ">
                         <td>{{$Liste->nom_requerant}}</td>
+                        <td>{{$Liste->sexe_requerant}}</td>
                         <td>{{$Liste->nature_dossier}}</td>
                         <td>{{$Liste->telephone}}</td>
                         <td>{{$Liste->zone}}</td>
@@ -50,7 +58,6 @@
                         <td>{{$Liste->numero_feuille}}</td>
                         <td>{{$Liste->date_ouverture}}</td>
                         <td>{{$Liste->geometre}}</td>
-
                     </tr>
                 @endforeach
             </tbody>

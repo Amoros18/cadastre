@@ -1,11 +1,19 @@
 @include('header')
 <link rel="stylesheet" href="{{asset('css/welcome.css')}}">
+<link href="{{asset('vendor/fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css">
 <div class="container-fluid d-block m-0 p-0 h-100" id='content'>
     
     <div class="container-fluid w-100 m-0" id="contain">
+        <!-- Recherche button -->
+        <div class="container-fluid d-flex justify-content-center row m-0 ">
+            <div class="col-md col-lg-5 ms-lg-3"></div>
+            <a class="col ms-lg-3 btn btn-light w-100 text-decoration-none" href="{{route('liste.recherche')}}"><i class="fa fa-fw fa-search"></i> Rechercher un dossier</a>
+            <div class="col-md col-lg-1  ms-lg-3"></div>
+        </div>
+
         <!-- First Row -->
         <div class="container-fluid d-flex justify-content-center row m-0 " id="first-row">
-            <div class="col-md col-lg-5 ms-lg-3"></div>
+            <div class="col-md col-lg-5 ms-lg-4"></div>
             <!-- Bureau du chef -->
             <div class="col">
                 <a class="container rectangle2" id="chef" href="{{route('statistique')}}">
@@ -40,7 +48,7 @@
 
         <!-- Second Row -->
         <div class="container-fluid d-flex justify-content-center row ms-0 mt-md-4" id="second-row">
-            <div class="col-md col-lg-5 ms-lg-3"></div>
+            <div class="col-md col-lg-5 ms-lg-4"></div>
             <!-- Bureau du controle -->
             <div class="col my-2 mt-md-0">
                 <a class="container p-0 rectangle2" id="bc" href="{{route('liste.controle1')}}">
