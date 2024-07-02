@@ -18,7 +18,7 @@ class AuthController extends Controller
             return redirect()->intended(route('home'));
         }
         return to_route('auth.login')->withErrors([
-            'email'=>"email invalide"
+            'incorrect'=>"Email ou mot de passe invalide"
         ])->onlyInput('email');
     }
 

@@ -48,10 +48,15 @@
                     </span> 
                 @enderror
                 
+                @error('incorrect')
+                <span class="text-danger" role="alert">
+                    <span class="text-danger" role="alert">
+                        <strong>{{$message}}</strong>
+                    </span> 
+                </span> 
+                @enderror
                 <button class="btn btn-success mt-3 w-100" type="submit" >Se connecter</button>
-                
             </div>
-            
             
         </form>
     </div>
