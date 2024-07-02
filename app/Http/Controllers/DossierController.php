@@ -865,11 +865,51 @@ class DossierController extends Controller
 
     //Recherche dossier
     public function rechercherDossier(Request $request){
+        $user = $request->user()->bureau;
+        $nom = $request->input('nom_requerant');
+        switch($user){
+            case('Chef'):
+                $layout = 'chef/accueil';
+                $c1 = '#4bc5f6';
+                $c2 = '#077cab';
+                break;
+        
+            case('Bureau des affaires generale'):
+                $layout = 'bag/accueil';
+                $c1 = '#E100FF';
+                $c2 = '#7F00FF';
+                break;
+
+            case('Bureau de mise a jour'):
+                $layout = 'bmj/accueil';
+                $c1 = '#00CDAC';
+                $c2 = '02AAB0';
+                break;
+
+            case('Bureau de controle'):
+                $layout = 'bc/accueil';
+                $c1 = '#FF6347';
+                $c2 = '#b31217';
+                break;
+
+            case('Archivage'):
+                $layout = 'archivage/accueil';
+                $c1 = '#004e92';
+                $c2 = '#000428';
+                break;
+
+            case($user == 'Bureau de geometre'):
+                $layout = 'geometre/accueil';
+                $c1 = '#F9D423';
+                $c2 = '#e65c00';
+                break;
+        }
+
         if($request->recherche){
             $dossier = NouveauDossier::where('nom_requerant', 'like', '%'.$request->nom_requerant.'%')->get();
-            return view('recherche', ['dossiers' => $dossier]);
+            return view('recherche', ['dossiers' => $dossier, 'layout' => $layout, 'c1' => $c1, 'c2' => $c2, 'nom' => $nom]);
         } else {
-            return view('recherche');
+            return view('recherche', ['layout' => $layout, 'c1' => $c1, 'c2' => $c2, 'nom' => $nom]);
         }
     }
 }
