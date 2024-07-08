@@ -5,34 +5,44 @@
 @section('content')
 <script src="{{asset('javascript\chart.js')}}"></script>
 <script src="{{asset('javascript\chart.js')}}"></script>
-    <div class="container-fluid d-sm-flex row align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800 col-xl-4 col-md-6">Statistiques</h1>
+<h2  class="container-fluid d-flex ">STATISTIQUES</h2>
+<div class="container-fluid d-flex ">
+    <nav aria-label="breadcrumb card" class="first  d-md-flex" >
+         <ol class="breadcrumb indigo lighten-6 first-1 shadow-lg mb-5  ">         
+         <li ><a class="black-text active-2" href="{{route('home')}}"><i class="fas fa-fw fa-solid fa-home mr-md-2 mr-1 mb-1"></i><span>Accueil</span></a><i class="fas fa-solid fa-chevron-right mx-md-3 mx-1"></i> </li>
+            <li><a class="black-text active-2" href="{{route('statistique')}}"><span >Chef</span></a><i class="fas fa-solid fa-chevron-right mx-md-3 mx-1"></i></li>
+            <li ><a class="black-text active-2  " href="#">
+                <span>Statistiques</span>
+            </a></li>
+            <!-- <li class="breadcrumb-item  mr-0 pr-0"><a class="black-text active-1 active-2" href="#"><span >Bread shape</span></a> </li> -->
+        </ol>
+    </nav>
+</div>
+
+
+    <h2  class="container-fluid d-flex ">Filtrer les données</h2>
         <form method="POST" action="">
-            @csrf
-            <div class="container-fluid col d-flex text-center">
-                <div class="input-group w-100">
+            <div class="container-fluid d-flex row align-items-center justify-content-between mb-4">
+                @csrf
+                <div class="input-group col">
                     <span class="input-group-text">Du</span>
                     <input type="date" class="form-control" name="date_debut" value="{{$date_debut}}">
                 </div>
-                
-                <div class="input-group">
+                <div class="input-group col">
                     <span class="input-group-text">Au</span>
                     <input type="date" class="form-control" name="date_fin" value="{{$date_fin}}">
                 </div>
-            </div>
 
-            <div class="container-fluid d-flex">
-                <div class="input-group">
+                <div class="input-group col">
                     <input type="submit" class="btn btn-primary form-control" name="filtrer" value="Filtrer">
                 </div>
                 @if($date_debut != '')
-                <div class="input-group">
+                <div class="input-group col">
                     <button class="btn btn-danger form-control" href="{{route('statistique')}}">Reinitialiser</button>
                 </div>
                 @endif
             </div>
         </form>
-    </div>
 
     <!-- First row -->
     <div class="row container-fluid">
