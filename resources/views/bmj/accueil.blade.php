@@ -22,8 +22,8 @@
 
     
     <style>
-        #info{background: linear-gradient(to right, #4bc5f6, #077cab)}
-        #rattach{background: linear-gradient(to right, #4bc5f6, #077cab)}
+        #info{background: linear-gradient(to right, #00CDAC, #02AAB0)}
+        #rattach{background: linear-gradient(to right, #00CDAC, #02AAB0)}
     </style>
 </head>
 
@@ -34,7 +34,7 @@
         <!-- Sidebar -->
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar" style="background: linear-gradient(to top, #00CDAC, #02AAB0)">
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" style="background: " href = "{{route('home')}}">             
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href = "{{route('home')}}">             
                 <div class="sidebar-brand-text mx-3">EDJE'L</div>
             </a>
 
