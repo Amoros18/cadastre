@@ -67,7 +67,7 @@ class PointController extends Controller
 
     public function listPoint(Request $request){  // pas encore implementer
         $table = DB::table('nouveau_dossiers');
-        $table = $table->join('points','nouveau_dossiers.numero_dossier','=','points.numero_dossier')
+        $table = $table->join('points','nouveau_dossiers.numero_dossier','!=','points.numero_dossier')
                 ->select('nouveau_dossiers.*')->groupBy('nouveau_dossiers.id');
         $Listes = $this->service->searchRejet($request,$table);
         //dd($Listes['Listes']);
