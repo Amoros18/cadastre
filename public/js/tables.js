@@ -3,7 +3,7 @@ $(document).ready( function () {
     $('#table').DataTable();
 
     //Ligne des tables clickables
-    $(".table-row").click(function(){
+    $('#table tbody').on('click', '.table-row', function() {
         window.location=$(this).data("href");
     });
 } );
