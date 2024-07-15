@@ -4,7 +4,6 @@
 
 @section('content')
 
-<script src="{{asset('modal.js')}}"></script>
 
 <!-- Breadcrumbs -->
 <h2  class="container-fluid d-flex ">CONSULTER UN DOSSIER</h2>
@@ -40,7 +39,7 @@
         Lien Google Map
     </a>
 
-    <button class="btn btn-primary" type="button" style="background: linear-gradient(to right, #4bc5f6, #077cab)" id="open-modal">
+    <button class="btn btn-primary" type="button" style="background: linear-gradient(to right, #4bc5f6, #077cab)" onclick="openModal()" id="open-modal">
         Interoger la position du dossier
     </button>
     
@@ -51,7 +50,7 @@
                         <h4 class="modal-title">
                             Information du dossier
                         </h4>
-                        <button type="button" class="btn btn-danger" id="dismiss">Fermer</button>
+                        <button type="button" class="btn btn-danger" id="dismiss" onclick="closeModal()">Fermer</button>
                     </div>
                     <div class="modal-body">
                         {{$content1}} <br>
@@ -342,4 +341,12 @@
     </div>
 </div>
 
+<script>
+    function openModal(){
+        document.getElementById("modal").style.display = 'block';
+    }
+    function closeModal(){
+        document.getElementById("modal").style.display = 'none';
+    }
+</script>
 @endsection
