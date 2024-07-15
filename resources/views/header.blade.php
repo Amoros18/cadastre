@@ -8,7 +8,7 @@
     <link rel="icon" href="{{asset('favicon.ico')}}">
     <link rel="stylesheet" href="{{asset('css/bootstrap.css')}}" crossorigin="anonymous">
     <link rel="stylesheet" href="{{asset('css/header.css')}}">
-    <script defer src="{{asset('welcome.js')}}"></script>
+    <!-- <script defer src="{{asset('welcome.js')}}"></script> -->
     <script defer src="{{asset('js/bootstrap.js')}}"></script>
 </head>
 
