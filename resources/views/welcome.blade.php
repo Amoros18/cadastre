@@ -82,3 +82,49 @@
         </div>
     </div>
 </div>
+
+<!-- Bootstrap core JavaScript-->
+<script src="{{asset('vendor/jquery/jquery.min.js')}}"></script>
+<script src="{{asset('vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+
+<!-- Core plugin JavaScript-->
+<script src="{{asset('vendor/jquery-easing/jquery.easing.min.js')}}"></script>
+<script src="{{asset('js/dataTables.js')}}"></script>
+
+
+
+@if (session('unauthorized'))
+    <!-- The Modal -->
+    <div class="modal" id="myModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header bg-danger text-white">
+                <h4 class="modal-title">Acces non authorisé</h4>
+                <!-- <button type="button" class="btn-close" data-bs-dismiss="modal"></button> -->
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body">
+                Vous avez tenté d'accéder à un espace qui ne vous est pas reservé ! <br>
+                Merci de rester dans le cadre de travail qui vous a été associé.
+            </div>
+
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" onclick="dismissModal()">J'ai compris</button>
+            </div>
+
+            </div>
+        </div>
+    </div>
+    <script>
+        function dismissModal(){
+                $("#myModal").hide();
+            }
+        $(document).ready(function(){
+            $("#myModal").show();
+        });
+    </script>    
+@endif

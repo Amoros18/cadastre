@@ -17,6 +17,6 @@ class Bag
         {
             return $next($request);
         }
-        return redirect()->route('home');
+        return redirect()->route('home')->with('unauthorized', 1);
     }
 }

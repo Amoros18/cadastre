@@ -73,7 +73,7 @@ Route::prefix('liste/')->middleware('auth')->name('liste.')->group(function(){
     Route::post('/rattachement',[DossierController::class,'listRattachement']);
     Route::get('/affectation',[DossierController::class,'listAffectation'])->name('affectation');
     Route::post('/affectation',[DossierController::class,'listAffectation']);
-    Route::get('/ccp-intro',[DossierController::class,'listCcp'])->name('ccp-intro');
+    Route::get('/ccp-intro',[DossierController::class,'listCcp'])->name('ccp-intro')->middleware('authGeometre');
     Route::post('/ccp-intro',[DossierController::class,'listCcp']);
     Route::get('/ccp',[DossierController::class,'listCcp'])->name('ccp');
     Route::post('/ccp',[DossierController::class,'listCcp']);
@@ -83,7 +83,7 @@ Route::prefix('liste/')->middleware('auth')->name('liste.')->group(function(){
     Route::post('/main-courante',[DossierController::class,'listMainCourante']);
     Route::get('/controle1-intro',[DossierController::class,'listControle1'])->name('controle1-intro');
     Route::post('/controle1-intro',[DossierController::class,'listControle1']);
-    Route::get('/controle1',[DossierController::class,'listControle1'])->name('controle1');
+    Route::get('/controle1',[DossierController::class,'listControle1'])->name('controle1')->middleware('authBc');
     Route::post('/controle1',[DossierController::class,'listControle1']);
     Route::get('/controle2-intro',[DossierController::class,'listControle2'])->name('controle2-intro');
     Route::post('/controle2-intro',[DossierController::class,'listControle2']);
@@ -91,14 +91,14 @@ Route::prefix('liste/')->middleware('auth')->name('liste.')->group(function(){
     Route::post('/controle2',[DossierController::class,'listControle2']);
     Route::get('/mj-intro',[DossierController::class,'listMj'])->name('mj-intro');
     Route::post('/mj-intro',[DossierController::class,'listMj']);
-    Route::get('/mj',[DossierController::class,'listMj'])->name('mj');
+    Route::get('/mj',[DossierController::class,'listMj'])->name('mj')->middleware('authBmj');
     Route::post('/mj',[DossierController::class,'listMj']);
     Route::get('/visa',[DossierController::class,'listVisa'])->name('visa');
     Route::post('/visa',[DossierController::class,'listVisa']);
     Route::get('/sortie-intro',[SortieGeometreControler::class,'listSortieIntro'])->name('sortie-intro');
     Route::post('/sortie-intro',[SortieGeometreControler::class,'listSortieIntro']);
     Route::get('/sortie-geometre',[SortieGeometreControler::class,'listSortie'])->name('sortie-geometre');
-    Route::get('/archivage-intro',[ArchivageController::class,'listArchivageIntro'])->name('archivage-intro');
+    Route::get('/archivage-intro',[ArchivageController::class,'listArchivageIntro'])->name('archivage-intro')->middleware('authArchivage');
     Route::post('/archivage-intro',[ArchivageController::class,'listArchivageIntro']);
     Route::get('/archivage',[ArchivageController::class,'listArchivage'])->name('archivage');
     Route::post('/archivage',[ArchivageController::class,'listArchivage']);
@@ -132,7 +132,7 @@ Route::prefix('create/')->middleware('auth')->name('create.')->group(function(){
     Route::post('/user',[UserController::class, 'add_User']);
     Route::get('/ancien-dossier',[AncienDossierController::class,'createAncienDossier'])->name('ancien-dossier');
     Route::post('/ancien-dossier',[AncienDossierController::class,'create_AncienDossier']);
-    Route::get('ouverture-dossier',[DossierController::class,'createOuvertureDossier'])->name('ouverture-dossier');
+    Route::get('ouverture-dossier',[DossierController::class,'createOuvertureDossier'])->name('ouverture-dossier')->middleware('authBag');
     Route::post('ouverture-dossier',[DossierController::class,'create_OuvertureDossier']);
     Route::get('/recette/{table}',[RecceteController::class,'createRecette'])->name('recette');
     Route::post('/recette/{table}',[RecceteController::class,'create_Recette']);
@@ -320,7 +320,7 @@ Route::prefix('delete')->name('delete.')->middleware('auth')->group(function(){
         Route::get('controlleur',[EmployerController::class,'deleteControlleur'])->name('controlleur');
     });
 });
-Route::get('statistique',[StatistiqueController::class,'statistique'])->middleware('auth')->name('statistique');
+Route::get('statistique',[StatistiqueController::class,'statistique'])->middleware('authChef')->name('statistique');
 Route::post('statistique',[StatistiqueController::class,'statistique']);
 
 Route::prefix('stats/')->middleware('auth')->name('stats.')->group(function(){
